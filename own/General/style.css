@@ -1,0 +1,717 @@
+.divgeneral {
+    min-height: 100%;
+    height: auto!important;
+    height: 100%;
+    margin: 0 auto auto
+}
+.divgeneral .panel {
+    border-radius: 0;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.05)
+}
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    font-family: helvetica;
+    font-weight: 100
+}
+.dropdown-menu>li>a {
+    padding: 3px 10px!important
+}
+.barra1 {
+    BACKGROUND-COLOR: #428bca;
+    WIDTH: 100%;
+    HEIGHT: 5px
+}
+.barra2 {
+    position: absolute;
+    height: 5px;
+    left: 0;
+    width: 100%;
+    background: #f7f7f9;
+    z-index: 0;
+    border: 1px solid #ccc;
+    border-left: 0;
+    border-right: 0
+}
+.MasterBottomZone {
+    border: 0;
+    margin-bottom: 5px;
+    margin-bottom: 0!important;
+    min-width: 1000px;
+    max-height: 65px;
+    min-height: 65px!important;
+    height: 65px
+}
+.MasterBottomZone select {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 4px 6px!important
+}
+.MasterBottomZone div div a img {
+    width: auto!important;
+    max-width: 323px!important;
+    max-height: 60px!important
+}
+.objetobuscar {
+    color: #747474!important
+}
+.dropdown-menu {
+    background-color: #f7f7f9!important
+}
+#span_buscar, #span_buscar:hover, #span_buscar:active, #span_buscar:focus, #span_buscar:visited {
+    color: #747474!important;
+    padding: 8px;
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    position: absolute;
+    right: 15px
+}
+#search {
+    border-radius: 4px;
+    padding-right: 25px!important
+}
+#search-div input, #cbxentidad {
+    background: #f7f7f9
+}
+.divperfil .badge {
+    background-color: #428bca!important
+}
+.divperfil a:hover {
+    color: white!important
+}
+.divperfil a:hover .badge {
+    color: #428bca;
+    !important;
+    background-color: white!important
+}
+#cbxentidad {
+    border: 1px solid #ccc
+}
+#search-div {
+    min-width: 300px;
+    width: 100%
+}
+#search-div, .divperfil {
+    margin-top: 5px
+}
+#cbxentidad {
+    height: 34px
+}
+.divperfil ul {
+    padding: 0;
+    margin: 0;
+    margin-top: 30px;
+    padding: 2px
+}
+.divperfil ul span {
+    margin-right: 5px
+}
+.MasterBottomZone .nav {
+    float: left
+}
+.btn-group, .btn-group-vertical {
+    display: block
+}
+.btn-group.divperfil .nav ul li>a>span {
+    float: left
+}
+.divlateral li>a>span {
+    padding: 0!important
+}
+.dropdown-menu li a {
+    font-size: 12px
+}
+.dropdown-menu li>a>span {
+    float: left!important
+}
+.dropdown-menu li>a>span.badge {
+    float: right!important
+}
+.dropdown-menu li>a>span:after {
+    content: ''
+}
+.nav li>a>span {
+    float: right;
+    padding: 3px 7px
+}
+.navbar-inverse .navbar-toggle {
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    margin-top: 8px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+    background-color: #f7f7f9;
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+    color: #f7f7f9
+}
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: #078bcd;
+    border: 1px solid #d3d3d3;
+    color: #078bcd
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #d3d3d3
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #d3d3d3
+}
+.divgeneral {
+    min-height: 100%;
+    height: 100%!important;
+    margin: 0 auto auto;
+    background: #f7f7f9
+}
+.MasterBottomZone select {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 6px 6px!important
+}
+.divlateral {
+    padding-right: 5px!important
+}
+.nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
+    border-radius: 0!important
+}
+.menu_principal li {
+    margin-bottom: 0!important
+}
+.divlateral {
+    padding-left: 0!important;
+}
+#buscar_accion {
+    background: #f7f7f9
+}
+#span_collapse {
+    position: static!important;
+    color: #428bca
+}
+.nav>li li {
+    padding: 0
+}
+#SIDEBAR_MPAGE {
+    border-top: 0;
+    border-bottom: 0;
+    position: absolute;
+    width: 260px;
+    height: 100%;
+    left: -260px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding-right: 2px!important;
+    overflow: auto!important;
+    background-color: #f7f7f9
+}
+.main-content #sidebar-toggle {
+    border-radius: 3px;
+    display: block;
+    position: relative;
+    padding: 10px 7px;
+    float: left;
+    cursor: pointer;
+    margin-left: 3px;
+    text-decoration: none
+}
+#sidebar-toggle {
+    position: absolute;
+    z-index: 1503;
+    cursor: pointer;
+    font-size: 12px;
+    margin: 4px 0 0 4px!important;
+    padding: 0;
+    padding-bottom: 3px;
+    top: 0;
+    background-color: #f7f7f9;
+    border-radius: 0;
+    border-width: 0 1px 1px 0;
+    border-color: #ccc;
+    border-style: solid
+}
+#sidebar-toggle.glyphicon-backward {
+    padding-right: 3px
+}
+#sidebar-toggle.glyphicon-forward {
+    padding-left: 3px
+}
+.main-content #sidebar-toggle .bar {
+    display: block;
+    margin-bottom: 3px;
+    height: 2px;
+    border-radius: 1px
+}
+.main-content #sidebar-toggle .bar:last-child {
+    margin-bottom: 0
+}
+.panel-body {
+    padding: 0!important;
+    min-width: 300px
+}
+.GridTitle, .BlobContentGridTitle, .ReadonlyBlobContentGridTitle, .BlobInputGridTitle, .ReadonlyGridTitle {
+    width: auto!important
+}
+.divcentralmedio {
+    border: 0!important
+}
+.div_centrorow {
+    padding-left: 0;
+    padding-right: 0;
+    top: 65px;
+    background: #fff
+}
+div.container_centro {
+    position: relative;
+    height: 100%;
+    right: 0;
+    -webkit-transition: left .4s ease-in-out;
+    -moz-transition: left .4s ease-in-out;
+    -ms-transition: left .4s ease-in-out;
+    -o-transition: left .4s ease-in-out;
+    transition: left .4s ease-in-out;
+}
+.div_inferior img {
+    max-height: 80px!important
+}
+.div_centro_centro {
+    margin-left: 0;
+    padding-left: 10px;
+    padding-right: 5px
+}
+.container_centro.open-sidebar {
+    left: 260px
+}
+.navbar {
+    min-height: 25px
+}
+.swipe-area {
+    position: absolute;
+    width: 5px;
+    left: 0;
+    top: 4px;
+    height: 100%;
+    background: #f7f7f9;
+    z-index: 1500;
+    border: 1px solid #ccc;
+    border-top: 0;
+    border-bottom: 0
+}
+.div_superior, .div_marca_medio {
+    margin-bottom: 10px!important
+}
+.main-content {
+    border-top: 0;
+    border-bottom: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    padding-top: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    overflow: auto!important
+}
+.main-content .content {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding-left: 60px;
+    width: 100%
+}
+.main-content .content h1 {
+    font-weight: 100
+}
+.main-content .content p {
+    width: 100%;
+    line-height: 160%
+}
+.footer {
+    background-color: #f7f7f9;
+    text-align: center!important;
+    display: inherit!important;
+    border: 0;
+    padding-left: 0!important;
+    padding-right: 0!important;
+    width: 100%;
+    margin-top: 5px;
+    z-index: 1000;
+    min-height: 25px!important;
+    max-height: 25px!important;
+    height: 25px!important
+}
+.footer .CopyrText span {
+    vertical-align: 0!important;
+    font-family: Verdana, Arial;
+    font-size: 8pt;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    color: #747474
+}
+.Hyperlink {
+    text-decoration: none!important
+}
+.divFooter {
+    margin-top: 5px
+}
+.TabContainer {
+    height: 40px
+}
+.Tabs {
+    padding-left: 0!important;
+    margin-bottom: 0!important;
+    list-style: none;
+    font-size: 12px;
+    position: absolute;
+    margin-top: 10px!important;
+    border-bottom: 1px solid #ddd
+}
+.Tabs .Tab {
+    margin-left: 2px!important
+}
+.Tab a:hover, .Tab a:focus {
+    border-color: #eee #eee #ddd;
+    text-decoration: none;
+    background-color: #eee;
+    color: #2a6496!important
+}
+.Tabs .TabSelected a:hover, .Tabs .TabSelected a:focus {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-right: 2px;
+    line-height: 1.428571429;
+    border-radius: 4px 4px 0 0
+}
+.Tabs .Tab a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-right: 2px;
+    line-height: 1.428571429;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0
+}
+.Tabs .TabSelected a {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent
+}
+.BtnHelp {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    Unknown property name.-moz-user-select: none;
+    Unknown property name.-ms-user-select: none;
+    Unknown property name.-o-user-select: none;
+    Unknown property name.user-select: none;
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc
+}
+.BtnHelp:hover, .BtnHelp:focus, .BtnHelp:active {
+    color: #333;
+    background-color: #ebebeb;
+    border-color: #adadad
+}
+.Attribute {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+}
+.alert-danger span {
+    color: #b94a48!important;
+    text-decoration: none!important
+}
+.panel-body .Hyperlink {
+    text-decoration: none!important
+}
+.HRDefault {
+    background-color: #428bca!important;
+    border-width: 0!important;
+    height: 2px!important;
+    color: #428bca!important
+}
+.ErrorAttribute {
+    border-radius: 4px
+}
+.ErrorMessages {
+    background: #f2dede;
+    border-radius: 4px;
+    opacity: .8;
+    padding: 5px;
+    border-color: #c60b44!important;
+    border: 1px dotted!important;
+    z-index: 1000!important
+}
+span.ErrorMessages {
+    color: #c60b44!important
+}
+.ErrorAttribute {
+    border-bottom-color: #c60b44;
+    border-left-color: #c60b44;
+    border-right-color: #c60b44;
+    border-top-color: #c60b44;
+    border-style: dotted
+}
+.alert span {
+    white-space: normal
+}
+.PopupHeaderButton {
+    background-image: url(closenormal.png)!important;
+    background-repeat: no-repeat!important
+}
+.PopupHeaderButton:hover {
+    background-image: url(closehover.png)!important;
+    background-repeat: no-repeat!important
+}
+#gx_ajax_notification {
+    opacity: .8!important;
+    position: absolute!important;
+    bottom: 0!important;
+    left: 0!important;
+    width: 100%!important;
+    height: 100%!important;
+    z-index: 2000!important
+}
+#gx_ajax_notification DIV {
+    background-color: black!important
+}
+#remember {
+    padding: 0!important;
+    margin: 0!important;
+    height: 13px!important
+}
+.Grid, .GridDragging, .GridAcceptDrag, .GridNoAcceptDrag, .WorkWith {
+    padding-left: 0;
+    padding-right: 0
+}
+.Table100x100 {
+    width: 100%
+}
+.div_centro_derecho {
+    margin-top: 12px!important
+}
+.div_centro_derecho_derecho {
+    margin-top: 2px!important
+}
+.Grid input {
+    height: auto!important;
+    margin-left: 0!important;
+    padding: 0 0!important;
+    border-radius: 4px!important
+}
+.Table tr {
+    margin-bottom: 10px!important
+}
+.region_central {
+    margin-top: 72px!important
+}
+.divcentralnav {
+    padding-bottom: 9px;
+    margin: 10px 0 5px;
+    border-bottom: 1px solid #eee
+}
+.configldap input[type="image"] {
+    height: 26px!important
+}
+.configldap #TABLE4 input[type="image"], .configldap #TABLE3 input[type="image"] {
+    height: 20px!important
+}
+table.WorkWith tr {
+    margin: 0!important;
+    padding: 0!important;
+    height: 24px!important
+}
+.ToolbarMain input[type="image"] {
+    opacity: 1;
+    filter: alpha(opacity=100)
+}
+.ToolbarMain input[type="image"]:hover {
+    opacity: .6;
+    filter: alpha(opacity=60)
+}
+#TABLEGRIDCONTAINER img {
+    height: 22px!important;
+    border-radius: 4px
+}
+#TABLEGRIDCONTAINER input[type="image"] {
+    height: 28px!important
+}
+.divencabezado {
+    font-weight: 500;
+    font-size: 22px;
+    margin-left: 15px
+}
+.td5 span, .TextBlock {
+    padding: 8px
+}
+.Group .Table tr {
+    margin-bottom: 10px
+}
+.Group .GroupTitle {
+    margin-bottom: 0!important
+}
+.SubTitle {
+    font-size: 14px;
+    font-weight: bold
+}
+a p span {
+    text-decoration: none!important
+}
+.td5 {
+    vertical-align: middle!important
+}
+.divcentralmedio .navbar-default {
+    margin-bottom: 0
+}
+.divcentralmedio {
+    border-color: #d3d3d3;
+    margin-bottom: 5px;
+    border-radius: 4px!important
+}
+.divcentralmedio .ToolbarMain input[type="image"], .divcentralmedio .ImageHandCenter {
+    height: 26px!important
+}
+.divcentralmedio input, .divcentralmedio select {
+    height: 24px!important;
+    font-size: 100%!important
+}
+.divcentralmedio input, .divcentralmedio select, .divcentralmedio textarea {
+    padding: 3px 4px!important
+}
+.Grid input, .Grid select, .Grid textarea {
+    padding: 0 0!important;
+    height: 100%!important;
+    font-size: 100%!important;
+    width: auto;
+    margin-right: 3px
+}
+.gx_usercontrol .x-form-checkbox {
+    padding: 0!important;
+    height: 13px!important
+}
+.ToolbarMain input {
+    padding: 3px 0!important
+}
+.PagingButtons {
+    width: auto
+}
+.gx_usercontrol input, .gx_usercontrol select, .gx_usercontrol textarea {
+    height: 22px!important
+}
+.WorkWith {
+    padding: 0!important
+}
+.TableBorder div {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px
+}
+.TableBorder input {
+    margin-top: 10px!important
+}
+.ViewTable {
+    width: 100%
+}
+.ViewTable .Table100x100 {
+    margin-bottom: 10px
+}
+#INSERT, #EXPORT {
+    height: auto!important;
+    width: auto!important;
+    margin-top: 5px
+}
+.btn-primary, .btn-success, .btn-default, .btn-danger, .btn-warning {
+    margin: 2px!important
+}
+.Group {
+    width: 100%!important;
+    height: 100%!important;
+    padding: 10px!important
+}
+.menusuptable {
+    width: 100%
+}
+.tablemenu {
+    margin-bottom: 0;
+    overflow: hidden;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05)
+}
+#FUNCIONALIDADESID, #AUTENTICACIONLDAPID, #SPAN_NOTICIAID, #ROLID, #SPAN_SUB_ENTIDADID, #SPAN_ENTIDADID, #USUARIOID, #FUNCIONALIDADESID, .ENTIDADID, #LDAPID, #span_vCONTADORSERVERLDAP, #METADATOSID, #ENTIDADID, #span_SUB_ENTIDADID {
+    display: none
+}
+.PopupHeaderButton {
+    background-image: url(close.gif);
+    background-repeat: no-repeat
+}
+.menu_principal .glyphicon:before {
+    font-size: 11px!important;
+    font-weight: normal
+}
+.menu_principal.nav li>a>span:after {
+    font-size: 12px!important;
+    font-weight: bold
+}
+.menu_principal .input-group {
+    margin-bottom: 2px
+}
+.menu_principal a {
+    font-size: 13px!important;
+    top: 1px;
+    font-family: tahoma, arial, verdana, sans-serif, 'Glyphicons Halflings';
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    line-height: 22px!important;
+    padding: 0!important;
+    padding-left: 5px!important;
+    padding-right: 5px!important;
+}
+#span_collapse, #sidebar-toggle {
+    color: #747474!important
+}
+.menu_principal .input-group .glyphicon:before {
+    font-size: 14px!important
+}
+.TextBlock, .Title, .SubTitle, .AssociationTitle, .TextBlockDragging, .TextBlockAcceptDrag, .TextBlockNoAcceptDrag, .SmallText, .SelectedTab, .UnSelectedTab, .RecentLink, .DataDescriptionCell, .DataDescriptionCellLeft, .DataDescriptionCellLogin, .DataContentCell, .DataContentCellLogin, .RequiredDataContentCell, .DataContentCellView, .DataDescription, .TextBlockTitleWWP, .TextBlockTitleCell, .DataFilterDescription, .OrderedByDescription, .DataFixedFilterDescription, .DescriptionWhite, .TableTitleCell, .MasterPageFooter, .breadCrumbTitleCell, .WorkWithFooter, .form-control, .badge, p, .letracenter span {
+    font-family: tahoma, arial, verdana, sans-serif
+}
+#cbxentidad, #btn-perfil, .divperfil a:hover, #sidebar-toggle, #span_collapse {
+    cursor: pointer
+}
+#sidebar-toggle:hover, #span_collapse:hover {
+    color: #428bca!important
+}
+.divcentralmedio .ToolbarMain input[type="image"], .divcentralmedio .ImageHandCenter {
+    margin-right: 2px;
+}

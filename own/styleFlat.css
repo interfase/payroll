@@ -1,0 +1,207 @@
+/*Personalización de estilos de bootstrap*/
+label{
+    font-weight: normal;
+    padding-right: 0px !important;
+}
+
+/**Css para los grid**/
+/****************************************/
+.Grid{
+    border-spacing: 0;
+}
+
+.Grid tr:hover{
+    background-color: #CAE1EE !important;   
+}
+
+.Grid .gx-row-selected{
+    background-color: #CAE1EE !important; 
+}
+
+.Grid .checkbox{
+    margin-left: 20px;
+    margin-right: -20px;
+}
+/**Css para los grid origianl**/
+.WorkWith tr:hover{
+    background-color: #CAE1EE !important;   
+}
+
+.WorkWith .gx-row-selected{
+    background-color: #CAE1EE !important; 
+}
+/*Buttons*/
+.btnSearch:hover, .btnSearchRight:hover{
+    background-color: #196396;
+    color: #fff;
+    border: none;    
+}
+
+.BtnEnter, .BtnCancel, .Button{
+    text-transform: none !important;
+    color: #fff !important;
+    border: 0px;
+}
+
+.Button:hover{
+    background-color: #8DBAD8;
+}
+
+.BtnCancel:hover{
+    background-color: #196396;
+    border: 0px;
+}
+
+.ButtonActionsGrid:hover{
+    background-color: #fff;    
+    border-color: #ccc;
+}
+
+.ButtonInsertGrid:hover{
+    background-color: #fff;
+    color: #196396;
+    border-color: #ccc;
+}
+
+/**Css para la barra User Action**/
+/****************************************/
+.TableUserActions{
+    /*margin-bottom: 20px;*/        
+}
+
+
+/**Css para la barra Footer**/
+/****************************************/
+.TextBlockFooter a{
+    text-decoration: none;
+    color: white;
+    margin-left: -5px;
+}
+
+.TableFooter .ImageSeparator{
+    margin-top: 4px;
+}
+
+/**Css para los Tab**/
+/****************************************/
+.nav-tabs > li > a:hover{    
+    background-color: #196396;
+    color: #fff;
+}
+
+.tab-pane{
+    /*background-color: #EDF6F9;*/
+    border: 1px solid #8DBAD8;  
+    border-radius: 4px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+/**Css para IdAttribute**/
+/****************************************/
+.IdAttribute{
+    float: left;
+}
+.IdAttribute + a img{
+    padding: 2px 12px 2px 12px;
+    border: 1px solid rgb(204, 204, 204);
+    border-left: 0px;
+    border-radius: 0px 4px 4px 0px;
+}
+.IdAttribute + a img:hover{
+    background-color: rgb(235, 235, 235);
+}
+
+/**Css para Tabla de 2 Columnas**/
+/****************************************/
+.Table2C label{
+    width: 40%;
+}
+.Table2C label + div{
+    width: 55%;
+}
+
+.Table2CBig label{
+    width: 60%;
+}
+.Table2CBig label + div{
+    width: 40%;
+}
+
+.form-group{
+    margin-bottom: 0px !important;
+}
+
+/**Css para Tabla de 3 Columnas**/
+/****************************************/
+.Table3C label{
+    width: 51%;
+}
+.Table3C label + div{
+    width: 49%;
+}
+.Table3CBig label{
+    width: 60%;
+}
+.Table3CBig label + div{
+    width: 40%;
+}
+
+/**Css para los TextBlock**/
+/****************************************/
+.tbAction a{
+    color: #196396;
+}
+
+.tbMoreFilters a{
+    color : #196396;
+    text-decoration: none;
+}
+
+/*Cambiar esto despues*/
+.input-group-btn a{
+    height: 30px !important;
+}
+
+.input-group-btn img{
+    margin-top: -4px;
+}
+
+.FooterContainer{
+    position: fixed;    
+    bottom: 0px;
+}
+
+.TableFilters .AttributeFilter{
+    width: 100%;
+}
+
+.TablePage .PagingButtonsFirst, .TablePage .PagingButtonsPrevious,
+.TablePage .PagingButtonsNext, .TablePage .PagingButtonsLast{    
+    padding-left: 33px !important;
+    padding-bottom: 33px !important;
+}
+
+
+/** Medias **/
+@media(min-width){
+    
+}
+
+.mainMenu{
+    /*position: absolute;*/
+    width: 290px;    
+}
+
+body, html{
+    height: 100%;
+}
+
+.ContentContainer{
+    height: 100vh;
+}
+
+/*Css para formato de los pickers en los grid.*/
+.dp_container + p{
+    display: none !important;
+}

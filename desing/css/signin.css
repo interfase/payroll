@@ -1,0 +1,19 @@
+.form-horizontal .form-group {
+  margin-right: 0px;
+  margin-left: 0px;
+} 
+
+.form-group {
+  margin-bottom: 15px !important;;
+}
+
+.input-group .form-control {
+  width: 100%;
+}
+
+.form-horizontal .control-label, .form-horizontal .radio, .form-horizontal .checkbox, .form-horizontal .radio-inline, .form-horizontal .checkbox-inline{
+  position: relative;
+  display: block;
+  min-height: 20px;
+  margin-bottom: 10px;
+}

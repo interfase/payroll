@@ -1,0 +1,92 @@
+/* 
+    Created on : 11-sep-2014, 13:50:11
+    Author     : Jorge Borges
+*/
+
+.table{
+    width:auto;
+    margin-bottom:0; 
+}
+
+table span{
+   font-size: 14px !important; 
+}
+   
+.Label{
+   float: right;
+}
+
+label{
+    font-weight: normal;
+    padding-right: 0px !important;
+}
+
+.PopupHeaderButton{
+    color: #196396 !important;
+}
+
+.PopupBorder{
+    z-index: 9999 !important;
+}
+
+input{
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+input.ImageBtnSearchRight{
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    transition: none;
+}
+
+.TablePagin input.Image{
+    border: 0;
+    box-shadow: none;
+}
+
+.TablePagin td{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 1px;
+}
+
+
+/*Buttons*/
+.BtnEnter, .BtnCancel{
+    text-transform: none;
+    padding: 6px 12px;
+    margin-right: 5px;
+    font-size: 14px;
+    border-radius: 4px;    
+}
+
+.btnSearch:hover, .btnSearchRight:hover{
+    background-color: #196396;
+    color: #fff;
+    border: none;    
+}
+
+.BtnEnter, .BtnCancel{
+    text-transform: none !important;
+    color: #fff !important;
+    border: 0px;
+}
+
+.BtnCancel:hover{
+    background-color: #196396;
+    border: 0px;
+}
+
+/**Css para los grid**/
+/****************************************/
+.Grid tr:hover{
+    background-color: #CAE1EE !important;   
+}
+
+.Grid .gx-row-selected{
+    background-color: #CAE1EE !important; 
+}

@@ -1,0 +1,54 @@
+#mainmenu .nav,.nav ul,.nav li{
+    list-style:none
+}
+#mainmenu .nav ul{
+    padding:0;
+    margin:0 0 0 18px
+}
+#mainmenu .nav{
+    padding:4px;
+    margin:0
+}
+#mainmenu .nav>li{
+    margin:4px 0
+}
+#mainmenu .nav>li li{
+    margin:2px 0
+}
+#mainmenu .nav a{
+    color:#333;
+    display:block;
+    outline:0;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    text-decoration:none
+}
+#mainmenu .nav li>a>span{
+    float:right;
+    padding:0 4px
+}
+#mainmenu .nav li>a>span:after{
+    font-size:10px;
+    content:'+'
+}
+#mainmenu .nav li.open>a>span:after{
+    content:'\2212'
+}
+.nav a:hover,.nav li.active>a{
+    background-color:#5d5d5d;
+    color:#f5f5f5
+}
+#mainmenu .nav>li.active>a{
+    background-color:#4d90fe
+}
+#mainmenu .nav li a{
+    font-size:12px;
+    line-height:18px;
+    padding:2px 10px
+}
+#mainmenu .nav>li>a{
+    font-size:14px;
+    line-height:20px;
+    padding:4px 10px
+}
