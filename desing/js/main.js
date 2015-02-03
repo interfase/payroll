@@ -72,6 +72,8 @@ $(document).ready(function() {
 		}		
 		
         if ($(this).attr('href') == obj){
+       		 //Se garantiza que se posicione en el lugar donde seleccione
+             $('#sidebar-wrapper').animate({scrollTop:$(this).position().top}, 'slow');
              $(this).addClass('activo');
         }else{
             $(this).removeClass('activo');
