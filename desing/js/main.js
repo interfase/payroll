@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+﻿$(document).ready(function() {
+=======
 $(document).ready(function () {
+>>>>>>> 6699f36b902239e53d427f74f8923d673707b6ef
 
     // Métodos para menejo de Cookie
     function setCookie(key, value) {
@@ -79,6 +83,27 @@ $(document).ready(function () {
             $.cookie('ultimoactivo', $(this).attr('href'));
             bandera = true;
         } else {
+<<<<<<< HEAD
+=======
+=======
+    });  
+        
+    $('.mainMenu a').each(function(index){
+        baseUrl = window.location.pathname.split('/'); 
+        obj = baseUrl[baseUrl.length-1]; 
+		
+		search = window.location.search;
+		if (search != ""){
+		  obj = obj+search;
+		}		
+		
+        if ($(this).attr('href') == obj){
+       		 //Se garantiza que se posicione en el lugar donde selecciones
+             $('#sidebar-wrapper').animate({scrollTop:$(this).position().top}, 'slow');
+             $(this).addClass('activo');
+        }else{
+>>>>>>> 259b0211d5650738d69dca300e537e54ec67789c
+>>>>>>> e10c145d4ccb1e216b1575e1b8cb47287ca97e8c
             $(this).removeClass('activo');
         }
     });
