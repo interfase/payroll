@@ -1,4 +1,4 @@
-$(document).ready(function() {
+﻿$(document).ready(function() {
 
     // Métodos para menejo de Cookie
     function setCookie(key, value) {
@@ -72,7 +72,7 @@ $(document).ready(function() {
 		}		
 		
         if ($(this).attr('href') == obj){
-       		 //Se garantiza que se posicione en el lugar donde seleccione
+       		 //Se garantiza que se posicione en el lugar donde selecciones
              $('#sidebar-wrapper').animate({scrollTop:$(this).position().top}, 'slow');
              $(this).addClass('activo');
         }else{
