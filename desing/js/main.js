@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-﻿$(document).ready(function() {
-=======
-$(document).ready(function () {
->>>>>>> 6699f36b902239e53d427f74f8923d673707b6ef
+$(document).ready(function() {
+
 
     // Métodos para menejo de Cookie
     function setCookie(key, value) {
@@ -64,7 +61,7 @@ $(document).ready(function () {
     $(window).resize(function () {
         $.contenWidth();
         $.contenHeight();
-<<<<<<< HEAD
+
     });
     var bandera = false;
     $('.mainMenu a').each(function (index) {
@@ -84,24 +81,6 @@ $(document).ready(function () {
             $.cookie('ultimoactivo', $(this).attr('href'));
             bandera = true;
         } else {
-=======
-    });  
-        
-    $('.mainMenu a').each(function(index){
-        baseUrl = window.location.pathname.split('/'); 
-        obj = baseUrl[baseUrl.length-1]; 
-		
-		search = window.location.search;
-		if (search != ""){
-		  obj = obj+search;
-		}		
-		
-        if ($(this).attr('href') == obj){
-       		 //Se garantiza que se posicione en el lugar donde selecciones
-             $('#sidebar-wrapper').animate({scrollTop:$(this).position().top}, 'slow');
-             $(this).addClass('activo');
-        }else{
->>>>>>> 259b0211d5650738d69dca300e537e54ec67789c
             $(this).removeClass('activo');
         }
     });
@@ -136,8 +115,4 @@ $(document).ready(function () {
             $(this).remove();
         }
     });
-<<<<<<< HEAD
-=======
-
->>>>>>> 259b0211d5650738d69dca300e537e54ec67789c
 });
