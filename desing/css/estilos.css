@@ -9,7 +9,7 @@ body {
 }
 #sidebar-wrapper {
 	margin-top: 56px;
-	z-index:99999;
+	z-index:100;
 	left: 290px;
 	margin-left:-290px;
 	top:60px;
@@ -23,10 +23,12 @@ body {
 .sidebar-nav{
     overflow-x: hidden;
 }
-
+.navbar-fixed-top, .navbar-fixed-bottom{
+    z-index: 101;
+}
 .sidebar-brand {
 	height:56px;
-	z-index: 100000;
+	z-index: 101;
 	position: fixed;
 	width: 290px;
 	left: 0;
