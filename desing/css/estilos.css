@@ -10,8 +10,6 @@ body {
 #sidebar-wrapper {
 	left: 290px;
 	margin-left:-290px;
-	top:60px;
-	height:100%;     
 	font-size: 0.95em;
 	width:290px; 
 	min-width: 290px;
@@ -34,7 +32,7 @@ body {
 .sidebar-container{
 	overflow-x:hidden;
 	overflow-y:auto;
-	height:86%;
+	height:100%;
 }
 
 .sidebar-wrapper {

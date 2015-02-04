@@ -115,4 +115,13 @@ $(document).ready(function() {
             $(this).remove();
         }
     });
+	
+	//Para que se muestre bien el sidebar menu
+	$(window).resize(function(){
+		var height=$(document).height()-$("#sidebar-wrapper").offset().top-5;
+		$("#sidebar-wrapper").height(height);
+		$("#sidebar-wrapper .sidebar-container").height(height-56);
+	});
+	setTimeout(function(){$(window).resize();},500);
+	
 });
