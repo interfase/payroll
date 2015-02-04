@@ -8,27 +8,21 @@ body {
 	text-decoration:none;
 }
 #sidebar-wrapper {
-	margin-top: 56px;
-	z-index:99999;
 	left: 290px;
 	margin-left:-290px;
 	top:60px;
-	height:90%;     
+	height:100%;     
 	font-size: 0.95em;
 	width:290px; 
 	min-width: 290px;
-	overflow-x: hidden;
+	overflow: hidden;
 	background:#fff;
-}
-.sidebar-nav{
-    overflow-x: hidden;
 }
 
 .sidebar-brand {
 	height:56px;
-	z-index: 100000;
-	position: fixed;
-	width: 290px;
+	/*position: fixed;*/
+	/*width: 290px;*/
 	left: 0;
 	background: #1b6394;
 	margin:0;
@@ -37,22 +31,27 @@ body {
 	text-indent: 20px;
 }
 
-.sidebar-brand:before {
-	content: " ";
-	box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
-	height: 56px;
-	left: 0;
-	position: fixed;
-	width: 290px;
-	z-index: 100000;
+.sidebar-container{
+	overflow-x:hidden;
+	overflow-y:auto;
+	height:86%;
 }
 
 .sidebar-wrapper {
 	background: #1b6394
 }
+
+.sidebar-nav{
+    overflow-x: hidden;
+	position: relative;
+}
+
 .sidebar-nav{
     min-width: 280px;    
 }
+
+
+
 .sidebar-nav li a {
 	color: #1b6394;
 	margin:5px;
