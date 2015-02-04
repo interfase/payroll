@@ -71,8 +71,9 @@ $(document).ready(function() {
         if (search != "") {
             obj = obj + search;
         }
+        strhref=$(this).attr('href');
 
-        if ($(this).attr('href') == obj) {
+        if (strhref.indexOf(obj) >= 0) {
             //Se garantiza que se posicione en el lugar donde seleccione
             $('#sidebar-wrapper').animate({scrollTop: $(this).position().top}, 'slow');
             $(this).addClass('activo');
