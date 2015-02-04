@@ -7,6 +7,9 @@ body {
 #wrapper ul.list-inline li a:hover {
 	text-decoration:none;
 }
+.navbar-fixed-top, .navbar-fixed-bottom{
+    z-index: 101;
+}
 #sidebar-wrapper {
 	left: 290px;
 	margin-left:-290px;
@@ -511,4 +514,3 @@ footer .navbar {
 ::-webkit-scrollbar-thumb:hover {  
     background-color: #aaa;  
 }  
-
