@@ -1,0 +1,41 @@
+.main{
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.main .separator{
+    border-top: 1px solid #428bca;
+    margin-bottom: 20px;
+}
+.main .icon404{
+    font-size: 48px;
+    color: #428bca;
+    margin-bottom: 40px;
+}
+
+.main .btn-404{
+    border-color: #428bca;
+    color: #428bca;
+    
+}
+
+.main .text-pageerror *{
+    font-size: 24px;
+    line-height: 24px;    
+}
+
+.main .text-404{
+    font-size: 128px;
+    line-height: 100px;
+}
+
+.main .text-found{
+    font-size: 18px;
+}
+
+.main .text-explain{
+    margin-bottom: 40px;
+    color: #999999;
+}
