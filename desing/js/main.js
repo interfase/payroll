@@ -63,7 +63,37 @@ $(document).ready(function() {
         $.contenHeight();
     });
 	
-	ObjetoActivo();
+    	var bandera = false;
+    $('.mainMenu a').each(function (index) {
+        baseUrl = window.location.pathname.split('/');
+        obj = baseUrl[baseUrl.length - 1];
+
+        search = window.location.search;
+        if (search != "") {
+            obj = obj + search;
+        }
+        strhref=$(this).attr('href');
+
+        if (strhref.indexOf(obj) >= 0) {
+            //Se garantiza que se posicione en el lugar donde seleccione
+            $('.sidebar-container').animate({scrollTop: $(this).position().top}, 'slow');
+            $(this).addClass('activo');
+            /**/
+            $.cookie('ultimoactivo', $(this).attr('href'));
+            bandera = true;
+        } else {
+            $(this).removeClass('activo');
+        }
+    });
+    if (!bandera) {
+        var ultimo = $.cookie('ultimoactivo');
+        $(".mainMenu li").find('a').each(function () {
+            var href2 = $(this).attr('href');
+            if (href2 == ultimo) {
+                $(this).addClass('activo');
+            }
+        });
+    }
 
     // Cambio de Container por ContainerFluid
     $('div.Container').attr('class', 'container-fluid FormContainer');
@@ -97,37 +127,3 @@ $(document).ready(function() {
 	setTimeout(function(){$(window).resize();},500);
 	
 });
-
-function ObjetoActivo(){
-	var bandera = false;
-    $('.mainMenu a').each(function (index) {
-        baseUrl = window.location.pathname.split('/');
-        obj = baseUrl[baseUrl.length - 1];
-
-        search = window.location.search;
-        if (search != "") {
-            obj = obj + search;
-        }
-        strhref=$(this).attr('href');
-
-        if (strhref.indexOf(obj) >= 0) {
-            //Se garantiza que se posicione en el lugar donde seleccione
-            $('#sidebar-container').animate({scrollTop: $(this).position().top}, 'slow');
-            $(this).addClass('activo');
-            /**/
-            $.cookie('ultimoactivo', $(this).attr('href'));
-            bandera = true;
-        } else {
-            $(this).removeClass('activo');
-        }
-    });
-    if (!bandera) {
-        var ultimo = $.cookie('ultimoactivo');
-        $(".mainMenu li").find('a').each(function () {
-            var href2 = $(this).attr('href');
-            if (href2 == ultimo) {
-                $(this).addClass('activo');
-            }
-        });
-    }
-}
