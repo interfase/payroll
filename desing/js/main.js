@@ -118,7 +118,7 @@ $(document).ready(function() {
 	
 	//Para que se muestre bien el sidebar menu
 	$(window).resize(function(){
-		var height=$(document).height()-$("#sidebar-wrapper").offset().top-5;
+		var height=$('body').height()-$("#sidebar-wrapper").offset().top;
 		$("#sidebar-wrapper").height(height);
 		$("#sidebar-wrapper .sidebar-container").height(height-56);
 	});
