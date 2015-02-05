@@ -514,3 +514,8 @@ footer .navbar {
 ::-webkit-scrollbar-thumb:hover {  
     background-color: #aaa;  
 }  
+
+/*popup*/
+.PopupBorder, .PopupHeader{
+	max-width: 900px;
+}
