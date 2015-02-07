@@ -45,18 +45,18 @@ body {
 .sidebar-nav{
     overflow-x: hidden;
 	position: relative;
+	min-width: 280px;
 }
-
-.sidebar-nav{
-    min-width: 280px;    
-}
-
-
 
 .sidebar-nav li a {
 	color: #1b6394;
 	margin:5px;
+	
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
+
 ul.sidebar-nav {
 	width:100%;
 }
@@ -518,4 +518,9 @@ footer .navbar {
 /*popup*/
 .PopupBorder, .PopupHeader{
 	max-width: 900px;
+}
+
+.tooltip .tooltip-inner{
+	max-width: 400px;
+	font-size: 16px;
 }

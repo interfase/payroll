@@ -123,6 +123,17 @@ $(document).ready(function() {
 		$("#sidebar-wrapper .sidebar-container").height(height-56);
 		//ObjetoActivo();
 	});
-	setTimeout(function(){$(window).resize();},500);
+	setTimeout(function(){
+		$(window).resize();
+		$(".sidebar-nav li a").each(function(){
+			jQuery(this).tooltip(
+			{
+				title: $(this).text(),
+				placement: 'right',
+				container: 'body'
+			});
+		});
+	},100);
+	
 	
 });
