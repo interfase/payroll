@@ -244,6 +244,7 @@ div.seccion span {
 	top: 7px;
 	left: 7px;
 }
+
 #logo-login {
 	height:48px;
 	position: relative;
@@ -303,10 +304,10 @@ footer .navbar {
     background-image: none;
 }
 #login-form .col-sm-6 {
-	padding:0 15px 0 8px;
+	/*padding:0 15px 0 8px;*/
 }
-#grupo {
-	padding:0 8px 0 15px !important;
+#grupo{
+	/*padding:0 8px 0 15px !important;*/
 }
 #logo-payroll{
 	margin-bottom:20px;
@@ -523,4 +524,9 @@ footer .navbar {
 .tooltip .tooltip-inner{
 	max-width: 400px;
 	font-size: 16px;
+}
+
+#login-form{
+	width: 400px;
+	margin: 0 auto;
 }
