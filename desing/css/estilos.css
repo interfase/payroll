@@ -530,3 +530,11 @@ footer .navbar {
 	width: 400px;
 	margin: 0 auto;
 }
+
+/*Attributos que no se pueden ocultar*/
+.attrOcultar{
+    height: 0;
+    width: 0;
+    border: 0!important;
+    box-shadow: none!important;
+}
