@@ -137,3 +137,7 @@ $(document).ready(function() {
 	
 	
 });
+function ScrollTo() {
+   var div = $('#vLOGMENSAJES');
+   div.scrollTop(div.scrollTop() + div.innerHeight());
+}
