@@ -123,6 +123,7 @@ $(document).ready(function() {
 		$("#sidebar-wrapper .sidebar-container").height(height-56);
 		//ObjetoActivo();
 	});
+    
 	setTimeout(function(){
 		$(window).resize();
 		$(".sidebar-nav li a").each(function(){
@@ -133,6 +134,16 @@ $(document).ready(function() {
 				container: 'body'
 			});
 		});
+        $(".sidebar-nav .nivel2 > div").each(function(){
+            var $this=jQuery(this);
+            var parent=$this.parent();
+            parent.tooltip(
+            {
+                title: $(this).text(),
+                placement: 'right',
+                container: 'body'
+            });
+        })
 	},100);
 	
 	

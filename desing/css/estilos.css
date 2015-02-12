@@ -81,6 +81,21 @@ ul.sidebar-nav {
 .sidebar-brand a:hover {
 	margin:0;
 }
+
+.nivel2 > div{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 85%;
+	float: left;
+}
+
+.nivel2 > i{
+	width: 30px !important;
+	margin: 0 !important;
+	width: 15%;
+}
+
 #page-content-wrapper {
 	padding:0px;
 	margin-top:106px;
@@ -521,9 +536,11 @@ footer .navbar {
 	max-width: 900px;
 }
 
+
 .tooltip .tooltip-inner{
 	max-width: 400px;
-	font-size: 16px;
+	font-size: 14px;
+	margin-left: -1px;
 }
 
 #login-form{
