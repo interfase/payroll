@@ -42,10 +42,10 @@ $(document).ready(function() {
         }
     });
 
-    // Para manejar el ancho del contenido    
+    //Para manejar el ancho del contenido    
     $.contenWidth = function () {
         if ($(window).width() >= 768) {
-            $('.tdContentPlaceHolder').width($(window).width() - 280);
+            $('.tdContentPlaceHolder').width($(window).width() - $('#sidebar-wrapper').width()-10);
         } else {
             $('.tdContentPlaceHolder').width($(window).width());
         }
@@ -53,7 +53,7 @@ $(document).ready(function() {
 
     //para manejar el alto del contenido
     $.contenHeight = function () {
-        $('.ContentContainer').height($(window).height() - 63);
+        $('.ContentContainer .tdContentPlaceHolder').height($(window).height() - 63);
     }
 
     $.contenWidth();
@@ -118,36 +118,38 @@ $(document).ready(function() {
 	
 	//Para que se muestre bien el sidebar menu
 	$(window).resize(function(){
-		var height=$('body').height()-$("#sidebar-wrapper").offset().top;
-		$("#sidebar-wrapper").height(height);
-		$("#sidebar-wrapper .sidebar-container").height(height-56);
-		//ObjetoActivo();
+		var h1=$('body').height()-$("#sidebar-wrapper").offset().top;
+		$("#sidebar-wrapper").height(h1);
+		$("#sidebar-wrapper .sidebar-container").height(h1-56);
 	});
     
 	setTimeout(function(){
 		$(window).resize();
-		$(".sidebar-nav li a").each(function(){
-			jQuery(this).tooltip(
-			{
-				title: $(this).text(),
-				placement: 'right',
-				container: 'body'
-			});
-		});
-        $(".sidebar-nav .nivel2 > div").each(function(){
-            var $this=jQuery(this);
-            var parent=$this.parent();
-            parent.tooltip(
-            {
-                title: $(this).text(),
-                placement: 'right',
-                container: 'body'
+
+        if(jQuery.fn.tooltip){
+    		$(".sidebar-nav li a").each(function(){
+    			jQuery(this).tooltip(
+    			{
+    				title: $(this).text(),
+    				placement: 'right',
+    				container: 'body'
+    			});
+    		});
+            $(".sidebar-nav .nivel2 > div").each(function(){
+                var $this=jQuery(this);
+                var parent=$this.parent();
+                parent.tooltip(
+                {
+                    title: $(this).text(),
+                    placement: 'right',
+                    container: 'body'
+                });
             });
-        })
-	},100);
-	
-	
+        }
+	},500);
 });
+
+
 function ScrollTo() {
    var div = $('#vLOGMENSAJES');
    div.scrollTop(div.scrollTop() + div.innerHeight());
