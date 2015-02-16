@@ -15,7 +15,7 @@ $(document).ready(function() {
     // Click sobre elemento padre del menu
     $('div.toggle').click(function (e) {
         e.preventDefault();
-        $(this).find('i').toggleClass('fa-chevron-right fa-chevron-down');
+        $(this).find('i') .toggleClass('fa-chevron-right fa-chevron-down');
 
         toggle = $(this).attr('data-toggle')
         if (getCookie(toggle) == 1) {
