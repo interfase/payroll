@@ -75,7 +75,7 @@ $(document).ready(function() {
 
         if ($(this).attr('href')== obj) {
             //Se garantiza que se posicione en el lugar donde seleccione
-            $('.sidebar-container').animate({scrollTop: $(this).position().top}, 'slow');
+            $('.sidebar-container').animate({scrollTop: $(this).position().top-50}, 'slow');
             $(this).addClass('activo');
             /**/
             $.cookie('ultimoactivo', $(this).attr('href'));
@@ -146,7 +146,7 @@ $(document).ready(function() {
                 });
             });
         }
-	},500);
+	},100);
 });
 
 
