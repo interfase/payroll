@@ -561,3 +561,8 @@ footer .navbar {
     border: 0!important;
     box-shadow: none!important;
 }
+
+.BlobContentImage.hideImage 
+{ 
+    display: none!important; 
+}
