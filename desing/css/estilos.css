@@ -1,6 +1,13 @@
 body {
 	background: #f0f8fa;
+	overflow-y: hidden;
 }
+
+.tdContentPlaceHolder{
+	overflow-y:auto;
+	right: -5px;
+}
+
 #wrapper {
 	padding-left:250px;
 }
@@ -10,6 +17,7 @@ body {
 .navbar-fixed-top, .navbar-fixed-bottom{
     z-index: 101;
 }
+
 #sidebar-wrapper {
 	left: 290px;
 	margin-left:-290px;
@@ -18,12 +26,11 @@ body {
 	min-width: 290px;
 	overflow: hidden;
 	background:#fff;
+	position: relative !important;
 }
 
 .sidebar-brand {
 	height:56px;
-	/*position: fixed;*/
-	/*width: 290px;*/
 	left: 0;
 	background: #1b6394;
 	margin:0;
@@ -91,9 +98,8 @@ ul.sidebar-nav {
 }
 
 .nivel2 > i{
-	width: 30px !important;
 	margin: 0 !important;
-	width: 15%;
+	width: 15% !important;
 }
 
 #page-content-wrapper {
