@@ -89,7 +89,7 @@ ul.sidebar-nav {
 	margin:0;
 }
 
-.nivel2 > div{
+.nivel2 > span{
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -565,4 +565,23 @@ footer .navbar {
 .BlobContentImage.hideImage 
 { 
     display: none!important; 
+}
+
+/*Fix para los grid en IE*/
+.Grid .gx-row-selected, .Grid .gx-row-selected td {
+	background-color: #CAE1EE !important;
+}
+
+.Grid tr:hover, .Grid tr:hover td{
+	background-color: #CAE1EE !important;
+}
+
+.Grid{
+	border-spacing: 0!important;
+}
+
+.GridTitle {
+	border-style: none !important;
+	padding-bottom: 9px !important;
+	padding-top: 9px !important;
 }

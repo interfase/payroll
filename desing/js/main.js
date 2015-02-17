@@ -124,6 +124,23 @@ $(document).ready(function() {
 	setTimeout(function(){
 		$(window).resize();
 
+        $('.nivel2').each(function(){
+            var $this=$(this),
+                text=$this.text(),
+                i=$this.find('i');
+            $this.empty();
+            $this.append($("<span>"+text+"</span>"));
+            $this.append(i);
+            if(jQuery.fn.tooltip){
+                jQuery(this).tooltip(
+                {
+                    title: $(this).text(),
+                    placement: 'right',
+                    container: 'body'
+                });
+            }
+        });
+
         if(jQuery.fn.tooltip){
     		$(".sidebar-nav li a").each(function(){
     			jQuery(this).tooltip(
@@ -133,16 +150,6 @@ $(document).ready(function() {
     				container: 'body'
     			});
     		});
-            $(".sidebar-nav .nivel2 > span").each(function(){
-                var $this=jQuery(this);
-                var parent=$this.parent();
-                parent.tooltip(
-                {
-                    title: $(this).text(),
-                    placement: 'right',
-                    container: 'body'
-                });
-            });
         }
 	},100);
 });
