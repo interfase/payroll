@@ -540,8 +540,8 @@ footer .navbar {
 /*popup*/
 .PopupBorder, .PopupHeader{
 	max-width: 900px;
+	min-width: initial!important;
 }
-
 
 .tooltip .tooltip-inner{
 	max-width: 400px;
