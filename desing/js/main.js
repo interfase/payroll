@@ -182,7 +182,7 @@ $(document).ready(function() {
             var popup=gx.popup.currentPopup;
             if(popup.frameDocument){
                 var table=$(popup.frameDocument).find('body'),
-                    width=table.outerWidth()+20,
+                    width=table.outerWidth()+30,
                     height=table.outerHeight()+60,
                     id='#'+popup.id;
 
