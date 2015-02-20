@@ -176,26 +176,41 @@ $(document).ready(function() {
             }
         },200);
 
+
+        /*Ajustar los prompts a la tabla que tienen dentro*/
         var setWidthOfPopup=function(){
             var popup=gx.popup.currentPopup;
             if(popup.frameDocument){
-                var width=$(popup.frameDocument).find('#TABLE3').width()+120,
+                var table=$(popup.frameDocument).find('body'),
+                    width=table.outerWidth()+20,
+                    height=table.outerHeight()+60,
                     id='#'+popup.id;
-                $(id+"_b").append("<style>.forcewidth{width:"+width+"px!important;}</style>");
-                $(id+"_b,"+id+"_t").addClass("forcewidth");
-                $(id+"_rs").css('left',width-20);
+
+                $(id+"_b").append("<style>.fw1{width:" + (width+10) + "px!important;}"
+                                  +".fw2{width:" + width + "px!important;}"
+                                  +".fh1{height:"+height+"px!important;}"
+                                  +".fh2{height:"+(height+25)+"px!important;}</style>");
                 
-                $(id+"_b").css("left",$('body').width()/2-width/2-10)
+                $(id + "_b").addClass("fw1").addClass("fh2");
+                $(id + "_t").addClass("fw2");
+                $(id + "_b").css({
+                                  left:$('body').width()/2 - width/2 - 9,
+                                  top: $('body').height()/2 - height/2 -28
+                                });
+                            
+                $(id + "_c").addClass("fh1");
+                $(id+"_rs").css("display", "none");
             }
             else{
                 setTimeout(setWidthOfPopup, 100);
             }
         }
 
-        gx.popup.origOpenPrompt=gx.popup.openPrompt;
+        gx.popup.origOpenPrompt=gx.popup.ext.show;
 
-        gx.popup.openPrompt=function(p1,p2,p3,p4,p5,p6,p7){
-            gx.popup.origOpenPrompt(p1,p2,p3,p4,p5,p6,p7);
+        gx.popup.ext.show=function(c){
+            console.log("openPrompt");
+            gx.popup.origOpenPrompt(c);
             setWidthOfPopup();
         };
     }
