@@ -181,8 +181,10 @@ $(document).ready(function() {
         var setWidthOfPopup=function(){
             var popup=gx.popup.currentPopup;
             if(popup.frameDocument){
-                var table=$(popup.frameDocument).find('body'),
-                    width=table.outerWidth()+30,
+                var table=$(popup.frameDocument).find('#MAINFORM');
+                table=table.size()?table:$(popup.frameDocument).find('body');
+
+                var width=table.outerWidth()+30,
                     height=table.outerHeight()+60,
                     id='#'+popup.id;
 
