@@ -572,7 +572,7 @@ footer .navbar {
 	background-color: #CAE1EE !important;
 }
 
-.Grid tr:hover, .Grid tr:hover td{
+.Grid tr:hover, .Grid tr:hover td{ 
 	background-color: #CAE1EE !important;
 }
 
@@ -584,4 +584,14 @@ footer .navbar {
 	border-style: none !important;
 	padding-bottom: 9px !important;
 	padding-top: 9px !important;
+}
+
+/*ACCIONES DE LOS GRIDS*/
+.TableActions, .TableInsert{
+	margin-bottom: 5px!important;
+	height: 40px!important;
+}
+
+.Grid{
+	margin-top: 0px!important;
 }

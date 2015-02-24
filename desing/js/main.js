@@ -185,7 +185,7 @@ $(document).ready(function() {
                 table=table.size()?table:$(popup.frameDocument).find('body');
 
                 var width=table.outerWidth()+30,
-                    height=table.outerHeight()+60,
+                    height=table.outerHeight()+80,
                     id='#'+popup.id;
 
                 $(id+"_b").append("<style>.fw1{width:" + (width+10) + "px!important;}"
