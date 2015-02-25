@@ -595,3 +595,11 @@ footer .navbar {
 .Grid{
 	margin-top: 0px!important;
 }
+
+/*para que los importar archivo de varible blob tenga un tamaño fijo*/
+#Object_DOCGBLOB{
+    height: 60px !important;
+}
+select.form-control{
+    padding: 1px 12px;
+}
