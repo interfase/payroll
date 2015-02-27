@@ -471,9 +471,26 @@ div.tooltip .tooltip-inner{
 	margin-left: -1px;
 }
 
+
+/* login-form*/
 #login-form{
 	width: 400px;
 	margin: 0 auto;
+}
+
+@media(max-width: 768px){
+	#login-form{
+		width: 80%;
+	}
+}
+
+@media(max-width: 460px){
+	#login-form{
+		width: 100%;
+	}
+	#logo-login{
+		width: 180px;;
+	}
 }
 
 /*Attributos que no se pueden ocultar*/
@@ -536,7 +553,7 @@ select.form-control{
 /******************MENU***************/
 .mainMenu{
 	width: auto!important;
-	z-index: 100;
+	/*z-index: 100;*/
 }
 
 .nav-side-menu {
