@@ -461,6 +461,10 @@ footer .navbar {
 	min-width: initial!important;
 }
 
+.PopupTitle{
+	width: auto!important;
+}
+
 div.tooltip .tooltip-inner{
 	max-width: 400px;
 	font-size: 14px;
@@ -509,6 +513,10 @@ div.tooltip .tooltip-inner{
 .TableActions, .TableInsert{
 	margin-bottom: 5px!important;
 	height: 40px!important;
+}
+
+.TableActions .ActionGroup, .TableInsert .ActionGroup{
+	margin-bottom: 0!important;
 }
 
 .Grid{
