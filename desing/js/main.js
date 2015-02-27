@@ -3,163 +3,71 @@ $(document).ready(function() {
                                             
     //patch para un doble ready de genexus con los prompts, 
     //no idea por que hace esto el monstruo del icono rojo
-    console.log(window.alreadyLoaded?"Already loaded":"Not loaded yet");
+    console.log(window.alreadyLoaded ? "Already loaded" : "Not loaded yet");
     if(!window.alreadyLoaded){
         window.alreadyLoaded=true;
-        // Métodos para menejo de Cookie
-        function setCookie(key, value) {
-            var expires = new Date();
-            expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
-            document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
-        }
-        function getCookie(key) {
-            var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
-            return keyValue ? keyValue[2] : null;
-        }
-
-        // Click sobre elemento padre del menu
-        $('div.toggle').click(function (e) {
-            e.preventDefault();
-            $(this).find('i') .toggleClass('fa-chevron-right fa-chevron-down');
-
-            toggle = $(this).attr('data-toggle')
-            if (getCookie(toggle) == 1) {
-                setCookie(toggle, 0);
-            } else {
-                setCookie(toggle, 1);
-            }
-            $('#'+toggle).slideToggle();
-        });
-
-        $('[id^=detail-]').hide();
-
-        // $('.toggle').click(function () {
-        //     $input = $(this);
-        //     $target = $('#' + $input.attr('data-toggle'));
-
-        //     $target.slideToggle();
-        // });
-
-        // Se comprueba que elementos del menú estaban abiertos
-        $('.list-group-item').each(function (index) {
-            id = $(this).attr('id');
-            if (getCookie(id) == 1) {
-                $(this).css('display', 'block');
-                $('#dropdown-' + id).find('i').toggleClass('fa-chevron-right fa-chevron-down');
-            }
-        });
-
-        //Para manejar el ancho del contenido    
-        $.contenWidth = function () {
-            if ($(window).width() >= 768) {
-                $('.tdContentPlaceHolder').width($(window).width() - $('#sidebar-wrapper').width()-10);
-            } else {
-                $('.tdContentPlaceHolder').width($(window).width());
-            }
-        }
-
-        //para manejar el alto del contenido
-        $.contenHeight = function () {
-            $('.ContentContainer .tdContentPlaceHolder').height($(window).height() - 63);
-        }
-
-        $.contenWidth();
-        $.contenHeight();
-        $(window).resize(function () {
-            $.contenWidth();
-            $.contenHeight();
-        });
         
-            var bandera = false;
-            var baseUrl = window.location.pathname.split('/'),
-                obj = baseUrl[baseUrl.length - 1],
-                search = window.location.search;
-            if (search != "") {
-                obj = obj + search;
-            }
-        $('.mainMenu a').each(function (index) {
-            if ($(this).attr('href')== obj) {
-                //Se garantiza que se posicione en el lugar donde seleccione
-                $('.sidebar-container').animate({scrollTop: $(this).position().top-50}, 'slow');
-                $(this).addClass('activo');
-                /**/
-                $.cookie('ultimoactivo', $(this).attr('href'));
-                bandera = true;
-            } else {
-                $(this).removeClass('activo');
-            }
-        });
-        if (!bandera) {
-            var ultimo = $.cookie('ultimoactivo');
-            $(".mainMenu li").find('a').each(function () {
-                var href2 = $(this).attr('href');
-                if (href2 == ultimo) {
-                    $(this).addClass('activo');
-                }
-            });
-        }
-
         // Cambio de Container por ContainerFluid
         $('div.Container').attr('class', 'container-fluid FormContainer');
 
         //Scroll en los Grids Largos
         $('#GRIDLARGEID').children('div').addClass('GridLarge');
 
-        //Para ocultar los nodos padres sin hijos
-
-        $('div.toggle').each(function () {  //Se recorre por primera vez para eliminar padres sin hijos 
-            if ($(this).next().children().size() == 0) {
-                $(this).next().remove();
-                $(this).remove();
-            }
-        });
-        $('div.toggle').each(function () {  //Se recorre para eliminar los padres nodos raiz
-            //sin hijos luego de haber pasado la primera vuelta
-            if ($(this).next().children().size() == 0) {
-                $(this).next().remove();
-                $(this).remove();
-            }
-        });
-        
-        //Para que se muestre bien el sidebar menu
-        $(window).resize(function(){
-            var h1=$('body').height()-$("#sidebar-wrapper").offset().top;
-            $("#sidebar-wrapper").height(h1);
-            $("#sidebar-wrapper .sidebar-container").height(h1-56);
-        });
-        
+       
         setTimeout(function(){
-            $(window).resize();
-
-            $('.nivel2').each(function(){
-                var $this=$(this),
-                    text=$this.text(),
-                    i=$this.find('i');
-                $this.empty();
-                $this.append($("<span>"+text+"</span>"));
-                $this.append(i);
-                if(jQuery.fn.tooltip){
-                    jQuery(this).tooltip(
-                    {
-                        title: $(this).text(),
-                        placement: 'right',
-                        container: 'body'
-                    });
-                }
-            });
-
-            if(jQuery.fn.tooltip){
-                $(".sidebar-nav li a").each(function(){
-                    jQuery(this).tooltip(
-                    {
-                        title: $(this).text(),
-                        placement: 'right',
-                        container: 'body'
-                    });
-                });
+            //setear titulo de la pagina para estandarizar todos los objetos
+            //Esto es temporal, una vez eliminado el Form.Caption="..." de los
+            //WP del sistema quitar esta seccion
+            if(window.objdesc && window.modulo){
+                var splited=objdesc.split('|');
+                objdesc=splited[splited.length-1].trim();
+                objdesc=objdesc[0].toUpperCase()+objdesc.slice(1);
+                modulo=modulo.trim();
+                modulo=modulo[0].toUpperCase()+modulo.slice(1);
+                document.title=modulo+' | '+objdesc;
             }
-        },500);
-    }                              
+        }, 200);
+
+
+        /*Ajustar los prompts a la tabla que tienen dentro*/
+        var setWidthOfPopup=function(){
+            var popup=gx.popup.currentPopup;
+            if(popup.frameDocument){
+                var table=$(popup.frameDocument).find('#MAINFORM');
+                table=table.size()?table:$(popup.frameDocument).find('body');
+
+                var width=table.outerWidth()+30,
+                    height=table.outerHeight()+80,
+                    id='#'+popup.id;
+
+                $(id+"_b").append("<style>.fw1{width:" + (width+10) + "px!important;}"
+                                  +".fw2{width:" + width + "px!important;}"
+                                  +".fh1{height:"+height+"px!important;}"
+                                  +".fh2{height:"+(height+25)+"px!important;}</style>");
+                
+                $(id + "_b").addClass("fw1").addClass("fh2");
+                $(id + "_t").addClass("fw2");
+                $(id + "_b").css({
+                                  left:$('body').width()/2 - width/2 - 9,
+                                  top: $('body').height()/2 - height/2 -28
+                                });
+                            
+                $(id + "_c").addClass("fh1");
+                $(id+"_rs").css("display", "none");
+            }
+            else{
+                setTimeout(setWidthOfPopup, 100);
+            }
+        }
+
+        gx.popup.origOpenPrompt=gx.popup.ext.show;
+
+        gx.popup.ext.show=function(c){
+            console.log("openPrompt");
+            gx.popup.origOpenPrompt(c);
+            setWidthOfPopup();
+        };
+    }
 });
 
 
@@ -167,3 +75,272 @@ function ScrollTo() {
    var div = $('#vLOGMENSAJES');
    div.scrollTop(div.scrollTop() + div.innerHeight());
 }
+
+/*-------------------------------------------------------------
+--        ****             MENU           ****               --
+-------------------------------------------------------------*/
+
+(function(){
+    var menu={
+        sideMenu: null,
+        menuList: null,
+        brandHeight: null,
+        toggle: null,
+        small: false,
+        active: null
+    };
+
+    // Métodos para menejo de Cookie
+    $.setCookie = function(key, value) {
+        var expires = new Date();
+        expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
+        document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+    };
+
+    $.getCookie = function(key) {
+        var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+        return keyValue ? keyValue[2] : null;
+    };
+
+    //inicializa los objetos del menu
+    var initMenu = function(m){
+        m.sideMenu = $(".nav-side-menu");
+        m.menuList = m.sideMenu.find(".menu-list");
+        m.brandHeight = m.sideMenu.find(".brand").height();
+        m.toggle = m.sideMenu.find('.toggle-btn');
+        
+        if(m.sideMenu.size()==0)
+            m.sideMenu=null;
+
+    };
+
+    //para ajustar el alto del menu a la ventana
+    var resizeMenu = function(m){
+        if(m.sideMenu){
+            var h1 = $('body').height() - (m.sideMenu ? m.sideMenu.offset().top : 0);
+
+            m.sideMenu.css('height',h1+'px');
+            m.menuList.css('height',(h1 - m.brandHeight) + 'px');
+        }
+    };
+
+    //Para manejar el ancho del contenido    
+    var contentWidth = function (m) {
+        if ($(window).width() >= 767) { //pantalla grande
+            if(m.small){ //si estaba en pantalla xs
+                m.small=false;
+
+                if(m.sideMenu){ //si esta activo el menu lateral
+                    m.toggle.addClass('collapsed');
+                    $("#menu-content").addClass('in');
+                    m.sideMenu.removeClass("fh");
+                    m.menuList.removeClass("fh");
+                    $(".mainMenu").removeClass("fh");
+                }
+
+                scrollToActive(m);
+            }
+
+            //El width se lo doy por css porque en IE no esta pinchando
+            $('.tdContentPlaceHolder')
+                .css("width", $(window).width() - (m.sideMenu?m.sideMenu.width()+10 : 0) + 'px')
+                .show();
+
+        } else { //pantalla xs
+            if(!m.small){ //si estaba en pantalla grande
+                
+                if($('.nav.navbar-nav a').size()==0){ //si no hay elementos en la navegacion del menu general
+                    $('.navbar-toggle').hide();
+                }
+
+                m.small=true;
+                if(m.sideMenu){
+                    menu.menuList.addClass("fh");
+                    m.toggle.removeClass('collapsed');
+                    $("#menu-content").removeClass('in')
+                }
+            }
+
+            //El width se lo doy por css porque en IE no esta pinchando
+            $('.tdContentPlaceHolder').css("width", $(window).width()+'px');
+        }
+        // document.title=$('.tdContentPlaceHolder').width();
+    };
+
+    //para manejar el alto del contenido
+    var contentHeight = function (m) {
+        if ($(window).width() <= 767){
+            $('.tdContentPlaceHolder').css("height", ($(window).height() - 123) + 'px');
+        }
+        else{
+            $('.tdContentPlaceHolder').css("height", ($(window).height()- 63) + 'px');
+        }
+    };
+
+    //buscar el elemento activo del menu
+    var findActive = function(m){
+        if(m.sideMenu){
+            var baseUrl = window.location.pathname.split('/'),
+                obj     = baseUrl[baseUrl.length - 1],
+                search  = window.location.search;
+
+            if (search != ""){
+                obj += search;
+            }
+
+            //buscar el elemento activo del menu
+            m.active=$('#menu-content li:not(parent) a[href="'+obj+'"]');
+
+            if(m.active.size()==0){ //si el elemnto de la url no se encuentra 
+                                    //en el menu se busca el ultimo activo
+                var ultimo = $.getCookie('ultimoactivo');
+                if(ultimo){
+                    m.active=$('#menu-content li:not(parent) a[href="'+ultimo+'"]');
+                }
+            } 
+            else{
+                $.setCookie('ultimoactivo', obj); //se setea la cookie del ultimo activo
+            }
+
+            if(m.active.size()){
+                m.active.parent().addClass('active');
+            }
+        }
+    };
+
+    //busca el elemento activo del menu y scrollea para que se muestre este
+    var scrollToActive = function(m){
+        if(m.sideMenu && m.active && m.active.size()){
+
+            m.active.parents('.sub-menu').each(function(){
+                var $this=$(this);
+                $this.addClass("in")
+                     .prev().removeClass("collapsed");
+            });
+            m.menuList.scrollTop(m.active.parent().position().top-100)
+        }
+    };
+
+    var setTooltips = function(){
+        $('.nav-side-menu li')
+            .each(function(){
+                var text = null,
+                    $this = jQuery(this);
+
+                if($this.hasClass('parent')){
+                    text = $this.text();
+                }
+                else{
+                    text = $this.find("a").first().text();
+                }
+
+                $this.tooltip({
+                    title: text,
+                    placement: 'right',
+                    container: 'body',
+                    trigger: 'manual'
+                });
+            })                
+            .mouseenter(function(){
+                var a=null,
+                    $this = jQuery(this);
+
+                if($this.hasClass('parent')){
+                    a = $this[0];
+                }
+                else{
+                    a = $this.find("a").first()[0];
+                }
+
+                if(a.offsetWidth < a.scrollWidth){
+                    $this.tooltip('show');
+                }
+            })
+            .mouseleave(function(){
+                jQuery(this).tooltip('hide');
+            });
+    }
+
+    var elminiarRaicesVacias=function(){
+        $('#menu-content ul').each(function () {  //Se recorre por primera vez para eliminar padres sin hijos 
+            if($(this).children().size() == 0){
+                $(this).prev().remove();
+                $(this).remove();
+            }
+        });
+
+        $('#menu-content ul').each(function () {  //Se recorre por primera vez para eliminar padres sin hijos 
+            if($(this).children().size() == 0){
+                $(this).prev().remove();
+                $(this).remove();
+            }
+        });
+
+        $('#menu-content ul').each(function () {  //Se recorre por primera vez para eliminar padres sin hijos 
+            if($(this).children().size() == 0){
+                $(this).prev().remove();
+                $(this).remove();
+            }
+        });
+    }
+
+    $(function(){
+        setTimeout(function(){
+            //Para ocultar los nodos padres sin hijos
+            elminiarRaicesVacias();
+
+            initMenu(menu);
+
+            resizeMenu(menu);
+            contentWidth(menu);
+            contentHeight(menu);
+
+            findActive(menu);
+            scrollToActive(menu);
+
+            $(window).resize(function(){
+                contentWidth(menu);
+                contentHeight(menu);
+                resizeMenu(menu);
+            });
+
+            //Cuando se hace click en el boton de tres lineas del menu
+            menu.toggle.click(function(){
+                if($("#menu-content").hasClass("in")){
+                    
+                }else{
+                    
+                    
+                }
+            });
+            
+            jQuery("#menu-content")
+                .on('hidden.bs.collapse', function (e) {
+                    if(e.target.id=="menu-content"){
+                        menu.sideMenu.removeClass("fh");
+                        menu.menuList.addClass("fh");
+
+                        $(".mainMenu").removeClass("fh");
+
+                        // $('.tdContentPlaceHolder').show();
+                    }
+                })
+                .on('shown.bs.collapse', function (e) {
+                    if(e.target.id=="menu-content"){
+                        // $('.tdContentPlaceHolder').hide();
+
+                        menu.sideMenu.addClass("fh");
+                        menu.menuList.removeClass("fh");
+
+                        $(".mainMenu").addClass("fh");
+
+                        scrollToActive(menu);
+                    }
+                });
+            
+            //Ajustar los tooltips
+            setTooltips();
+        }, 
+        200);
+    });
+})();
