@@ -26,6 +26,7 @@ body {
 #navbar-2 {
 	/*height:60px;*/
 	background:#fff;
+	padding-right: 0px;
 }
 
 #navbar-2 h1 {
@@ -476,6 +477,7 @@ div.tooltip .tooltip-inner{
 #login-form{
 	width: 400px;
 	margin: 0 auto;
+	margin-top: 40px;
 }
 
 @media(max-width: 768px){
@@ -794,6 +796,7 @@ header.navbar{
 		margin-right: 0;
 		margin-left: -15px;
 		border: none;
+		width: 100%;
 	}
 
 	#navbar-main a:hover, 
@@ -814,6 +817,7 @@ header.navbar{
 	}
 
 	.navbar-toggle{
+		right: 15px;
 		border-color: #196396!important;
 	}
 
@@ -833,6 +837,10 @@ header.navbar{
 }
 
 /* ESTILOS PARA LA HOME MASTERPAGE */
+.MainContainer.homePage{
+	padding-left: 0px!important;
+}
+
 .MainContainer.homePage .tdContentPlaceHolder{
 	margin-top: -42px;
 	padding-top: 20px;

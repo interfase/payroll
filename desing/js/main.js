@@ -162,18 +162,20 @@ function ScrollTo() {
             }
 
             //El width se lo doy por css porque en IE no esta pinchando
-            $('.tdContentPlaceHolder').css("width", $(window).width()+'px');
+            $('.tdContentPlaceHolder').css("width", '100%');
         }
         // document.title=$('.tdContentPlaceHolder').width();
     };
 
     //para manejar el alto del contenido
     var contentHeight = function (m) {
+        var extraH=$('footer .navbar').height() + $('.mainMenu .brand').height() + 63;
+
         if ($(window).width() <= 767){
-            $('.tdContentPlaceHolder').css("height", ($(window).height() - 123) + 'px');
+            $('.tdContentPlaceHolder').css("height", ($(window).height() - extraH) + 'px');
         }
         else{
-            $('.tdContentPlaceHolder').css("height", ($(window).height()- 63) + 'px');
+            $('.tdContentPlaceHolder').css("height", ($(window).height()- extraH) + 'px');
         }
     };
 
@@ -222,43 +224,45 @@ function ScrollTo() {
     };
 
     var setTooltips = function(){
-        $('.nav-side-menu li')
-            .each(function(){
-                var text = null,
-                    $this = jQuery(this);
+        if(jQuery.fn.tooltip){
+            $('.nav-side-menu li')
+                .each(function(){
+                    var text = null,
+                        $this = jQuery(this);
 
-                if($this.hasClass('parent')){
-                    text = $this.text();
-                }
-                else{
-                    text = $this.find("a").first().text();
-                }
+                    if($this.hasClass('parent')){
+                        text = $this.text();
+                    }
+                    else{
+                        text = $this.find("a").first().text();
+                    }
 
-                $this.tooltip({
-                    title: text,
-                    placement: 'right',
-                    container: 'body',
-                    trigger: 'manual'
+                    $this.tooltip({
+                        title: text,
+                        placement: 'right',
+                        container: 'body',
+                        trigger: 'manual'
+                    });
+                })                
+                .mouseenter(function(){
+                    var a=null,
+                        $this = jQuery(this);
+
+                    if($this.hasClass('parent')){
+                        a = $this[0];
+                    }
+                    else{
+                        a = $this.find("a").first()[0];
+                    }
+
+                    if(a.offsetWidth < a.scrollWidth){
+                        $this.tooltip('show');
+                    }
+                })
+                .mouseleave(function(){
+                    jQuery(this).tooltip('hide');
                 });
-            })                
-            .mouseenter(function(){
-                var a=null,
-                    $this = jQuery(this);
-
-                if($this.hasClass('parent')){
-                    a = $this[0];
-                }
-                else{
-                    a = $this.find("a").first()[0];
-                }
-
-                if(a.offsetWidth < a.scrollWidth){
-                    $this.tooltip('show');
-                }
-            })
-            .mouseleave(function(){
-                jQuery(this).tooltip('hide');
-            });
+        }
     }
 
     var elminiarRaicesVacias=function(){
@@ -341,6 +345,6 @@ function ScrollTo() {
             //Ajustar los tooltips
             setTooltips();
         }, 
-        200);
+        100);
     });
 })();
