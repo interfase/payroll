@@ -563,7 +563,7 @@ select.form-control{
 	font-family: verdana;
 	font-size: 14px;
 	font-weight: 200;
-	background-color: #F0F0F0;
+	background-color: #fff;
 	position: relative;
 	left: 0px;
 	width: 290px;
@@ -583,7 +583,8 @@ select.form-control{
   background-color: #196396;
   display: block;
   line-height: 30px;
-  text-align: center;
+  padding-left: 10px;
+  /*text-align: center;*/
 }
 
 .nav-side-menu .brand a{
@@ -608,7 +609,7 @@ select.form-control{
 }
 
 #menu-content{
-	padding: 4px;
+	padding: 4px 10px 4px 20px;
 }
 
 #menu-content ul{
@@ -649,7 +650,7 @@ select.form-control{
 }
 
 #menu-content li.active {
-	border-left: 8px solid #CF891E;
+	/*border-left: 8px solid #CF891E;*/
 	background-color: #1b6394;
 }
 
@@ -741,7 +742,7 @@ select.form-control{
 	.brand {
 		text-align: left !important;
 		font-size: 22px;
-		padding-left: 60px;
+		padding-left: 60px !important;
 	}
 
 	.tdContentPlaceHolder{

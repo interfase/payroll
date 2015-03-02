@@ -169,10 +169,11 @@ function ScrollTo() {
 
     //para manejar el alto del contenido
     var contentHeight = function (m) {
-        var extraH=$('footer .navbar').height() + $('.mainMenu .brand').height() + 63;
+        var extraH=$('footer .navbar').height() + 63;
 
         if ($(window).width() <= 767){
-            $('.tdContentPlaceHolder').css("height", ($(window).height() - extraH) + 'px');
+            $('.tdContentPlaceHolder').css("height", ($(window).height() - extraH 
+                - $('.mainMenu .brand').height()) + 'px');
         }
         else{
             $('.tdContentPlaceHolder').css("height", ($(window).height()- extraH) + 'px');
