@@ -34,24 +34,37 @@ $(document).ready(function() {
             var popup=gx.popup.currentPopup;
             if(popup.frameDocument){
                 var table=$(popup.frameDocument).find('#MAINFORM');
+                table.css("display","inline-block");
                 table=table.size()?table:$(popup.frameDocument).find('body');
 
                 var width=table.outerWidth()+30,
                     height=table.outerHeight()+80,
                     id='#'+popup.id;
-
-                $(id+"_b").append("<style>.fw1{width:" + (width+10) + "px!important;}"
+                
+                gx.popup.interval = setInterval(function(){
+                    width=table.outerWidth()+30;
+                    height=table.outerHeight()+80;
+                    if(width!=gx.popup.width){
+                        $(id+"_b").append("<style id='s1'>.fw1{width:" + (width+10) + "px!important;}"
                                   +".fw2{width:" + width + "px!important;}"
                                   +".fh1{height:"+height+"px!important;}"
                                   +".fh2{height:"+(height+25)+"px!important;}</style>");
                 
-                $(id + "_b").addClass("fw1").addClass("fh2");
-                $(id + "_t").addClass("fw2");
+                        $(id + "_b").addClass("fw1").addClass("fh2");
+                        $(id + "_t").addClass("fw2");
+
+                        console.log("popup width changed!");
+                        gx.popup.width=width;
+                    }
+                },1);
+
+                
+
                 $(id + "_b").css({
                                   left:$('body').width()/2 - width/2 - 9,
                                   top: $('body').height()/2 - height/2 -28
                                 });
-                            
+
                 $(id + "_c").addClass("fh1");
                 $(id+"_rs").css("display", "none");
             }
@@ -61,12 +74,21 @@ $(document).ready(function() {
         }
 
         gx.popup.origOpenPrompt=gx.popup.ext.show;
+        gx.popup.origClosePrompt=gx.popup.ext.close;
 
         gx.popup.ext.show=function(c){
             console.log("openPrompt");
             gx.popup.origOpenPrompt(c);
             setWidthOfPopup();
         };
+
+        gx.popup.ext.close=function(c,e){
+            console.log("closePrompt");
+            clearInterval(gx.popup.interval);
+            gx.popup.width=0;
+            gx.popup.origClosePrompt(c,e);
+
+        }
     }
 });
 
@@ -192,20 +214,20 @@ function ScrollTo() {
             }
 
             //buscar el elemento activo del menu
-            m.active=$('#menu-content li:not(parent) a[href="'+obj+'"]');
+            m.active=$('.nav-side-menu a[href="'+obj+'"]');
 
             if(m.active.size()==0){ //si el elemnto de la url no se encuentra 
                                     //en el menu se busca el ultimo activo
                 var ultimo = $.getCookie('ultimoactivo');
                 if(ultimo){
-                    m.active=$('#menu-content li:not(parent) a[href="'+ultimo+'"]');
+                    m.active=$('.nav-side-menu a[href="'+ultimo+'"]');
                 }
-            } 
+            }
             else{
                 $.setCookie('ultimoactivo', obj); //se setea la cookie del ultimo activo
             }
 
-            if(m.active.size()){
+            if(m.active.size() && !m.active.parent().hasClass('brand')){
                 m.active.parent().addClass('active');
             }
         }
