@@ -551,6 +551,11 @@ select.form-control{
     padding: 1px 12px;
 }
 
+.btn-multiselect{
+    font-weight: bold;
+    width: 60px;
+}
+
 
 /******************MENU***************/
 .mainMenu{
@@ -852,4 +857,7 @@ header.navbar{
 		padding-top: 20px;
 		margin-top: -15px;
 	}
+}
+.form-height{
+    height: 50px;
 }

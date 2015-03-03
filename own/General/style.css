@@ -82,8 +82,7 @@ body, html {
     color: white!important
 }
 .divperfil a:hover .badge {
-    color: #428bca;
-    !important;
+    color: #428bca !important;
     background-color: white!important
 }
 #cbxentidad {
@@ -412,10 +411,10 @@ div.container_centro {
     border: 1px solid transparent;
     border-radius: 4px;
     -webkit-user-select: none;
-    Unknown property name.-moz-user-select: none;
-    Unknown property name.-ms-user-select: none;
-    Unknown property name.-o-user-select: none;
-    Unknown property name.user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
     color: #333;
     background-color: #fff;
     border-color: #ccc
