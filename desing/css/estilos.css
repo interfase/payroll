@@ -3,9 +3,30 @@ body {
 	overflow-y: hidden;
 }
 
+.ContentContainer{
+	margin-top: 62px!important;
+}
+
 .tdContentPlaceHolder{
 	overflow-y:auto;
-	right: -5px;
+	position: absolute;
+	right: 0;
+}
+
+.tdContentPlaceHolder footer{
+	width: 100%;
+	bottom: 0;
+}
+
+.tdContentPlaceHolder footer .navbar{
+	position: relative;
+	bottom: 0;
+	z-index: auto;
+}
+
+.tdContentPlaceHolder footer .container-fluid{
+	margin: 0;
+	padding: 0;
 }
 
 #wrapper {
@@ -560,7 +581,10 @@ select.form-control{
 /******************MENU***************/
 .mainMenu{
 	width: auto!important;
-	/*z-index: 100;*/
+	min-width: 290px;
+	background-color: #416392;
+	left: -1px;
+	z-index: 100;
 }
 
 .nav-side-menu {
@@ -568,7 +592,6 @@ select.form-control{
 	font-family: verdana;
 	font-size: 14px;
 	font-weight: 200;
-	background-color: #fff;
 	position: relative;
 	left: 0px;
 	width: 290px;
@@ -585,11 +608,11 @@ select.form-control{
 }
 
 .nav-side-menu .brand {
-  background-color: #196396;
+  background-color: #416392;
   display: block;
   line-height: 30px;
   padding-left: 10px;
-  /*text-align: center;*/
+  border-bottom: 1px solid #6285b7;
 }
 
 .nav-side-menu .brand a{
@@ -613,73 +636,75 @@ select.form-control{
   display: none;
 }
 
-#menu-content{
-	padding: 4px 10px 4px 20px;
-}
-
-#menu-content ul{
-	margin-left: 20px;
-	padding: 0px;
-	/*margin: 3px 4px;*/
-}
-
-#menu-content li {
-	list-style: none;
-	padding: 0 8px;
-	margin: 5px;
-	height: 40px;
-	line-height: 40px;
-	cursor: pointer;
-	margin: 6px 4px;
-	border-radius: 4px;
+#menu-content, #menu-content ul{
+	padding: 0;
+	margin: 0;
 }
 
 #menu-content li a {
-	color: #1b6394;
+	color: #fff;
+	width: 100%;
+	line-height: 40px;
+	display: inline-block;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	display: inline-block;
-	width: 100%;
-	line-height: 40px;
 }
 
-#menu-content .parent{
-	padding-right: 30px;
-	background-color: #477da7;
+#menu-content li{
+	list-style: none;
+	height: 40px;
+	line-height: 40px;
+	cursor: pointer;
+	margin: 0;
+	padding-right: 34px;
 	color: #fff;
 	position: relative;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	padding-left: 0;
 }
 
-#menu-content li.active {
-	/*border-left: 8px solid #CF891E;*/
-	background-color: #1b6394;
-}
-
-#menu-content li:hover{
+#menu-content li:hover, #menu-content li:not(.parent).active{
+	background-color: #214568!important;
 	-webkit-transition: all .5s ease;
 	-moz-transition: all .5s ease;
 	-o-transition: all .5s ease;
 	-ms-transition: all .5s ease;
 }
 
-#menu-content li.active,
-#menu-content li.active a,
-#menu-content li:hover a{
-	color: #fff;
+/*aplica espaciado y colores de subniveles a elementos anidables*/
+#menu-content > li{
+	background-color: #416392;
+}
+#menu-content > .sub-menu > li{
+	background-color: #6285b7;
+}
+#menu-content > .sub-menu > .sub-menu > li,
+#menu-content > .sub-menu > .sub-menu > .sub-menu >  li{
+	background-color: #84a6ce;
 }
 
-#menu-content li:not(.parent):hover{
-	background-color: #124B72;
-	color: #fff;
+#menu-content > li.parent, 
+#menu-content > li > a{
+	padding-left: 18px!important;
+}
+#menu-content > .sub-menu > li.parent, 
+#menu-content > .sub-menu > li > a{
+	padding-left: 32px!important;
+}
+#menu-content > .sub-menu > .sub-menu > li.parent,
+#menu-content > .sub-menu > .sub-menu > li > a{
+	padding-left: 36px!important;
+}
+#menu-content > .sub-menu > .sub-menu > .sub-menu > li.parent,
+#menu-content > .sub-menu > .sub-menu > .sub-menu >  li > a{
+	padding-left: 60px!important;
 }
 
-#menu-content li.parent:hover{
-	background-color: #88adc8;
-	color: #fff;
+#menu-content .parent.active{
+	font-weight: bold;
 }
 
 #menu-content .arrow{
@@ -694,6 +719,7 @@ select.form-control{
 	vertical-align: middle;
 	float: right;
 	content: "\f078";
+	font-weight: normal;
 }
 
 #menu-content .collapsed .arrow:before{
@@ -774,7 +800,7 @@ header.navbar{
 @media (max-width: 767px) {
 	header.navbar, 
 	.navbar-left{
-		height: 61px!important;
+		height: 62px!important;
 	}
 
 	header.navbar .container-fluid{
@@ -815,7 +841,7 @@ header.navbar{
 	}
 
 	#navbar-main:not(.in):not(.collapsing){
-		height: 61px!important;
+		height: 62px!important;
 	}
 
 	#navbar-main li{
@@ -838,7 +864,7 @@ header.navbar{
 
 @media (min-width: 768px) {
 	#navbar-main{
-		height: 61px!important;
+		height: 62px!important;
 	}
 }
 
@@ -858,6 +884,7 @@ header.navbar{
 		margin-top: -15px;
 	}
 }
+
 .form-height{
     height: 50px;
 }

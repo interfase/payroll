@@ -20,6 +20,9 @@ $(document).ready(function() {
             //WP del sistema quitar esta seccion
             if(window.objdesc && window.modulo){
                 var splited=objdesc.split('|');
+                if(splited.length==1){
+                    splited=objdesc.split(' l ');
+                }
                 objdesc=splited[splited.length-1].trim();
                 objdesc=objdesc[0].toUpperCase()+objdesc.slice(1);
                 modulo=modulo.trim();
@@ -139,10 +142,13 @@ function ScrollTo() {
     //para ajustar el alto del menu a la ventana
     var resizeMenu = function(m){
         if(m.sideMenu){
-            var h1 = $('body').height() - (m.sideMenu ? m.sideMenu.offset().top : 0);
+            var h1 = $('body').height() - (m.sideMenu ? m.sideMenu.offset().top - 2 : 0),
+                h2 = $('.tdContentPlaceHolder footer').height();
 
-            m.sideMenu.css('height',h1+'px');
-            m.menuList.css('height',(h1 - m.brandHeight) + 'px');
+            m.sideMenu.css('height', h1 + 'px');
+            m.menuList.css('height',
+                h1 - m.brandHeight - ($(window).width() >= 767? h2:0) + 'px'
+            );
         }
     };
 
@@ -160,12 +166,14 @@ function ScrollTo() {
                     $(".mainMenu").removeClass("fh");
                 }
 
-                scrollToActive(m);
+                scrollToActive(m);//Scrollear al elemento activo del menu
             }
 
             //El width se lo doy por css porque en IE no esta pinchando
+            var width=$(window).width() - (m.sideMenu?m.sideMenu.width()-1: 0) + 'px';
             $('.tdContentPlaceHolder')
-                .css("width", $(window).width() - (m.sideMenu?m.sideMenu.width()+10 : 0) + 'px')
+                .css({"min-width": width, 'width': width })
+
                 .show();
 
         } else { //pantalla xs
@@ -184,14 +192,14 @@ function ScrollTo() {
             }
 
             //El width se lo doy por css porque en IE no esta pinchando
-            $('.tdContentPlaceHolder').css("width", '100%');
+            $('.tdContentPlaceHolder').css({width: '100%','min-width':0});
         }
         // document.title=$('.tdContentPlaceHolder').width();
     };
 
     //para manejar el alto del contenido
     var contentHeight = function (m) {
-        var extraH=$('footer .navbar').height() + 63;
+        var extraH=$('.MainContainer.homePage footer .navbar').height() + 61;
 
         if ($(window).width() <= 767){
             $('.tdContentPlaceHolder').css("height", ($(window).height() - extraH 
@@ -200,6 +208,17 @@ function ScrollTo() {
         else{
             $('.tdContentPlaceHolder').css("height", ($(window).height()- extraH) + 'px');
         }
+
+        
+        //cambiar el position del footer en dependencia del alto del contenido
+        if($(".tdContentPlaceHolder .gx-content-placeholder").height() 
+                    + $('.tdContentPlaceHolder footer').height() < $('.tdContentPlaceHolder').height()){
+            $('.tdContentPlaceHolder footer').css({position:'absolute'});
+        }
+        else{
+            $('.tdContentPlaceHolder footer').css({position:'relative'});
+        }
+
     };
 
     //buscar el elemento activo del menu
@@ -229,6 +248,9 @@ function ScrollTo() {
 
             if(m.active.size() && !m.active.parent().hasClass('brand')){
                 m.active.parent().addClass('active');
+                m.active.parent().parents('ul').each(function(){
+                    $(this).prev('.parent').addClass('active');
+                })
             }
         }
     };
@@ -312,15 +334,24 @@ function ScrollTo() {
     }
 
     $(function(){
+
+        //Cambiar el footer de posicion
+        var f=$('.MainContainer:not(.homePage) footer')
+        if(f.size()){
+            var footer=f.clone();
+            f.remove();
+            $('.tdContentPlaceHolder').append(footer);
+        }
+
         setTimeout(function(){
             //Para ocultar los nodos padres sin hijos
             elminiarRaicesVacias();
 
             initMenu(menu);
 
-            resizeMenu(menu);
             contentWidth(menu);
             contentHeight(menu);
+            resizeMenu(menu);
 
             findActive(menu);
             scrollToActive(menu);
