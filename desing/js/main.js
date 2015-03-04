@@ -147,7 +147,7 @@ function ScrollTo() {
 
             m.sideMenu.css('height', h1 + 'px');
             m.menuList.css('height',
-                h1 - m.brandHeight - ($(window).width() >= 767? h2:0) + 'px'
+                h1 - m.brandHeight + 'px'
             );
         }
     };
