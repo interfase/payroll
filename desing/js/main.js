@@ -197,28 +197,32 @@ function ScrollTo() {
         // document.title=$('.tdContentPlaceHolder').width();
     };
 
+    var footer=null,
+        gxPlaceHolder=null,
+        tdPlaceHolder=null;
     //para manejar el alto del contenido
     var contentHeight = function (m) {
+        footer = footer || $('.tdContentPlaceHolder footer');
+        tdPlaceHolder = tdPlaceHolder || $('.tdContentPlaceHolder')
+        gxPlaceHolder = gxPlaceHolder || $(".tdContentPlaceHolder .gx-content-placeholder");
+
         var extraH=$('.MainContainer.homePage footer .navbar').height() + 61;
 
         if ($(window).width() <= 767){
-            $('.tdContentPlaceHolder').css("height", ($(window).height() - extraH 
+            tdPlaceHolder.css("height", ($(window).height() - extraH 
                 - $('.mainMenu .brand').height()) + 'px');
         }
         else{
-            $('.tdContentPlaceHolder').css("height", ($(window).height()- extraH) + 'px');
+            tdPlaceHolder.css("height", ($(window).height()- extraH) + 'px');
         }
-
         
         //cambiar el position del footer en dependencia del alto del contenido
-        if($(".tdContentPlaceHolder .gx-content-placeholder").height() 
-                    + $('.tdContentPlaceHolder footer').height() < $('.tdContentPlaceHolder').height()){
-            $('.tdContentPlaceHolder footer').css({position:'absolute'});
+        if(footer.height() + gxPlaceHolder.height() < tdPlaceHolder.height()){
+            footer.css({position:'absolute'});
         }
         else{
-            $('.tdContentPlaceHolder footer').css({position:'relative'});
+            footer.css({position:'relative'});
         }
-
     };
 
     //buscar el elemento activo del menu
@@ -343,6 +347,8 @@ function ScrollTo() {
             $('.tdContentPlaceHolder').append(footer);
         }
 
+        
+
         setTimeout(function(){
             //Para ocultar los nodos padres sin hijos
             elminiarRaicesVacias();
@@ -350,7 +356,9 @@ function ScrollTo() {
             initMenu(menu);
 
             contentWidth(menu);
-            contentHeight(menu);
+            setInterval(function(){
+                contentHeight(menu);
+            },100);
             resizeMenu(menu);
 
             findActive(menu);

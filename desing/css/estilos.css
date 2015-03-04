@@ -559,6 +559,10 @@ div.tooltip .tooltip-inner{
 	margin-bottom: 0!important;
 }
 
+.ActionGroup .btn {
+	margin-bottom: 2px;
+}
+
 .Grid{
 	margin-top: 0px!important;
 }
@@ -888,3 +892,4 @@ header.navbar{
 .form-height{
     height: 50px;
 }
+
