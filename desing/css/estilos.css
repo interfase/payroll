@@ -925,3 +925,6 @@ header.navbar{
     height: 50px;
 }
 
+.nav-tabs li {
+	margin-bottom: 2px;
+}
