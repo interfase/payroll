@@ -200,6 +200,7 @@ function ScrollTo() {
     var footer=null,
         gxPlaceHolder=null,
         tdPlaceHolder=null;
+
     //para manejar el alto del contenido
     var contentHeight = function (m) {
         footer = footer || $('.tdContentPlaceHolder footer');
@@ -216,6 +217,11 @@ function ScrollTo() {
             tdPlaceHolder.css("height", ($(window).height()- extraH) + 'px');
         }
         
+        placeFooter();
+    };
+
+    //settear la position del footer en dependencia del contenido
+    var placeFooter=function(){
         //cambiar el position del footer en dependencia del alto del contenido
         if(footer.height() + gxPlaceHolder.height() < tdPlaceHolder.height()){
             footer.css({position:'absolute'});
@@ -223,7 +229,7 @@ function ScrollTo() {
         else{
             footer.css({position:'relative'});
         }
-    };
+    }
 
     //buscar el elemento activo del menu
     var findActive = function(m){
@@ -337,6 +343,21 @@ function ScrollTo() {
         });
     }
 
+    //muestra u oculta el menu
+    var toggleMenu = function(m){
+        $('.mainMenu').toggleClass('collapsed');
+        contentWidth(m);
+
+        $.setCookie('menuCollapsed', $('.mainMenu').hasClass('collapsed'));
+    }
+
+    //chequea si el menu debe cargarse collapsed o no
+    var checkMenuState = function(m){
+        if($.getCookie('menuCollapsed') === 'true'){
+            $('.mainMenu').addClass('collapsed');
+        }
+    }
+
     $(function(){
 
         //Cambiar el footer de posicion
@@ -347,19 +368,29 @@ function ScrollTo() {
             $('.tdContentPlaceHolder').append(footer);
         }
 
-        
-
         setTimeout(function(){
+            //Dejar .mainMenu unico
+            $(".mainMenu").not($(".mainMenu").first()).remove()
+
             //Para ocultar los nodos padres sin hijos
             elminiarRaicesVacias();
 
             initMenu(menu);
 
+            checkMenuState(menu);
             contentWidth(menu);
-            setInterval(function(){
-                contentHeight(menu);
-            },100);
+            contentHeight(menu);
+
             resizeMenu(menu);
+
+            placeFooter();
+
+            //no me gusta esto pero tendria que settear listeners para toda la js api
+            //de Genexus grrr!
+            setInterval(function(){
+                placeFooter();
+            }, 100);
+
 
             findActive(menu);
             scrollToActive(menu);
@@ -368,6 +399,10 @@ function ScrollTo() {
                 contentWidth(menu);
                 contentHeight(menu);
                 resizeMenu(menu);
+            });
+
+            $('.brand i').click(function(){
+                toggleMenu(menu);
             });
 
             //Cuando se hace click en el boton de tres lineas del menu
