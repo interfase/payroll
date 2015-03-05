@@ -11,6 +11,7 @@ body {
 	overflow-y:auto;
 	position: absolute;
 	right: 0;
+	background-color: #ecedef;
 }
 
 .tdContentPlaceHolder footer{
@@ -206,13 +207,6 @@ div.seccion span {
 	left: 7px;
 }
 
-#logo-login {
-	height:48px;
-	position: relative;
-	top: 7px;
-	left: 7px;
-}
-
 footer .navbar {
   background-color: #555 !important;
   z-index:9999999;
@@ -264,18 +258,14 @@ footer .navbar {
     filter: none;
     background-image: none;
 }
-#login-form .col-sm-6 {
-	/*padding:0 15px 0 8px;*/
-}
+
 #grupo{
 	/*padding:0 8px 0 15px !important;*/
 }
 #logo-payroll{
 	margin-bottom:20px;
 }
-#login-form .radio, .checkbox {
-	margin-top:0px;
-}
+
 .alert-danger {
 	border-color:transparent !important;
 }
@@ -493,29 +483,6 @@ div.tooltip .tooltip-inner{
 	margin-left: -1px;
 }
 
-
-/* login-form*/
-#login-form{
-	width: 400px;
-	margin: 0 auto;
-	margin-top: 40px;
-}
-
-@media(max-width: 768px){
-	#login-form{
-		width: 80%;
-	}
-}
-
-@media(max-width: 460px){
-	#login-form{
-		width: 100%;
-	}
-	#logo-login{
-		width: 180px;;
-	}
-}
-
 /*Attributos que no se pueden ocultar*/
 .attrOcultar{
     height: 0;
@@ -531,11 +498,11 @@ div.tooltip .tooltip-inner{
 
 /*Fix para los grid en IE*/
 .Grid .gx-row-selected, .Grid .gx-row-selected td {
-	background-color: #CAE1EE !important;
+	background-color: #e8f2fc !important;
 }
 
 .Grid tr:hover, .Grid tr:hover td{
-	background-color: #CAE1EE !important;
+	background-color: #e8f2fc !important;
 }
 
 .Grid{
@@ -586,9 +553,16 @@ select.form-control{
 .mainMenu{
 	width: auto!important;
 	min-width: 290px;
+	max-width: 290px;
 	background-color: #416392;
 	left: -1px;
 	z-index: 100;
+}
+
+.mainMenu .menu-error{
+	height: 2000px;
+	color: #fdae45;
+	padding: 20px;
 }
 
 .nav-side-menu {
@@ -621,10 +595,21 @@ select.form-control{
 
 .nav-side-menu .brand a{
 	color: #fff;
-  	font-size: 16px;
+  	font-size: 18px;
   	display: inline-block;
 	margin: 10px 0px;
 	padding: 5px 10px;
+}
+
+.nav-side-menu .brand i{
+	color: #fff;
+	font-size: 36px;
+	display: inline-block;
+	padding: 2px 2px;
+	position: absolute;
+	cursor: pointer;
+	right: 20px;
+	top: 10px;
 }
 
 .nav-side-menu .brand a:hover{
@@ -739,6 +724,11 @@ select.form-control{
 		left: 0;
 		width: 100%!important;
 		position: absolute;
+		max-width: none!important;
+	}
+
+	.mainMenu .menu-error{
+		display: none;
 	}
 
 	.nav-side-menu {
@@ -754,35 +744,38 @@ select.form-control{
 		height: 100%!important;
 	}
 
+	.nav-side-menu .brand i{
+		display: none;
+	}
+
 	.nav-side-menu .toggle-btn {
 		display: block;
 		cursor: pointer;
 		position: absolute;
-		left: 10px;
-		top: 10px;
-		z-index: 100 !important;
-		padding: 3px;
-		background-color: #E6E6E6;
-		color: #000;
-		width: 40px;
+		right: 24px;
+		top: 14px;
+		color: #fff;
 		text-align: center;
 		border-radius: 4px;
+		font-size: 36px;
 	}
 
 	.toggle-btn:hover {
-		color: #5A5A5A;
-		background-color: #FFFFFF;
+		color: #E9E3E3;
 	}
 
 	.brand {
 		text-align: left !important;
 		font-size: 22px;
-		padding-left: 60px !important;
+		padding-left: 20px !important;
 	}
 
 	.tdContentPlaceHolder{
-		margin-top: 60px;
 		right: 0px;
+	}
+
+	.mainMenu:not(.empty) + .tdContentPlaceHolder{
+		margin-top: 60px;
 	}
 }
 
@@ -790,6 +783,45 @@ select.form-control{
   .nav-side-menu .menu-list .menu-content {
     display: block;
   }
+
+	.mainMenu.collapsed {
+		min-width: 50px;
+		width: 50px!important;
+	}
+
+	.mainMenu.collapsed .menu-list{
+		display: none;
+	}
+
+	.mainMenu.collapsed .brand {
+		background-color: #416392;
+		display: block;
+		padding-left: 0;
+		border-bottom: none;
+		height: 100%;
+	}
+
+	.mainMenu.collapsed .brand div{
+		color: #fff;
+		position: absolute;
+		width: 300px;
+		left: -125px;
+		text-align: right;
+		top: 180px;
+
+		transform: rotate(-90deg);
+		-webkit-transform: rotate(-90deg); /* Safari and Chrome */
+		-ms-transform: rotate(-90deg); /* IE 9 */
+		-moz-transform: rotate(-90deg); /* Firefox */
+  		-o-transform: rotate(-90deg); /* Opera */
+  		filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); /* IE old */
+	}
+
+	.mainMenu.collapsed .brand i {
+		right: 6px;
+		top: 12px;
+	}
+
 }
 
 /*		MENU PRINCIPAL */
@@ -893,3 +925,6 @@ header.navbar{
     height: 50px;
 }
 
+.nav-tabs li {
+	margin-bottom: 2px;
+}

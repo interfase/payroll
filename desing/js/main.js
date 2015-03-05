@@ -107,6 +107,7 @@ function ScrollTo() {
 
 (function(){
     var menu={
+        mainMenu: null,
         sideMenu: null,
         menuList: null,
         brandHeight: null,
@@ -129,6 +130,7 @@ function ScrollTo() {
 
     //inicializa los objetos del menu
     var initMenu = function(m){
+        m.mainMenu = $(".mainMenu");
         m.sideMenu = $(".nav-side-menu");
         m.menuList = m.sideMenu.find(".menu-list");
         m.brandHeight = m.sideMenu.find(".brand").height();
@@ -170,7 +172,7 @@ function ScrollTo() {
             }
 
             //El width se lo doy por css porque en IE no esta pinchando
-            var width=$(window).width() - (m.sideMenu?m.sideMenu.width()-1: 0) + 'px';
+            var width=$(window).width() - (m.mainMenu?m.mainMenu.width()-1: 0) + 'px';
             $('.tdContentPlaceHolder')
                 .css({"min-width": width, 'width': width })
 
@@ -200,6 +202,7 @@ function ScrollTo() {
     var footer=null,
         gxPlaceHolder=null,
         tdPlaceHolder=null;
+
     //para manejar el alto del contenido
     var contentHeight = function (m) {
         footer = footer || $('.tdContentPlaceHolder footer');
@@ -216,6 +219,11 @@ function ScrollTo() {
             tdPlaceHolder.css("height", ($(window).height()- extraH) + 'px');
         }
         
+        placeFooter();
+    };
+
+    //settear la position del footer en dependencia del contenido
+    var placeFooter=function(){
         //cambiar el position del footer en dependencia del alto del contenido
         if(footer.height() + gxPlaceHolder.height() < tdPlaceHolder.height()){
             footer.css({position:'absolute'});
@@ -223,7 +231,7 @@ function ScrollTo() {
         else{
             footer.css({position:'relative'});
         }
-    };
+    }
 
     //buscar el elemento activo del menu
     var findActive = function(m){
@@ -337,6 +345,27 @@ function ScrollTo() {
         });
     }
 
+    //muestra u oculta el menu
+    var toggleMenu = function(m){
+        m.mainMenu.toggleClass('collapsed');
+        contentWidth(m);
+
+        $.setCookie('menuCollapsed', m.mainMenu.hasClass('collapsed'));
+    }
+
+    //chequea si el menu debe cargarse collapsed o no, tambien añade la clase empty 
+    // en caso de error del menu
+    var checkMenuState = function(m){
+        if($.getCookie('menuCollapsed') === 'true' 
+            && m.sideMenu && m.sideMenu.size()){
+            m.mainMenu.addClass('collapsed');
+        }
+
+        if(m.mainMenu && m.mainMenu.find('.menu-error').size()){
+            m.mainMenu.addClass('empty');
+        }
+    }
+
     $(function(){
 
         //Cambiar el footer de posicion
@@ -347,19 +376,29 @@ function ScrollTo() {
             $('.tdContentPlaceHolder').append(footer);
         }
 
-        
-
         setTimeout(function(){
+            //Dejar .mainMenu unico
+            $(".mainMenu").not($(".mainMenu").first()).remove()
+
             //Para ocultar los nodos padres sin hijos
             elminiarRaicesVacias();
 
             initMenu(menu);
 
+            checkMenuState(menu);
             contentWidth(menu);
-            setInterval(function(){
-                contentHeight(menu);
-            },100);
+            contentHeight(menu);
+
             resizeMenu(menu);
+
+            placeFooter();
+
+            //no me gusta esto pero tendria que settear listeners para toda la js api
+            //de Genexus grrr!
+            setInterval(function(){
+                placeFooter();
+            }, 100);
+
 
             findActive(menu);
             scrollToActive(menu);
@@ -370,16 +409,10 @@ function ScrollTo() {
                 resizeMenu(menu);
             });
 
-            //Cuando se hace click en el boton de tres lineas del menu
-            menu.toggle.click(function(){
-                if($("#menu-content").hasClass("in")){
-                    
-                }else{
-                    
-                    
-                }
+            $('.brand i').click(function(){
+                toggleMenu(menu);
             });
-            
+
             jQuery("#menu-content")
                 .on('hidden.bs.collapse', function (e) {
                     if(e.target.id=="menu-content"){
