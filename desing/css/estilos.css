@@ -587,9 +587,16 @@ select.form-control{
 .mainMenu{
 	width: auto!important;
 	min-width: 290px;
+	max-width: 290px;
 	background-color: #416392;
 	left: -1px;
 	z-index: 100;
+}
+
+.mainMenu .menu-error{
+	height: 2000px;
+	color: #fdae45;
+	padding: 20px;
 }
 
 .nav-side-menu {
@@ -751,6 +758,11 @@ select.form-control{
 		left: 0;
 		width: 100%!important;
 		position: absolute;
+		max-width: none!important;
+	}
+
+	.mainMenu .menu-error{
+		display: none;
 	}
 
 	.nav-side-menu {
@@ -793,8 +805,11 @@ select.form-control{
 	}
 
 	.tdContentPlaceHolder{
-		margin-top: 60px;
 		right: 0px;
+	}
+
+	.mainMenu:not(.empty) + .tdContentPlaceHolder{
+		margin-top: 60px;
 	}
 }
 

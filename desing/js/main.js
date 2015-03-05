@@ -107,6 +107,7 @@ function ScrollTo() {
 
 (function(){
     var menu={
+        mainMenu: null,
         sideMenu: null,
         menuList: null,
         brandHeight: null,
@@ -129,6 +130,7 @@ function ScrollTo() {
 
     //inicializa los objetos del menu
     var initMenu = function(m){
+        m.mainMenu = $(".mainMenu");
         m.sideMenu = $(".nav-side-menu");
         m.menuList = m.sideMenu.find(".menu-list");
         m.brandHeight = m.sideMenu.find(".brand").height();
@@ -170,7 +172,7 @@ function ScrollTo() {
             }
 
             //El width se lo doy por css porque en IE no esta pinchando
-            var width=$(window).width() - (m.sideMenu?m.sideMenu.width()-1: 0) + 'px';
+            var width=$(window).width() - (m.mainMenu?m.mainMenu.width()-1: 0) + 'px';
             $('.tdContentPlaceHolder')
                 .css({"min-width": width, 'width': width })
 
@@ -345,16 +347,22 @@ function ScrollTo() {
 
     //muestra u oculta el menu
     var toggleMenu = function(m){
-        $('.mainMenu').toggleClass('collapsed');
+        m.mainMenu.toggleClass('collapsed');
         contentWidth(m);
 
-        $.setCookie('menuCollapsed', $('.mainMenu').hasClass('collapsed'));
+        $.setCookie('menuCollapsed', m.mainMenu.hasClass('collapsed'));
     }
 
-    //chequea si el menu debe cargarse collapsed o no
+    //chequea si el menu debe cargarse collapsed o no, tambien añade la clase empty 
+    // en caso de error del menu
     var checkMenuState = function(m){
-        if($.getCookie('menuCollapsed') === 'true'){
-            $('.mainMenu').addClass('collapsed');
+        if($.getCookie('menuCollapsed') === 'true' 
+            && m.sideMenu && m.sideMenu.size()){
+            m.mainMenu.addClass('collapsed');
+        }
+
+        if(m.mainMenu && m.mainMenu.find('.menu-error').size()){
+            m.mainMenu.addClass('empty');
         }
     }
 
@@ -405,16 +413,6 @@ function ScrollTo() {
                 toggleMenu(menu);
             });
 
-            //Cuando se hace click en el boton de tres lineas del menu
-            menu.toggle.click(function(){
-                if($("#menu-content").hasClass("in")){
-                    
-                }else{
-                    
-                    
-                }
-            });
-            
             jQuery("#menu-content")
                 .on('hidden.bs.collapse', function (e) {
                     if(e.target.id=="menu-content"){
