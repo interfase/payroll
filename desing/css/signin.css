@@ -12,7 +12,12 @@
 }
 
 .form-horizontal .control-label, .form-horizontal .radio, .form-horizontal .checkbox, .form-horizontal .radio-inline, .form-horizontal .checkbox-inline{
-    position: relative;
+  position: relative;
+  display: block;
+  min-height: 20px;
+  margin-bottom: 10px;
+}
+position: relative;
     display: block;
     min-height: 20px;
     margin-bottom: 10px;
@@ -39,4 +44,38 @@
     .form-horizontal .gx-attribute:after{
         clear: both;
     }
+#login-form{
+	width: 400px;
+	margin: 0 auto;
+	margin-top: 40px;
+}
+
+#logo-login {
+	height:48px;
+	position: relative;
+	top: 7px;
+	left: 7px;
+}
+
+#login-form .col-sm-6 {
+	/*padding:0 15px 0 8px;*/
+}
+
+#login-form .radio, .checkbox {
+	margin-top:0px;
+}
+
+@media(max-width: 768px){
+	#login-form{
+		width: 80%;
+	}
+}
+
+@media(max-width: 460px){
+	#login-form{
+		width: 100%;
+	}
+	#logo-login{
+		width: 180px;;
+	}
 }
