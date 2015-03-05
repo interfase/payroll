@@ -207,13 +207,6 @@ div.seccion span {
 	left: 7px;
 }
 
-#logo-login {
-	height:48px;
-	position: relative;
-	top: 7px;
-	left: 7px;
-}
-
 footer .navbar {
   background-color: #555 !important;
   z-index:9999999;
@@ -265,18 +258,14 @@ footer .navbar {
     filter: none;
     background-image: none;
 }
-#login-form .col-sm-6 {
-	/*padding:0 15px 0 8px;*/
-}
+
 #grupo{
 	/*padding:0 8px 0 15px !important;*/
 }
 #logo-payroll{
 	margin-bottom:20px;
 }
-#login-form .radio, .checkbox {
-	margin-top:0px;
-}
+
 .alert-danger {
 	border-color:transparent !important;
 }
@@ -492,29 +481,6 @@ div.tooltip .tooltip-inner{
 	max-width: 400px;
 	font-size: 14px;
 	margin-left: -1px;
-}
-
-
-/* login-form*/
-#login-form{
-	width: 400px;
-	margin: 0 auto;
-	margin-top: 40px;
-}
-
-@media(max-width: 768px){
-	#login-form{
-		width: 80%;
-	}
-}
-
-@media(max-width: 460px){
-	#login-form{
-		width: 100%;
-	}
-	#logo-login{
-		width: 180px;;
-	}
 }
 
 /*Attributos que no se pueden ocultar*/
