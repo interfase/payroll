@@ -14,6 +14,39 @@ body {
 	background-color: #ecedef;
 }
 
+/* FOOTER */
+footer .navbar {
+	background-color: #555 !important;
+	height: 41px;
+	min-height: 40px;
+}
+
+footer .navbar div {
+	margin: 10px 10px 0px 20px;
+}
+
+footer a {
+ 	color: #fff;
+ 	margin-top: 15px;
+	margin-right: 15px;
+}
+
+footer a:hover {
+ 	color: #fff;
+ 	text-decoration:none;
+}
+
+footer img {
+ 	height: 24px;
+	position: relative;
+	top:-3px;
+	margin-left: 10px;
+}
+
+footer div{
+ 	color: #fff;
+}
+
 .tdContentPlaceHolder footer{
 	width: 100%;
 	bottom: 0;
@@ -29,6 +62,8 @@ body {
 	margin: 0;
 	padding: 0;
 }
+
+
 
 #wrapper {
 	padding-left:250px;
@@ -83,6 +118,7 @@ body {
 .navbar-right {
 	margin-right:5px;
 }
+
 .test1 {
 	border-radius: 5px;
 	border-bottom-left-radius: 0;
@@ -185,16 +221,35 @@ background-color: transparent;
 #apps>li>a:hover, .dropdown-menu>li>a:focus {
 	background-color:#fff;
 }
-#icon-apps {
+
+#icon-apps, #icon-user {
 	height:22px;
 	width:22px;
-	background-image: url(../imgs/icon-apps.png);
-	background-size:22px 22px;
+	background-size: 20px;
+	background-position: center;
+	background-repeat: no-repeat;
 	display:inline-block;
 	vertical-align: middle;
 	position:relative;
 	top:-2px;
+	opacity: .8;
 }
+
+#icon-apps{
+	background-image: url(../imgs/icon-apps.png);
+}
+
+#icon-user {
+	background-image: url(../imgs/funcionarios.png);
+	background-size: 18px;
+}
+
+a:hover #icon-apps, a:hover #icon-user{
+	opacity: 1;
+}
+
+
+
 div.seccion span {
 	white-space: normal;
 	text-transform: uppercase; 
@@ -206,29 +261,6 @@ div.seccion span {
 	top: 7px;
 	left: 7px;
 }
-
-footer .navbar {
-  background-color: #555 !important;
-  z-index:9999999;
- }
- footer a {
- 	color:white;
- 	margin-top: 15px;
-	margin-right: 15px;
- }
- footer a:hover {
- 	color:white;
- 	text-decoration:none;
- }
- footer img {
- 	height: 22px;
-	position: relative;
-	top:-3px;
-	margin-right: 7px;
-	border-right: 2px solid white;
-	padding-right: 7px;
- }
-
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
@@ -554,9 +586,7 @@ select.form-control{
 	width: auto!important;
 	min-width: 290px;
 	max-width: 290px;
-	background-color: #416392;
 	left: -1px;
-	z-index: 100;
 }
 
 .mainMenu .menu-error{
@@ -582,7 +612,8 @@ select.form-control{
 }
 
 .nav-side-menu .menu-list{
-	overflow-y: auto;
+	overflow: hidden;
+	position: relative;
 }
 
 .nav-side-menu .brand {
@@ -603,13 +634,17 @@ select.form-control{
 
 .nav-side-menu .brand i{
 	color: #fff;
-	font-size: 36px;
+	font-size: 28px;
 	display: inline-block;
 	padding: 2px 2px;
 	position: absolute;
 	cursor: pointer;
 	right: 20px;
-	top: 10px;
+	top: 16px;
+}
+
+.nav-side-menu .brand i:hover {
+	color: #E9E3E3;
 }
 
 .nav-side-menu .brand a:hover{
@@ -623,6 +658,10 @@ select.form-control{
 
 .nav-side-menu .toggle-btn {
   display: none;
+}
+
+#menu-content{
+	background-color: #416392;
 }
 
 #menu-content, #menu-content ul{
@@ -698,7 +737,7 @@ select.form-control{
 
 #menu-content .arrow{
 	position: absolute;
-	right: 5px;
+	right: 14px;
 }
 
 #menu-content .arrow:before{
@@ -736,12 +775,22 @@ select.form-control{
 		left: 0;
 		width: 100%;
 		margin-bottom: 10px;
-		z-index: 100;
+		/*z-index: 100;*/
 		height: auto!important;
 	}
 
+	.menu-content{
+		-webkit-transition: height .35s ease;
+		transition: height .35s ease;
+		-moz-transition: height .35s ease;
+	}
+
+	.nav-side-menu.fh{
+		z-index: 100;
+	}
+
 	.fh{
-		height: 100%!important;
+		/*height: 100%!important;*/
 	}
 
 	.nav-side-menu .brand i{
@@ -752,12 +801,12 @@ select.form-control{
 		display: block;
 		cursor: pointer;
 		position: absolute;
-		right: 24px;
-		top: 14px;
+		right: 28px;
+		top: 16px;
 		color: #fff;
 		text-align: center;
 		border-radius: 4px;
-		font-size: 36px;
+		font-size: 28px;
 	}
 
 	.toggle-btn:hover {
@@ -780,11 +829,16 @@ select.form-control{
 }
 
 @media (min-width: 767px) {
-  .nav-side-menu .menu-list .menu-content {
-    display: block;
-  }
+	  .nav-side-menu .menu-list .menu-content {
+	    display: block;
+	  }
 
 	.mainMenu.collapsed {
+		min-width: 50px;
+		width: 50px!important;
+	}
+
+	.mainMenu.collapsed .nav-side-menu {
 		min-width: 50px;
 		width: 50px!important;
 	}
@@ -794,7 +848,6 @@ select.form-control{
 	}
 
 	.mainMenu.collapsed .brand {
-		background-color: #416392;
 		display: block;
 		padding-left: 0;
 		border-bottom: none;
@@ -818,10 +871,13 @@ select.form-control{
 	}
 
 	.mainMenu.collapsed .brand i {
-		right: 6px;
+		right: 10px;
 		top: 12px;
 	}
 
+	#menu-content{
+		height: 100%!important;
+	}
 }
 
 /*		MENU PRINCIPAL */
@@ -831,6 +887,14 @@ header.navbar{
 	-ms-user-select: none;
 	user-select: none;
 	cursor: default;
+}
+
+header.navbar li span.divider{
+	width: 1px;
+	background-color: #e5e5e5;
+	height: 32px;
+	top: 14px;
+	position: absolute;
 }
 
 @media (max-width: 767px) {
@@ -876,6 +940,10 @@ header.navbar{
 		background-color: #e5e5e5!important;
 	}
 
+	#navbar-main li span.divider{
+		display: none;
+	}
+
 	#navbar-main:not(.in):not(.collapsing){
 		height: 62px!important;
 	}
@@ -895,6 +963,10 @@ header.navbar{
 
 	.navbar-toggle:hover i, .navbar-toggle:focus i{
 		color: #fff!important;
+	}
+
+	footer .pull-right{
+		display: none;
 	}
 }
 

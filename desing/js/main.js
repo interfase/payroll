@@ -111,9 +111,133 @@ function ScrollTo() {
         sideMenu: null,
         menuList: null,
         brandHeight: null,
-        toggle: null,
-        small: false,
-        active: null
+        toggleButton: null,
+        screenState: null,
+        activeItem: null,
+
+        init: function(){
+            this.mainMenu = $(".mainMenu");
+            this.sideMenu = $(".nav-side-menu");
+            this.menuList = this.sideMenu.find(".menu-list");
+            this.brandHeight = this.sideMenu.find(".brand").height();
+            this.toggleButton = this.sideMenu.find('.toggle-btn');
+            
+            if(this.sideMenu.size() == 0)
+                this.sideMenu=null;
+
+            this.deleteEmptyParents();
+
+            this.levels=0;
+
+            menu.checkState();
+
+            this.initScroll();
+            this.screenState = $(window).width()>767?'large':'small';
+        },
+
+        updateScroll: function(){
+            if(this.menuList && this.menuList.size())
+                Ps.update(this.menuList[0]);
+        },
+
+        initScroll: function(){
+            if(this.menuList && this.menuList.size())
+                Ps.initialize(this.menuList[0]);
+        },
+
+        findActive: function(){
+            if(this.sideMenu){
+                var baseUrl = window.location.pathname.split('/'),
+                    obj     = baseUrl[baseUrl.length - 1],
+                    search  = window.location.search;
+
+                if (search != ""){
+                    obj += search;
+                }
+
+                //buscar el elemento activo del menu
+                this.activeItem=$('.nav-side-menu a[href="'+obj+'"]');
+
+                if(this.activeItem.size()==0){ //si el elemnto de la url no se encuentra 
+                                        //en el menu se busca el ultimo activo
+                    var ultimo = $.getCookie('ultimoactivo');
+                    if(ultimo){
+                        this.activeItem=$('.nav-side-menu a[href="'+ultimo+'"]');
+                    }
+                }
+                else{
+                    $.setCookie('ultimoactivo', obj); //se setea la cookie del ultimo activo
+                }
+
+                if(this.activeItem.size() && !this.activeItem.parent().hasClass('brand')){
+                    this.activeItem.parent().addClass('active');
+                    this.activeItem.parent().parents('ul').each(function(){
+                        $(this).prev('.parent').addClass('active');
+                    })
+                }
+            }
+        },
+
+        scrollToActive: function(){
+            if(this.sideMenu && this.activeItem && this.activeItem.size()){
+                this.activeItem.parents('.sub-menu').each(function(){
+                    var $this=$(this);
+                    $this.addClass("in").prev().removeClass("collapsed");
+                });
+
+                this.menuList.scrollTop(this.activeItem.parent().position().top-100);
+                this.updateScroll();
+            }
+        },
+
+        resize: function(){
+            if(this.sideMenu){
+                var h1 = $('body').height() - (this.sideMenu ? this.sideMenu.offset().top - 2 : 0),
+                    h2 = $('.tdContentPlaceHolder footer').height();
+
+                this.sideMenu.css('height', h1 + 'px');
+                this.menuList.css('height',
+                    h1 - this.brandHeight + 'px'
+                );
+
+                this.updateScroll();
+            }
+        },
+
+        toggle: function(){
+            this.mainMenu.toggleClass('collapsed');
+            contentWidth(this);
+
+            $.setCookie('menuCollapsed', this.mainMenu.hasClass('collapsed'));
+            this.updateScroll();
+        },
+
+        checkState: function(){
+            if($.getCookie('menuCollapsed') === 'true' 
+                && this.sideMenu && this.sideMenu.size()){
+                this.mainMenu.addClass('collapsed');
+            }
+
+            if(this.mainMenu && this.mainMenu.find('.menu-error').size()){
+                this.mainMenu.addClass('empty');
+            }
+        },
+
+
+        deleteEmptyParents: function(){
+            if(this.levels<3){
+                this.menuList
+                    .find('#menu-content ul')
+                    .each(function () {
+                        if($(this).children().size() == 0){
+                            $(this).prev().remove();
+                            $(this).remove();
+                        }
+                    });
+                this.levels++;
+                this.deleteEmptyParents();
+            }
+        }
     };
 
     // Métodos para menejo de Cookie
@@ -128,68 +252,42 @@ function ScrollTo() {
         return keyValue ? keyValue[2] : null;
     };
 
-    //inicializa los objetos del menu
-    var initMenu = function(m){
-        m.mainMenu = $(".mainMenu");
-        m.sideMenu = $(".nav-side-menu");
-        m.menuList = m.sideMenu.find(".menu-list");
-        m.brandHeight = m.sideMenu.find(".brand").height();
-        m.toggle = m.sideMenu.find('.toggle-btn');
-        
-        if(m.sideMenu.size()==0)
-            m.sideMenu=null;
-
-    };
-
-    //para ajustar el alto del menu a la ventana
-    var resizeMenu = function(m){
-        if(m.sideMenu){
-            var h1 = $('body').height() - (m.sideMenu ? m.sideMenu.offset().top - 2 : 0),
-                h2 = $('.tdContentPlaceHolder footer').height();
-
-            m.sideMenu.css('height', h1 + 'px');
-            m.menuList.css('height',
-                h1 - m.brandHeight + 'px'
-            );
-        }
-    };
-
     //Para manejar el ancho del contenido    
     var contentWidth = function (m) {
-        if ($(window).width() >= 767) { //pantalla grande
-            if(m.small){ //si estaba en pantalla xs
-                m.small=false;
+        if ($(window).width() > 767) { //pantalla grande
+            if(m.screenState == 'small'){ //si estaba en pantalla xs
+                m.screenState = 'large';
 
                 if(m.sideMenu){ //si esta activo el menu lateral
-                    m.toggle.addClass('collapsed');
+                    m.toggleButton.addClass('collapsed');
                     $("#menu-content").addClass('in');
                     m.sideMenu.removeClass("fh");
                     m.menuList.removeClass("fh");
                     $(".mainMenu").removeClass("fh");
                 }
 
-                scrollToActive(m);//Scrollear al elemento activo del menu
+                m.scrollToActive();//Scrollear al elemento activo del menu
             }
 
             //El width se lo doy por css porque en IE no esta pinchando
             var width=$(window).width() - (m.mainMenu?m.mainMenu.width()-1: 0) + 'px';
             $('.tdContentPlaceHolder')
                 .css({"min-width": width, 'width': width })
-
                 .show();
 
         } else { //pantalla xs
-            if(!m.small){ //si estaba en pantalla grande
+            if(m.screenState == 'large'){ //si estaba en pantalla grande
+                m.screenState = 'small';
                 
                 if($('.nav.navbar-nav a').size()==0){ //si no hay elementos en la navegacion del menu general
                     $('.navbar-toggle').hide();
                 }
 
-                m.small=true;
                 if(m.sideMenu){
                     menu.menuList.addClass("fh");
-                    m.toggle.removeClass('collapsed');
-                    $("#menu-content").removeClass('in')
+                    m.toggleButton.removeClass('collapsed');
+                    $("#menu-content").removeClass('in');
+                    $("#menu-content").css("height", "0");
                 }
             }
 
@@ -211,7 +309,7 @@ function ScrollTo() {
 
         var extraH=$('.MainContainer.homePage footer .navbar').height() + 61;
 
-        if ($(window).width() <= 767){
+        if ($(window).width() < 767){
             tdPlaceHolder.css("height", ($(window).height() - extraH 
                 - $('.mainMenu .brand').height()) + 'px');
         }
@@ -232,53 +330,6 @@ function ScrollTo() {
             footer.css({position:'relative'});
         }
     }
-
-    //buscar el elemento activo del menu
-    var findActive = function(m){
-        if(m.sideMenu){
-            var baseUrl = window.location.pathname.split('/'),
-                obj     = baseUrl[baseUrl.length - 1],
-                search  = window.location.search;
-
-            if (search != ""){
-                obj += search;
-            }
-
-            //buscar el elemento activo del menu
-            m.active=$('.nav-side-menu a[href="'+obj+'"]');
-
-            if(m.active.size()==0){ //si el elemnto de la url no se encuentra 
-                                    //en el menu se busca el ultimo activo
-                var ultimo = $.getCookie('ultimoactivo');
-                if(ultimo){
-                    m.active=$('.nav-side-menu a[href="'+ultimo+'"]');
-                }
-            }
-            else{
-                $.setCookie('ultimoactivo', obj); //se setea la cookie del ultimo activo
-            }
-
-            if(m.active.size() && !m.active.parent().hasClass('brand')){
-                m.active.parent().addClass('active');
-                m.active.parent().parents('ul').each(function(){
-                    $(this).prev('.parent').addClass('active');
-                })
-            }
-        }
-    };
-
-    //busca el elemento activo del menu y scrollea para que se muestre este
-    var scrollToActive = function(m){
-        if(m.sideMenu && m.active && m.active.size()){
-
-            m.active.parents('.sub-menu').each(function(){
-                var $this=$(this);
-                $this.addClass("in")
-                     .prev().removeClass("collapsed");
-            });
-            m.menuList.scrollTop(m.active.parent().position().top-100)
-        }
-    };
 
     var setTooltips = function(){
         if(jQuery.fn.tooltip){
@@ -322,52 +373,7 @@ function ScrollTo() {
         }
     }
 
-    var elminiarRaicesVacias=function(){
-        $('#menu-content ul').each(function () {  //Se recorre por primera vez para eliminar padres sin hijos 
-            if($(this).children().size() == 0){
-                $(this).prev().remove();
-                $(this).remove();
-            }
-        });
-
-        $('#menu-content ul').each(function () {  //Se recorre por primera vez para eliminar padres sin hijos 
-            if($(this).children().size() == 0){
-                $(this).prev().remove();
-                $(this).remove();
-            }
-        });
-
-        $('#menu-content ul').each(function () {  //Se recorre por primera vez para eliminar padres sin hijos 
-            if($(this).children().size() == 0){
-                $(this).prev().remove();
-                $(this).remove();
-            }
-        });
-    }
-
-    //muestra u oculta el menu
-    var toggleMenu = function(m){
-        m.mainMenu.toggleClass('collapsed');
-        contentWidth(m);
-
-        $.setCookie('menuCollapsed', m.mainMenu.hasClass('collapsed'));
-    }
-
-    //chequea si el menu debe cargarse collapsed o no, tambien añade la clase empty 
-    // en caso de error del menu
-    var checkMenuState = function(m){
-        if($.getCookie('menuCollapsed') === 'true' 
-            && m.sideMenu && m.sideMenu.size()){
-            m.mainMenu.addClass('collapsed');
-        }
-
-        if(m.mainMenu && m.mainMenu.find('.menu-error').size()){
-            m.mainMenu.addClass('empty');
-        }
-    }
-
-    $(function(){
-
+    var initAll = function(){
         //Cambiar el footer de posicion
         var f=$('.MainContainer:not(.homePage) footer')
         if(f.size()){
@@ -380,37 +386,35 @@ function ScrollTo() {
             //Dejar .mainMenu unico
             $(".mainMenu").not($(".mainMenu").first()).remove()
 
-            //Para ocultar los nodos padres sin hijos
-            elminiarRaicesVacias();
+            menu.init();
 
-            initMenu(menu);
-
-            checkMenuState(menu);
             contentWidth(menu);
             contentHeight(menu);
 
-            resizeMenu(menu);
+            menu.resize();
+            setTimeout(function(){ //Algunas veces el menu se queda colgado
+                menu.resize();
+            }, 500);
+
 
             placeFooter();
-
-            //no me gusta esto pero tendria que settear listeners para toda la js api
-            //de Genexus grrr!
             setInterval(function(){
                 placeFooter();
             }, 100);
 
 
-            findActive(menu);
-            scrollToActive(menu);
+            menu.findActive();
+            menu.scrollToActive();
 
+            /* -----  Event Handlers */
             $(window).resize(function(){
                 contentWidth(menu);
                 contentHeight(menu);
-                resizeMenu(menu);
+                menu.resize();
             });
 
             $('.brand i').click(function(){
-                toggleMenu(menu);
+                menu.toggle();
             });
 
             jQuery("#menu-content")
@@ -421,25 +425,38 @@ function ScrollTo() {
 
                         $(".mainMenu").removeClass("fh");
 
-                        // $('.tdContentPlaceHolder').show();
+                        menu.updateScroll();
                     }
                 })
-                .on('shown.bs.collapse', function (e) {
+                .on('show.bs.collapse', function (e) {
                     if(e.target.id=="menu-content"){
-                        // $('.tdContentPlaceHolder').hide();
 
                         menu.sideMenu.addClass("fh");
                         menu.menuList.removeClass("fh");
 
                         $(".mainMenu").addClass("fh");
-
-                        scrollToActive(menu);
+                    }
+                })
+                .on('shown.bs.collapse', function(e){
+                    if(e.target.id=="menu-content"){
+                        $("#menu-content").css("height", "100%");
+                        menu.scrollToActive();
+                        menu.updateScroll();
                     }
                 });
             
+            jQuery(".sub-menu.collapse")
+                .on('hidden.bs.collapse shown.bs.collapse', function (e) {
+                    menu.updateScroll();
+                });
+
             //Ajustar los tooltips
             setTooltips();
-        }, 
+        },
         100);
+    }
+
+    $(function(){
+        initAll();
     });
 })();
