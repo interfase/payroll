@@ -138,6 +138,9 @@ function ScrollTo() {
         
         if(m.sideMenu.size()==0)
             m.sideMenu=null;
+        else{
+            Ps.initialize(m.menuList[0]);
+        }
 
     };
 
@@ -151,6 +154,8 @@ function ScrollTo() {
             m.menuList.css('height',
                 h1 - m.brandHeight + 'px'
             );
+
+            Ps.update(m.menuList[0]);
         }
     };
 
@@ -421,12 +426,11 @@ function ScrollTo() {
 
                         $(".mainMenu").removeClass("fh");
 
-                        // $('.tdContentPlaceHolder').show();
+                        Ps.update(menu.menuList[0]);
                     }
                 })
                 .on('shown.bs.collapse', function (e) {
                     if(e.target.id=="menu-content"){
-                        // $('.tdContentPlaceHolder').hide();
 
                         menu.sideMenu.addClass("fh");
                         menu.menuList.removeClass("fh");
@@ -434,9 +438,15 @@ function ScrollTo() {
                         $(".mainMenu").addClass("fh");
 
                         scrollToActive(menu);
+                        Ps.update(menu.menuList[0]);
                     }
                 });
             
+            jQuery(".sub-menu.collapse")
+                .on('hidden.bs.collapse shown.bs.collapse', function (e) {
+                    Ps.update(menu.menuList[0]);
+                });
+
             //Ajustar los tooltips
             setTooltips();
         }, 
