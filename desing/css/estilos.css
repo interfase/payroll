@@ -596,6 +596,7 @@ select.form-control{
 }
 
 .nav-side-menu {
+	background-color: #416392;
 	overflow: hidden;
 	font-family: verdana;
 	font-size: 14px;
@@ -737,21 +738,20 @@ select.form-control{
 
 #menu-content .arrow{
 	position: absolute;
-	right: 14px;
+	right: 20px;
+	top: 16px;
+	background: url(../imgs/menuarrow.png) no-repeat center;
+	width: 14px;
+	height: 9px;
 }
 
-#menu-content .arrow:before{
-	font-family: FontAwesome;
-	padding-left: 10px;
-	padding-right: 10px;
-	vertical-align: middle;
-	float: right;
-	content: "\f078";
-	font-weight: normal;
-}
-
-#menu-content .collapsed .arrow:before{
-  content: "\f054"; 
+#menu-content .parent:not(.collapsed) .arrow{
+    transform: rotate(180deg);
+	-webkit-transform: rotate(180deg); /* Safari and Chrome */
+	-ms-transform: rotate(180deg); /* IE 9 */
+	-moz-transform: rotate(180deg); /* Firefox */
+	-o-transform: rotate(180deg); /* Opera */
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2); /* IE old */
 }
 
 .sub-menu.collapse.in{
@@ -999,4 +999,30 @@ header.navbar li span.divider{
 
 .nav-tabs li {
 	margin-bottom: 2px;
+}
+
+.gx-label.control-label {
+	font-weight: bold;
+}
+
+.tbMoreFiltersRight a {
+	color: #196396;
+}
+
+#TBMFILTROS a:after, #TBMFILTROSADVANCED a:after{
+	background: url(../imgs/filtoarrow.png) no-repeat center;
+	content: "";
+	width: 14px;
+	height: 9px;
+	display: inline-block;
+	margin-left: 4px;
+}
+
+#TBMFILTROSADVANCED a:after{
+	transform: rotate(180deg);
+	-webkit-transform: rotate(180deg); /* Safari and Chrome */
+	-ms-transform: rotate(180deg); /* IE 9 */
+	-moz-transform: rotate(180deg); /* Firefox */
+	-o-transform: rotate(180deg); /* Opera */
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2); /* IE old */
 }
