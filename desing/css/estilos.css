@@ -586,9 +586,7 @@ select.form-control{
 	width: auto!important;
 	min-width: 290px;
 	max-width: 290px;
-	background-color: #416392;
 	left: -1px;
-	z-index: 100;
 }
 
 .mainMenu .menu-error{
@@ -660,6 +658,10 @@ select.form-control{
 
 .nav-side-menu .toggle-btn {
   display: none;
+}
+
+#menu-content{
+	background-color: #416392;
 }
 
 #menu-content, #menu-content ul{
@@ -773,12 +775,22 @@ select.form-control{
 		left: 0;
 		width: 100%;
 		margin-bottom: 10px;
-		z-index: 100;
+		/*z-index: 100;*/
 		height: auto!important;
 	}
 
+	.menu-content{
+		-webkit-transition: height .35s ease;
+		transition: height .35s ease;
+		-moz-transition: height .35s ease;
+	}
+
+	.nav-side-menu.fh{
+		z-index: 100;
+	}
+
 	.fh{
-		height: 100%!important;
+		/*height: 100%!important;*/
 	}
 
 	.nav-side-menu .brand i{
@@ -817,11 +829,16 @@ select.form-control{
 }
 
 @media (min-width: 767px) {
-  .nav-side-menu .menu-list .menu-content {
-    display: block;
-  }
+	  .nav-side-menu .menu-list .menu-content {
+	    display: block;
+	  }
 
 	.mainMenu.collapsed {
+		min-width: 50px;
+		width: 50px!important;
+	}
+
+	.mainMenu.collapsed .nav-side-menu {
 		min-width: 50px;
 		width: 50px!important;
 	}
@@ -831,7 +848,6 @@ select.form-control{
 	}
 
 	.mainMenu.collapsed .brand {
-		background-color: #416392;
 		display: block;
 		padding-left: 0;
 		border-bottom: none;
@@ -859,6 +875,9 @@ select.form-control{
 		top: 12px;
 	}
 
+	#menu-content{
+		height: 100%;
+	}
 }
 
 /*		MENU PRINCIPAL */
