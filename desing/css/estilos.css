@@ -876,7 +876,7 @@ select.form-control{
 	}
 
 	#menu-content{
-		height: 100%;
+		height: 100%!important;
 	}
 }
 
@@ -940,6 +940,10 @@ header.navbar li span.divider{
 		background-color: #e5e5e5!important;
 	}
 
+	#navbar-main li span.divider{
+		display: none;
+	}
+
 	#navbar-main:not(.in):not(.collapsing){
 		height: 62px!important;
 	}
@@ -959,6 +963,10 @@ header.navbar li span.divider{
 
 	.navbar-toggle:hover i, .navbar-toggle:focus i{
 		color: #fff!important;
+	}
+
+	footer .pull-right{
+		display: none;
 	}
 }
 

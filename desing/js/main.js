@@ -112,7 +112,7 @@ function ScrollTo() {
         menuList: null,
         brandHeight: null,
         toggleButton: null,
-        windowState: null,
+        screenState: null,
         activeItem: null,
 
         init: function(){
@@ -132,6 +132,7 @@ function ScrollTo() {
             menu.checkState();
 
             this.initScroll();
+            this.screenState = $(window).width()>767?'large':'small';
         },
 
         updateScroll: function(){
@@ -208,6 +209,7 @@ function ScrollTo() {
             contentWidth(this);
 
             $.setCookie('menuCollapsed', this.mainMenu.hasClass('collapsed'));
+            this.updateScroll();
         },
 
         checkState: function(){
@@ -252,9 +254,9 @@ function ScrollTo() {
 
     //Para manejar el ancho del contenido    
     var contentWidth = function (m) {
-        if ($(window).width() >= 767) { //pantalla grande
-            if(m.windowState == 'small'){ //si estaba en pantalla xs
-                m.windowState = 'large';
+        if ($(window).width() > 767) { //pantalla grande
+            if(m.screenState == 'small'){ //si estaba en pantalla xs
+                m.screenState = 'large';
 
                 if(m.sideMenu){ //si esta activo el menu lateral
                     m.toggleButton.addClass('collapsed');
@@ -271,21 +273,21 @@ function ScrollTo() {
             var width=$(window).width() - (m.mainMenu?m.mainMenu.width()-1: 0) + 'px';
             $('.tdContentPlaceHolder')
                 .css({"min-width": width, 'width': width })
-
                 .show();
 
         } else { //pantalla xs
-            if(m.windowState == 'large'){ //si estaba en pantalla grande
+            if(m.screenState == 'large'){ //si estaba en pantalla grande
+                m.screenState = 'small';
                 
                 if($('.nav.navbar-nav a').size()==0){ //si no hay elementos en la navegacion del menu general
                     $('.navbar-toggle').hide();
                 }
 
-                m.windowState = 'small';
                 if(m.sideMenu){
                     menu.menuList.addClass("fh");
                     m.toggleButton.removeClass('collapsed');
-                    $("#menu-content").removeClass('in')
+                    $("#menu-content").removeClass('in');
+                    $("#menu-content").css("height", "0");
                 }
             }
 
@@ -307,7 +309,7 @@ function ScrollTo() {
 
         var extraH=$('.MainContainer.homePage footer .navbar').height() + 61;
 
-        if ($(window).width() <= 767){
+        if ($(window).width() < 767){
             tdPlaceHolder.css("height", ($(window).height() - extraH 
                 - $('.mainMenu .brand').height()) + 'px');
         }
