@@ -279,10 +279,6 @@ function ScrollTo() {
             if(m.screenState == 'large'){ //si estaba en pantalla grande
                 m.screenState = 'small';
                 
-                if($('.nav.navbar-nav a').size()==0){ //si no hay elementos en la navegacion del menu general
-                    $('.navbar-toggle').hide();
-                }
-
                 if(m.sideMenu){
                     menu.menuList.addClass("fh");
                     m.toggleButton.removeClass('collapsed');
@@ -307,7 +303,7 @@ function ScrollTo() {
         tdPlaceHolder = tdPlaceHolder || $('.tdContentPlaceHolder')
         gxPlaceHolder = gxPlaceHolder || $(".tdContentPlaceHolder .gx-content-placeholder");
 
-        var extraH=$('.MainContainer.homePage footer .navbar').height() + 61;
+        var extraH=/*$('.MainContainer.homePage footer .navbar').height()*/0 + 61;
 
         if ($(window).width() < 767){
             tdPlaceHolder.css("height", ($(window).height() - extraH 
@@ -323,11 +319,11 @@ function ScrollTo() {
     //settear la position del footer en dependencia del contenido
     var placeFooter=function(){
         //cambiar el position del footer en dependencia del alto del contenido
-        if(footer.height() + gxPlaceHolder.height() < tdPlaceHolder.height()){
-            footer.css({position:'absolute'});
+        if(footer.height() + gxPlaceHolder.outerHeight() + 40 < tdPlaceHolder.height()){
+            footer.css({position:'absolute', width:'100%'});
         }
         else{
-            footer.css({position:'relative'});
+            footer.css({position:'relative', width:'auto'});
         }
     }
 
@@ -375,7 +371,7 @@ function ScrollTo() {
 
     var initAll = function(){
         //Cambiar el footer de posicion
-        var f=$('.MainContainer:not(.homePage) footer')
+        var f=$('.MainContainer footer')
         if(f.size()){
             var footer=f.clone();
             f.remove();

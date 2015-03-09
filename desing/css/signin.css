@@ -76,3 +76,17 @@
 		width: 180px;
 	}
 }
+
+/*#login-form option[value="0"]{
+    display: none;
+}
+
+#login-form select option{
+    color: #000;
+}
+
+#login-form select:not([gxoldvalue]), 
+#login-form select[gxvalid="0"],
+#login-form select[gxoldvalue="0"]{
+    color: #999;
+}*/

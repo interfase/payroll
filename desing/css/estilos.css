@@ -3,6 +3,13 @@ body {
 	overflow-y: hidden;
 }
 
+#MAINFORM,
+#MAINFORM > .Section,
+.MainContainer,
+.ContentContainer{
+	height: 100%;
+}
+
 .ContentContainer{
 	margin-top: 62px!important;
 }
@@ -14,25 +21,27 @@ body {
 	background-color: #ecedef;
 }
 
+.gx-content-placeholder{
+	margin-bottom: 40px;
+}
+
 /* FOOTER */
 footer .navbar {
 	background-color: #555 !important;
-	height: 41px;
-	min-height: 40px;
+	height: 33px;
+	min-height: 32px;
 }
 
 footer .navbar div {
-	margin: 10px 10px 0px 20px;
+	margin: 6px 15px 0px 20px;
 }
 
 footer a {
  	color: #fff;
- 	margin-top: 15px;
-	margin-right: 15px;
 }
 
 footer a:hover {
- 	color: #fff;
+ 	color: #efefef;
  	text-decoration:none;
 }
 
@@ -47,23 +56,31 @@ footer div{
  	color: #fff;
 }
 
-.tdContentPlaceHolder footer{
-	width: 100%;
+footer{
 	bottom: 0;
 }
 
-.tdContentPlaceHolder footer .navbar{
+footer .navbar{
 	position: relative;
 	bottom: 0;
 	z-index: auto;
 }
 
-.tdContentPlaceHolder footer .container-fluid{
+footer .container-fluid{
 	margin: 0;
 	padding: 0;
 }
 
+.homePage footer{
+	margin-right: -15px;
+	margin-left: -15px;
+}
 
+@media (max-width: 767px) {
+	footer .pull-right{
+		display: none;
+	}
+}
 
 #wrapper {
 	padding-left:250px;
@@ -179,99 +196,6 @@ footer div{
 	background: url(../imgs/licencias.png);
 }
 
-.seccion {
-	height:110px;
-	width:110px;
-	background-repeat:no-repeat;
-	background-position: 34px 15px;
-	background-size: 33px 33px;
-	border:4px solid #fff;
-	border-radius:50%;
-	text-align:center;	
-	border: 3px solid transparent;
-	transition: all .3s;
-
-}
-.seccion:hover {
-	border: 3px solid #1b6394;
-}
-.seccion span {
-	display: inline-block;
-	vertical-align: middle;
-	line-height: normal;
-	position:relative;
-	bottom:-56px;
-	font-size:14px;
-	color: #1b6394;
-	font-weight:bold;
-}
-.navbar-inverse {
-background-color: transparent;
-}
-
-#apps li {
-	float:left;
-}
-#apps li a {
-	padding: 3px 6px;
-}
-#apps {
-	min-width:370px;
-}
-#apps>li>a:hover, .dropdown-menu>li>a:focus {
-	background-color:#fff;
-}
-
-#icon-apps, #icon-user {
-	height:22px;
-	width:22px;
-	background-size: 20px;
-	background-position: center;
-	background-repeat: no-repeat;
-	display:inline-block;
-	vertical-align: middle;
-	position:relative;
-	top:-2px;
-	opacity: .8;
-}
-
-#icon-apps{
-	background-image: url(../imgs/icon-apps.png);
-}
-
-#icon-user {
-	background-image: url(../imgs/funcionarios.png);
-	background-size: 18px;
-}
-
-a:hover #icon-apps, a:hover #icon-user{
-	opacity: 1;
-}
-
-
-
-div.seccion span {
-	white-space: normal;
-	text-transform: uppercase; 
-	font-size:10px;
-}
-#logo {
-	height:48px;
-	position: relative;
-	top: 7px;
-	left: 7px;
-}
-
-/* Extra small devices (phones, less than 768px) */
-/* No media query since this is the default in Bootstrap */
-
-/* Small devices (tablets, 768px and up) */
-@media (max-width: 967px) { 
-	#navbar-2 h1{
-		font-size:1.1em;
-	}
-}
-
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1180px) { 
 	.test1 {
@@ -379,6 +303,8 @@ div.seccion span {
     -ms-transform: scale(.9);
     transform: scale(.9);
     display:inline-block;
+
+    border-color: #F6F6F6;
 }
 .ca-menu li:last-child{
     margin-right: 0px;
@@ -583,9 +509,10 @@ select.form-control{
 
 /******************MENU***************/
 .mainMenu{
+	font-family: Roboto-Regular;
 	width: auto!important;
-	min-width: 290px;
-	max-width: 290px;
+	min-width: 260px;
+	max-width: 260px;
 	left: -1px;
 }
 
@@ -603,7 +530,7 @@ select.form-control{
 	font-weight: 200;
 	position: relative;
 	left: 0px;
-	width: 290px;
+	width: 260px;
 	height: 100%;
 	color: #000;
   	-webkit-user-select: none;
@@ -634,18 +561,17 @@ select.form-control{
 }
 
 .nav-side-menu .brand i{
-	color: #fff;
-	font-size: 28px;
-	display: inline-block;
-	padding: 2px 2px;
 	position: absolute;
 	cursor: pointer;
-	right: 20px;
-	top: 16px;
+	background-image: url(../imgs/icono-menu.png);
+	width: 23px;
+	height: 16px;
+	right: 30px;
+	top: 22px;
 }
 
 .nav-side-menu .brand i:hover {
-	color: #E9E3E3;
+	opacity: .9;
 }
 
 .nav-side-menu .brand a:hover{
@@ -739,10 +665,11 @@ select.form-control{
 #menu-content .arrow{
 	position: absolute;
 	right: 20px;
-	top: 16px;
-	background: url(../imgs/menuarrow.png) no-repeat center;
+	top: 12px;
+	background: url(../imgs/flecha-menu.svg) no-repeat center;
 	width: 14px;
-	height: 9px;
+	background-size: 14px;
+	height: 14px;
 }
 
 #menu-content .parent:not(.collapsed) .arrow{
@@ -798,19 +725,20 @@ select.form-control{
 	}
 
 	.nav-side-menu .toggle-btn {
+		position: absolute;
+		cursor: pointer;
+		background-image: url(../imgs/icono-menu.png);
+		width: 23px;
+		height: 16px;
 		display: block;
 		cursor: pointer;
 		position: absolute;
 		right: 28px;
-		top: 16px;
-		color: #fff;
-		text-align: center;
-		border-radius: 4px;
-		font-size: 28px;
+		top: 22px;
 	}
 
 	.toggle-btn:hover {
-		color: #E9E3E3;
+		opacity: .9;
 	}
 
 	.brand {
@@ -871,8 +799,8 @@ select.form-control{
 	}
 
 	.mainMenu.collapsed .brand i {
-		right: 10px;
-		top: 12px;
+		left: 14px;
+		top: 20px;
 	}
 
 	#menu-content{
@@ -897,6 +825,97 @@ header.navbar li span.divider{
 	position: absolute;
 }
 
+header .navbar-nav > li > .dropdown-menu{
+	background-color: #ecedef;
+}
+
+.navbar-inverse {
+background-color: transparent;
+}
+
+#apps li {
+	float:left;
+}
+#apps li a {
+	padding: 3px 6px;
+}
+#apps {
+	min-width:370px;
+}
+
+#icon-apps, #icon-user {
+	height:22px;
+	width:22px;
+	background-size: 20px;
+	background-position: center;
+	background-repeat: no-repeat;
+	display:inline-block;
+	vertical-align: middle;
+	position:relative;
+	top:-2px;
+	opacity: .8;
+}
+
+#icon-apps{
+	background-image: url(../imgs/icon-apps.png);
+}
+
+#icon-user {
+	background-image: url(../imgs/funcionarios.png);
+	background-size: 18px;
+}
+
+a:hover #icon-apps, a:hover #icon-user{
+	opacity: 1;
+}
+
+.seccion {
+	height:110px;
+	width:110px;
+	background-repeat:no-repeat;
+	background-position: 34px 15px;
+	background-size: 33px 33px;
+	border:4px solid #fff;
+	border-radius:50%;
+	text-align:center;
+	border: 3px solid transparent;
+	transition: all .3s;
+	border: 5px solid #F6F6F6;
+	background-color: #fff;
+}
+
+.seccion:hover {
+	border-color: #1b6394;
+}
+.seccion span {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: normal;
+	position:relative;
+	bottom:-56px;
+	font-size:14px;
+	color: #1b6394;
+	font-weight:bold;
+}
+
+div.seccion span {
+	white-space: normal;
+	text-transform: uppercase; 
+	font-size:10px;
+}
+#logo {
+	height:48px;
+	position: relative;
+	top: 7px;
+	left: 7px;
+}
+
+@media (max-width: 967px) { 
+	#navbar-2 h1{
+		font-size:1.1em;
+	}
+}
+
 @media (max-width: 767px) {
 	header.navbar, 
 	.navbar-left{
@@ -914,10 +933,6 @@ header.navbar li span.divider{
 	.nav.navbar-nav a, .nav.navbar-nav .navbar-text{
 		padding: 10px 20px;
 		margin: 0;
-	}
-
-	.nav.navbar-nav a i, #icon-apps{
-		display: none;
 	}
 
 	.nav.navbar-nav .dropdown-menu{
@@ -964,17 +979,18 @@ header.navbar li span.divider{
 	.navbar-toggle:hover i, .navbar-toggle:focus i{
 		color: #fff!important;
 	}
-
-	footer .pull-right{
-		display: none;
-	}
 }
 
 @media (min-width: 768px) {
 	#navbar-main{
 		height: 62px!important;
 	}
+
+	#apps>li>a:hover, .dropdown-menu>li>a:focus {
+		background-color: #ECEDEF;
+	}
 }
+
 
 /* ESTILOS PARA LA HOME MASTERPAGE */
 .MainContainer.homePage{
@@ -992,6 +1008,8 @@ header.navbar li span.divider{
 		margin-top: -15px;
 	}
 }
+
+
 /*para cuando sea necesario dale un tamaño fijo a una celda*/
 .form-height{
     height: 50px;
@@ -1010,7 +1028,7 @@ header.navbar li span.divider{
 }
 
 #TBMFILTROS a:after, #TBMFILTROSADVANCED a:after{
-	background: url(../imgs/filtoarrow.png) no-repeat center;
+	background: url(../imgs/filtroarrow.png) no-repeat center;
 	content: "";
 	width: 14px;
 	height: 9px;
