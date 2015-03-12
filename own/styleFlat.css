@@ -205,3 +205,24 @@ body, html{
 .dp_container + p{
     display: none !important;
 }
+/*Para alinear los nombres de los campos*/
+.Label
+{
+	float: left;
+	margin-left: 10px;
+	text-align: left;
+}
+ 
+.gx-attribute .Attributewidth
+{
+	width:150px!important;
+}
+.input-group .Attributewidthp
+{
+width:100px!important;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+.Label
+{
+	float: none;
+}
