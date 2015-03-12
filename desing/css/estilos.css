@@ -1052,6 +1052,9 @@ div.seccion span {
 .form-height{
     height: 50px;
 }
+.form-margin{
+    margin-top: 10px;
+}
 
 .nav-tabs li {
 	margin-bottom: 2px;
