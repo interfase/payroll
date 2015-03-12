@@ -1085,3 +1085,6 @@ div.seccion span {
 	-o-transform: rotate(180deg); /* Opera */
 	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2); /* IE old */
 }
+label.control-label.gx-label{
+    height: 100%;
+}
