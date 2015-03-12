@@ -36,6 +36,9 @@ $(document).ready(function() {
         var setWidthOfPopup=function(){
             var popup=gx.popup.currentPopup;
             if(popup.frameDocument){
+                // popup.frameWindow.gx.popup.ext.show=gx.popup.ext.show;
+                // popup.frameWindow.gx.popup.ext.close=gx.popup.ext.close;
+
                 var table=$(popup.frameDocument).find('#MAINFORM');
                 table.css("display","inline-block");
                 table=table.size()?table:$(popup.frameDocument).find('body');
@@ -45,9 +48,13 @@ $(document).ready(function() {
                     id='#'+popup.id;
                 
                 gx.popup.interval = setInterval(function(){
+                    table=$(popup.frameDocument).find('#MAINFORM');
+                    table=table.size()?table:$(popup.frameDocument).find('body');
+
                     width=table.outerWidth()+30;
                     height=table.outerHeight()+80;
                     if(width!=gx.popup.width){
+                        table.css("display","inline-block");
                         $(id+"_b").append("<style id='s1'>.fw1{width:" + (width+10) + "px!important;}"
                                   +".fw2{width:" + width + "px!important;}"
                                   +".fh1{height:"+height+"px!important;}"
@@ -125,9 +132,9 @@ function ScrollTo() {
             if(this.sideMenu.size() == 0)
                 this.sideMenu=null;
 
-            this.deleteEmptyParents();
-
             this.levels=0;
+
+            this.deleteEmptyParents();
 
             menu.checkState();
 
@@ -206,6 +213,7 @@ function ScrollTo() {
 
         toggle: function(){
             this.mainMenu.toggleClass('collapsed');
+            $('.ContentContainer').toggleClass('menuCollapsed');
             contentWidth(this);
 
             $.setCookie('menuCollapsed', this.mainMenu.hasClass('collapsed'));
@@ -216,6 +224,7 @@ function ScrollTo() {
             if($.getCookie('menuCollapsed') === 'true' 
                 && this.sideMenu && this.sideMenu.size()){
                 this.mainMenu.addClass('collapsed');
+                $('.ContentContainer').addClass('menuCollapsed');
             }
 
             if(this.mainMenu && this.mainMenu.find('.menu-error').size()){
@@ -270,7 +279,7 @@ function ScrollTo() {
             }
 
             //El width se lo doy por css porque en IE no esta pinchando
-            var width=$(window).width() - (m.mainMenu?m.mainMenu.width()-1: 0) + 'px';
+            var width=$(window).width() - (m.mainMenu?m.mainMenu.width(): 0) + 'px';
             $('.tdContentPlaceHolder')
                 .css({"min-width": width, 'width': width })
                 .show();
@@ -303,7 +312,7 @@ function ScrollTo() {
         tdPlaceHolder = tdPlaceHolder || $('.tdContentPlaceHolder')
         gxPlaceHolder = gxPlaceHolder || $(".tdContentPlaceHolder .gx-content-placeholder");
 
-        var extraH=/*$('.MainContainer.homePage footer .navbar').height()*/0 + 61;
+        var extraH=/*$('.MainContainer.homePage footer .navbar').height()*/0 + 65;
 
         if ($(window).width() < 767){
             tdPlaceHolder.css("height", ($(window).height() - extraH 
@@ -390,7 +399,7 @@ function ScrollTo() {
             menu.resize();
             setTimeout(function(){ //Algunas veces el menu se queda colgado
                 menu.resize();
-            }, 500);
+            }, 100);
 
 
             placeFooter();
@@ -435,9 +444,14 @@ function ScrollTo() {
                 })
                 .on('shown.bs.collapse', function(e){
                     if(e.target.id=="menu-content"){
+                        menu.sideMenu.css("background-color", "#416392");
                         $("#menu-content").css("height", "100%");
                         menu.scrollToActive();
                         menu.updateScroll();
+                    }
+                }).on('hide.bs.collapse', function(e){
+                    if(e.target.id=="menu-content"){
+                        menu.sideMenu.css("background-color", "initial");
                     }
                 });
             
@@ -449,7 +463,7 @@ function ScrollTo() {
             //Ajustar los tooltips
             setTooltips();
         },
-        100);
+        20);
     }
 
     $(function(){
