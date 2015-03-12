@@ -1,6 +1,6 @@
 body {
 	background: #f0f8fa;
-	overflow-y: hidden;
+	overflow: hidden;
 }
 
 #MAINFORM,
@@ -11,14 +11,28 @@ body {
 }
 
 .ContentContainer{
-	margin-top: 62px!important;
+	margin-top: 65px!important;
 }
 
 .tdContentPlaceHolder{
 	overflow-y:auto;
-	position: absolute;
-	right: 0;
 	background-color: #ecedef;
+	
+}
+
+.contentColumn{
+	width: 1%;
+}
+
+.contentColumn > .Table > .row {
+	margin-right: 0;
+}
+
+.menuPage .tdContentPlaceHolder{
+	padding-left: 0px;
+	padding-right: 0px;
+	position: absolute;
+	left: -1px;
 }
 
 .gx-content-placeholder{
@@ -98,31 +112,40 @@ footer .container-fluid{
 }
 
 #navbar-2 {
-	/*height:60px;*/
 	background:#fff;
 	padding-right: 0px;
+	margin-left: 1px;
 }
 
 #navbar-2 h1 {
 	display: inline;
-	font-size: 1.6em;
+	font-size: 16px;
 	position: relative;
-	top: 15px;
+	top: 20px;
 	color: #1b6394;
 }
+
+#navbar-2 .navbar-left{
+	margin-left: 15px;
+}
+
 #navbar-2 i {
 	color: #1b6394
 }
+
 .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus {
 	color: #333;
 }
+
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus{
 	background:#f1f1f1;
 	color:#333;
 }
+
 .navbar-inverse {
 	border-color: #1b6394;
 }
+
 .navbar-nav>li>a {
 	padding-top:20px;
 }
@@ -509,11 +532,11 @@ select.form-control{
 
 /******************MENU***************/
 .mainMenu{
-	font-family: Roboto-Regular;
 	width: auto!important;
-	min-width: 260px;
-	max-width: 260px;
+	min-width: 224px;
+	max-width: 224px;
 	left: -1px;
+	background-color: #416392;
 }
 
 .mainMenu .menu-error{
@@ -523,14 +546,11 @@ select.form-control{
 }
 
 .nav-side-menu {
-	background-color: #416392;
 	overflow: hidden;
 	font-family: verdana;
-	font-size: 14px;
-	font-weight: 200;
 	position: relative;
 	left: 0px;
-	width: 260px;
+	width: 224px;
 	height: 100%;
 	color: #000;
   	-webkit-user-select: none;
@@ -547,17 +567,20 @@ select.form-control{
 .nav-side-menu .brand {
   background-color: #416392;
   display: block;
-  line-height: 30px;
+  line-height: 35px;
+  height: 65px;
   padding-left: 10px;
   border-bottom: 1px solid #6285b7;
 }
 
 .nav-side-menu .brand a{
 	color: #fff;
-  	font-size: 18px;
-  	display: inline-block;
+	font-size: 15px;
+	font-weight: bold;
+	display: inline-block;
 	margin: 10px 0px;
-	padding: 5px 10px;
+	padding: 6px 10px;
+	font-family: Roboto-Regular;
 }
 
 .nav-side-menu .brand i{
@@ -566,8 +589,8 @@ select.form-control{
 	background-image: url(../imgs/icono-menu.png);
 	width: 23px;
 	height: 16px;
-	right: 30px;
-	top: 22px;
+	right: 15px;
+	top: 24px;
 }
 
 .nav-side-menu .brand i:hover {
@@ -589,11 +612,16 @@ select.form-control{
 
 #menu-content{
 	background-color: #416392;
+	font-size: 14px;
 }
 
 #menu-content, #menu-content ul{
 	padding: 0;
 	margin: 0;
+}
+
+#menu-content a, #menu-content li{
+	font-family: Roboto-Medium;
 }
 
 #menu-content li a {
@@ -658,13 +686,13 @@ select.form-control{
 	padding-left: 60px!important;
 }
 
-#menu-content .parent.active{
+#menu-content .active{
 	font-weight: bold;
 }
 
 #menu-content .arrow{
 	position: absolute;
-	right: 20px;
+	right: 16px;
 	top: 12px;
 	background: url(../imgs/flecha-menu.svg) no-repeat center;
 	width: 14px;
@@ -672,20 +700,15 @@ select.form-control{
 	height: 14px;
 }
 
-#menu-content .parent:not(.collapsed) .arrow{
-    transform: rotate(180deg);
-	-webkit-transform: rotate(180deg); /* Safari and Chrome */
-	-ms-transform: rotate(180deg); /* IE 9 */
-	-moz-transform: rotate(180deg); /* Firefox */
-	-o-transform: rotate(180deg); /* Opera */
-	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2); /* IE old */
-}
-
 .sub-menu.collapse.in{
 	height: auto!important;
 }
 
 @media (max-width: 767px) {
+	.contentColumn{
+		width: 100%!important;
+		margin-top: 50px;
+	}
 	.mainMenu{
 		left: 0;
 		width: 100%!important;
@@ -707,22 +730,27 @@ select.form-control{
 	}
 
 	.menu-content{
-		-webkit-transition: height .35s ease;
-		transition: height .35s ease;
-		-moz-transition: height .35s ease;
+		transition: height .35s linear;
+		-moz-transition: height .35s linear;
+		-webkit-transition: height .35s linear;
+		-o-transition: height .35s linear;
+		-ms-transition: height .35s linear;
 	}
 
 	.nav-side-menu.fh{
 		z-index: 100;
 	}
 
-	.fh{
-		/*height: 100%!important;*/
-	}
-
 	.nav-side-menu .brand i{
 		display: none;
 	}
+
+	.brand {
+		height: 50px!important;
+		text-align: left !important;
+		padding-left: 20px !important;
+	}
+
 
 	.nav-side-menu .toggle-btn {
 		position: absolute;
@@ -734,39 +762,48 @@ select.form-control{
 		cursor: pointer;
 		position: absolute;
 		right: 28px;
-		top: 22px;
+		top: 16px;
 	}
 
 	.toggle-btn:hover {
 		opacity: .9;
 	}
 
-	.brand {
-		text-align: left !important;
-		font-size: 22px;
-		padding-left: 20px !important;
-	}
-
 	.tdContentPlaceHolder{
-		right: 0px;
+		left: 0px!important;
 	}
 
 	.mainMenu:not(.empty) + .tdContentPlaceHolder{
 		margin-top: 60px;
 	}
+
+	#menu-content{
+		-webkit-transition-timing-function: linear;
+		-timing-function
+	}
 }
 
 @media (min-width: 767px) {
-	  .nav-side-menu .menu-list .menu-content {
-	    display: block;
-	  }
-
-	.mainMenu.collapsed {
-		min-width: 50px;
-		width: 50px!important;
+	.menuPage header{
+		left: 223px;
 	}
 
-	.mainMenu.collapsed .nav-side-menu {
+	.menuCollapsed header{
+		left: 49px;
+	}
+
+	.menuPage header > .row{
+		margin-left: 0px;
+	}
+
+	.mainMenu{
+		margin-top: -65px;
+	}
+
+	.nav-side-menu .menu-list .menu-content {
+		display: block;
+	}
+	.mainMenu.collapsed {
 		min-width: 50px;
 		width: 50px!important;
 	}
@@ -903,11 +940,12 @@ div.seccion span {
 	text-transform: uppercase; 
 	font-size:10px;
 }
+
 #logo {
-	height:48px;
 	position: relative;
-	top: 7px;
-	left: 7px;
+	top: 13px;
+	width: 162px;
+	height: 39px;
 }
 
 @media (max-width: 967px) { 
@@ -919,7 +957,7 @@ div.seccion span {
 @media (max-width: 767px) {
 	header.navbar, 
 	.navbar-left{
-		height: 62px!important;
+		height: 65px!important;
 	}
 
 	header.navbar .container-fluid{
@@ -960,7 +998,7 @@ div.seccion span {
 	}
 
 	#navbar-main:not(.in):not(.collapsing){
-		height: 62px!important;
+		height: 65px!important;
 	}
 
 	#navbar-main li{
@@ -983,7 +1021,7 @@ div.seccion span {
 
 @media (min-width: 768px) {
 	#navbar-main{
-		height: 62px!important;
+		height: 65px!important;
 	}
 
 	#apps>li>a:hover, .dropdown-menu>li>a:focus {
@@ -994,7 +1032,7 @@ div.seccion span {
 
 /* ESTILOS PARA LA HOME MASTERPAGE */
 .MainContainer.homePage{
-	padding-left: 0px!important;
+	padding-left: 10px!important;
 }
 
 .MainContainer.homePage .tdContentPlaceHolder{
