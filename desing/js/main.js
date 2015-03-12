@@ -1,108 +1,3 @@
-
-$(document).ready(function() {
-                                            
-    //patch para un doble ready de genexus con los prompts, 
-    //no idea por que hace esto el monstruo del icono rojo
-    console.log(window.alreadyLoaded ? "Already loaded" : "Not loaded yet");
-    if(!window.alreadyLoaded){
-        window.alreadyLoaded=true;
-        
-        // Cambio de Container por ContainerFluid
-        $('div.Container').attr('class', 'container-fluid FormContainer');
-
-        //Scroll en los Grids Largos
-        $('#GRIDLARGEID').children('div').addClass('GridLarge');
-
-       
-        setTimeout(function(){
-            //setear titulo de la pagina para estandarizar todos los objetos
-            //Esto es temporal, una vez eliminado el Form.Caption="..." de los
-            //WP del sistema quitar esta seccion
-            if(window.objdesc && window.modulo){
-                var splited=objdesc.split('|');
-                if(splited.length==1){
-                    splited=objdesc.split(' l ');
-                }
-                objdesc=splited[splited.length-1].trim();
-                objdesc=objdesc[0].toUpperCase()+objdesc.slice(1);
-                modulo=modulo.trim();
-                modulo=modulo[0].toUpperCase()+modulo.slice(1);
-                document.title=modulo+' | '+objdesc;
-            }
-        }, 200);
-
-
-        /*Ajustar los prompts a la tabla que tienen dentro*/
-        var setWidthOfPopup=function(){
-            var popup=gx.popup.currentPopup;
-            if(popup.frameDocument){
-                // popup.frameWindow.gx.popup.ext.show=gx.popup.ext.show;
-                // popup.frameWindow.gx.popup.ext.close=gx.popup.ext.close;
-
-                var table=$(popup.frameDocument).find('#MAINFORM');
-                table.css("display","inline-block");
-                table=table.size()?table:$(popup.frameDocument).find('body');
-
-                var width=table.outerWidth()+30,
-                    height=table.outerHeight()+80,
-                    id='#'+popup.id;
-                
-                gx.popup.interval = setInterval(function(){
-                    table=$(popup.frameDocument).find('#MAINFORM');
-                    table=table.size()?table:$(popup.frameDocument).find('body');
-
-                    width=table.outerWidth()+30;
-                    height=table.outerHeight()+80;
-                    if(width!=gx.popup.width){
-                        table.css("display","inline-block");
-                        $(id+"_b").append("<style id='s1'>.fw1{width:" + (width+10) + "px!important;}"
-                                  +".fw2{width:" + width + "px!important;}"
-                                  +".fh1{height:"+height+"px!important;}"
-                                  +".fh2{height:"+(height+25)+"px!important;}</style>");
-                
-                        $(id + "_b").addClass("fw1").addClass("fh2");
-                        $(id + "_t").addClass("fw2");
-
-                        console.log("popup width changed!");
-                        gx.popup.width=width;
-                    }
-                },1);
-
-                
-
-                $(id + "_b").css({
-                                  left:$('body').width()/2 - width/2 - 9,
-                                  top: $('body').height()/2 - height/2 -28
-                                });
-
-                $(id + "_c").addClass("fh1");
-                $(id+"_rs").css("display", "none");
-            }
-            else{
-                setTimeout(setWidthOfPopup, 100);
-            }
-        }
-
-        gx.popup.origOpenPrompt=gx.popup.ext.show;
-        gx.popup.origClosePrompt=gx.popup.ext.close;
-
-        gx.popup.ext.show=function(c){
-            console.log("openPrompt");
-            gx.popup.origOpenPrompt(c);
-            setWidthOfPopup();
-        };
-
-        gx.popup.ext.close=function(c,e){
-            console.log("closePrompt");
-            clearInterval(gx.popup.interval);
-            gx.popup.width=0;
-            gx.popup.origClosePrompt(c,e);
-
-        }
-    }
-});
-
-
 function ScrollTo() {
    var div = $('#vLOGMENSAJES');
    div.scrollTop(div.scrollTop() + div.innerHeight());
@@ -380,10 +275,11 @@ function ScrollTo() {
 
     var initAll = function(){
         //Cambiar el footer de posicion
+        console.log('place footer');
         var f=$('.MainContainer footer')
         if(f.size()){
             var footer=f.clone();
-            f.remove();
+            f.parents('.row').first().remove();
             $('.tdContentPlaceHolder').append(footer);
         }
 
@@ -438,6 +334,7 @@ function ScrollTo() {
 
                         menu.sideMenu.addClass("fh");
                         menu.menuList.removeClass("fh");
+                        $("#menu-content").height("100%");
 
                         $(".mainMenu").addClass("fh");
                     }
@@ -445,7 +342,6 @@ function ScrollTo() {
                 .on('shown.bs.collapse', function(e){
                     if(e.target.id=="menu-content"){
                         menu.sideMenu.css("background-color", "#416392");
-                        $("#menu-content").css("height", "100%");
                         menu.scrollToActive();
                         menu.updateScroll();
                     }
@@ -466,7 +362,108 @@ function ScrollTo() {
         20);
     }
 
-    $(function(){
-        initAll();
+
+    $(document).ready(function() {
+        //patch para un doble ready de genexus con los prompts, 
+        //no idea por que hace esto el monstruo del icono rojo
+        console.log(window.alreadyLoaded ? "Already loaded" : "Not loaded yet");
+        if(!window.alreadyLoaded){
+            window.alreadyLoaded=true;
+            
+            // Cambio de Container por ContainerFluid
+            $('div.Container').attr('class', 'container-fluid FormContainer');
+
+            //Scroll en los Grids Largos
+            $('#GRIDLARGEID').children('div').addClass('GridLarge');
+
+           
+            setTimeout(function(){
+                //setear titulo de la pagina para estandarizar todos los objetos
+                //Esto es temporal, una vez eliminado el Form.Caption="..." de los
+                //WP del sistema quitar esta seccion
+                if(window.objdesc && window.modulo){
+                    var splited=objdesc.split('|');
+                    if(splited.length==1){
+                        splited=objdesc.split(' l ');
+                    }
+                    objdesc=splited[splited.length-1].trim();
+                    objdesc=objdesc[0].toUpperCase()+objdesc.slice(1);
+                    modulo=modulo.trim();
+                    modulo=modulo[0].toUpperCase()+modulo.slice(1);
+                    document.title=modulo+' | '+objdesc;
+                }
+            }, 200);
+
+
+            /*Ajustar los prompts a la tabla que tienen dentro*/
+            var setWidthOfPopup=function(){
+                var popup=gx.popup.currentPopup;
+                if(popup.frameDocument){
+                    // popup.frameWindow.gx.popup.ext.show=gx.popup.ext.show;
+                    // popup.frameWindow.gx.popup.ext.close=gx.popup.ext.close;
+
+                    var table=$(popup.frameDocument).find('#MAINFORM');
+                    table.css("display","inline-block");
+                    table=table.size()?table:$(popup.frameDocument).find('body');
+
+                    var width=table.outerWidth()+30,
+                        height=table.outerHeight()+80,
+                        id='#'+popup.id;
+                    
+                    gx.popup.interval = setInterval(function(){
+                        table=$(popup.frameDocument).find('#MAINFORM');
+                        table=table.size()?table:$(popup.frameDocument).find('body');
+
+                        width=table.outerWidth()+30;
+                        height=table.outerHeight()+80;
+                        if(width!=gx.popup.width){
+                            table.css("display","inline-block");
+                            $(id+"_b").append("<style id='s1'>.fw1{width:" + (width+10) + "px!important;}"
+                                      +".fw2{width:" + width + "px!important;}"
+                                      +".fh1{height:"+height+"px!important;}"
+                                      +".fh2{height:"+(height+25)+"px!important;}</style>");
+                    
+                            $(id + "_b").addClass("fw1").addClass("fh2");
+                            $(id + "_t").addClass("fw2");
+
+                            console.log("popup width changed!");
+                            gx.popup.width=width;
+                        }
+                    },1);
+
+                    
+
+                    $(id + "_b").css({
+                                      left:$('body').width()/2 - width/2 - 9,
+                                      top: $('body').height()/2 - height/2 -28
+                                    });
+
+                    $(id + "_c").addClass("fh1");
+                    $(id+"_rs").css("display", "none");
+                }
+                else{
+                    setTimeout(setWidthOfPopup, 100);
+                }
+            }
+
+            gx.popup.origOpenPrompt=gx.popup.ext.show;
+            gx.popup.origClosePrompt=gx.popup.ext.close;
+
+            gx.popup.ext.show=function(c){
+                console.log("openPrompt");
+                gx.popup.origOpenPrompt(c);
+                setWidthOfPopup();
+            };
+
+            gx.popup.ext.close=function(c,e){
+                console.log("closePrompt");
+                clearInterval(gx.popup.interval);
+                gx.popup.width=0;
+                gx.popup.origClosePrompt(c,e);
+
+            }
+
+            initAll();
+        }
     });
 })();
