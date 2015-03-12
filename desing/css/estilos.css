@@ -738,7 +738,7 @@ select.form-control{
 	}
 
 	.nav-side-menu.fh{
-		z-index: 100;
+		z-index: 120;
 	}
 
 	.nav-side-menu .brand i{
@@ -749,6 +749,11 @@ select.form-control{
 		height: 50px!important;
 		text-align: left !important;
 		padding-left: 20px !important;
+	}
+
+	.brand a{
+		margin: 4px 0px!important;
+		padding: 4px 10px!important;
 	}
 
 
@@ -775,11 +780,6 @@ select.form-control{
 
 	.mainMenu:not(.empty) + .tdContentPlaceHolder{
 		margin-top: 60px;
-	}
-
-	#menu-content{
-		-webkit-transition-timing-function: linear;
-		-timing-function
 	}
 }
 
