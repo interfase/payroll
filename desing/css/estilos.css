@@ -1181,9 +1181,6 @@ label.control-label.gx-label{
     .inicio-main_content{
         padding: 0;
     }
-    .img-module{
-        position: relative;
-    }
 }
 
 @media (min-width: 992px) {
@@ -1204,10 +1201,6 @@ label.control-label.gx-label{
     .inicio-main_content{
         padding: 0 30px;
     }
-    .img-module{
-        position: relative;
-        width: 50px;
-    }
 }
 
 @media (min-width: 1200px) {
@@ -1219,9 +1212,6 @@ label.control-label.gx-label{
     }
     .inicio-main_content{
         padding: 0 50px;
-    }
-    .img-module{
-        position: relative;
     }
 }
 /*********************** End Pagina de inicio de modulo **************/

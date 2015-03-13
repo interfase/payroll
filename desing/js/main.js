@@ -7,12 +7,12 @@ function ScrollTo() {
  --        ****             MENU           ****               --
  -------------------------------------------------------------*/
 
-(function(){
-    var footer=null,      
-        gxPlaceHolder=null,
-        tdPlaceHolder=null;
+(function () {
+    var footer = null,
+            gxPlaceHolder = null,
+            tdPlaceHolder = null;
 
-    var menu={
+    var menu = {
         mainMenu: null,
         sideMenu: null,
         menuList: null,
@@ -37,7 +37,7 @@ function ScrollTo() {
             menu.checkState();
 
             this.initScroll();
-            this.screenState = $(window).width()>=767?'large':'small';
+            this.screenState = $(window).width() >= 767 ? 'large' : 'small';
         },
         updateScroll: function () {
             if (this.menuList && this.menuList.size())
@@ -193,9 +193,9 @@ function ScrollTo() {
     var contentHeight = function (m) {
         var extraH = /*$('.MainContainer.homePage footer .navbar').height()*/0 + 65;
 
-        if ($(window).width() <= 767){
-            tdPlaceHolder.css("height", ($(window).height() - extraH 
-                - $('.mainMenu .brand').height()) + 'px');
+        if ($(window).width() <= 767) {
+            tdPlaceHolder.css("height", ($(window).height() - extraH
+                    - $('.mainMenu .brand').height()) + 'px');
         }
         else {
             tdPlaceHolder.css("height", ($(window).height() - extraH) + 'px');
@@ -259,26 +259,26 @@ function ScrollTo() {
     var setPositionImg = function () {
         $alt = $('.inicio-header').parent();
         if ($alt) {
-            var header=$('.inicio-cell_header'),
-                img=$('img.img-module'),
-                w=header.outerWidth(),
-                t=w*0.14;
+            var header = $('.inicio-cell_header'),
+                    img = $('img.img-module'),
+                    w = header.outerWidth(),
+                    t = w * 0.14;
 
-            var h=t,
-                windowW=$(window).width();
-            if(windowW<480)
-                h*=0.5;
-            else if(windowW<768)
-                h*=0.6
-            else if(windowW<992)
-                h*=0.4
+            var h = t,
+                    windowW = $(window).width();
+            if (windowW < 480)
+                h *= 0.5;
+            else if (windowW < 768)
+                h *= 0.6
+            else if (windowW < 992)
+                h *= 0.4
             else
-                h*=0.3
+                h *= 0.3
 
             img.width(h);
             img.height('auto');
 
-            if($(window).width()<992 && img.height()>60){
+            if ($(window).width() < 992 && img.height() > 60) {
                 img.width('auto');
                 img.height(60);
             }
@@ -290,10 +290,10 @@ function ScrollTo() {
                 var height = parseInt($(window).width()) > 992 ? h : 100;
                 return parseInt(height / 2) - parseInt($('img.img-module').height() / 2);
             });
-      
+
 
             img.offset({
-                 left: header.offset().left + w -(t/2+img.width()/2) + t * 0.14
+                left: header.offset().left + w - (t / 2 + img.width() / 2) + t * 0.14
             })
         }
     };
@@ -301,9 +301,9 @@ function ScrollTo() {
     var initAll = function () {
         //Cambiar el footer de posicion
         console.log('place footer');
-        var f=$('.MainContainer footer')
-        if(f.size()){
-            var ft=f.clone();
+        var f = $('.MainContainer footer')
+        if (f.size()) {
+            var ft = f.clone();
             f.parents('.row').first().remove();
             $('.tdContentPlaceHolder').append(ft);
         }
@@ -312,7 +312,7 @@ function ScrollTo() {
         tdPlaceHolder = tdPlaceHolder || $('.tdContentPlaceHolder')
         gxPlaceHolder = gxPlaceHolder || $(".tdContentPlaceHolder .gx-content-placeholder");
 
-        setTimeout(function(){
+        setTimeout(function () {
             //Dejar .mainMenu unico
             $(".mainMenu").not($(".mainMenu").first()).remove()
 
@@ -363,21 +363,21 @@ function ScrollTo() {
                     .on('show.bs.collapse', function (e) {
                         if (e.target.id == "menu-content") {
 
-                        menu.sideMenu.addClass("fh");
-                        menu.menuList.removeClass("fh");
+                            menu.sideMenu.addClass("fh");
+                            menu.menuList.removeClass("fh");
 
-                        $(".mainMenu").addClass("fh");
-                    }
-                })
-                .on('shown.bs.collapse', function(e){
-                    if(e.target.id=="menu-content"){
-                        menu.sideMenu.css("background-color", "#416392");
-                        $("#menu-content").css('height', "100%");
+                            $(".mainMenu").addClass("fh");
+                        }
+                    })
+                    .on('shown.bs.collapse', function (e) {
+                        if (e.target.id == "menu-content") {
+                            menu.sideMenu.css("background-color", "#416392");
+                            $("#menu-content").css('height', "100%");
 
-                        menu.scrollToActive();
-                        menu.updateScroll();
-                    }
-                });
+                            menu.scrollToActive();
+                            menu.updateScroll();
+                        }
+                    });
 
             //Ajustar los tooltips
             setTooltips();
@@ -408,12 +408,12 @@ function ScrollTo() {
                     if (splited.length == 1) {
                         splited = objdesc.split(' l ');
                     }
-                    objdesc=splited[splited.length-1].trim();
-                    objdesc=objdesc[0].toUpperCase()+objdesc.slice(1);
-                    modulo=modulo.trim();
-                    modulo=modulo[0].toUpperCase()+modulo.slice(1);
-                    if(modulo!=objdesc)
-                        document.title=modulo+' | '+objdesc;
+                    objdesc = splited[splited.length - 1].trim();
+                    objdesc = objdesc[0].toUpperCase() + objdesc.slice(1);
+                    modulo = modulo.trim();
+                    modulo = modulo[0].toUpperCase() + modulo.slice(1);
+                    if (modulo != objdesc)
+                        document.title = modulo + ' | ' + objdesc;
                 }
             }, 200);
 
