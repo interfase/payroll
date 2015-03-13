@@ -259,6 +259,30 @@ function ScrollTo() {
     var setPositionImg = function () {
         $alt = $('.inicio-header').parent();
         if ($alt) {
+            var header=$('.inicio-cell_header'),
+                img=$('img.img-module'),
+                w=header.outerWidth(),
+                t=w*0.14;
+
+            var h=t,
+                windowW=$(window).width();
+            if(windowW<480)
+                h*=0.5;
+            else if(windowW<768)
+                h*=0.6
+            else if(windowW<992)
+                h*=0.4
+            else
+                h*=0.3
+
+            img.width(h);
+            img.height('auto');
+
+            if($(window).width()<992 && img.height()>60){
+                img.width('auto');
+                img.height(60);
+            }
+
             var h = $alt.innerHeight();
             $('img.img-module').parent().height(h);
 
@@ -266,17 +290,11 @@ function ScrollTo() {
                 var height = parseInt($(window).width()) > 992 ? h : 100;
                 return parseInt(height / 2) - parseInt($('img.img-module').height() / 2);
             });
+      
 
-            $('img.img-module').css('left', function () {
-                var diff = $(window).width() > 992 ? 10 : 0;
-                var w = $('img.img-module').parent().innerWidth();
-                var p = parseInt(w / 2) 
-                        - parseInt($('img.img-module').width() / 2) 
-                        - diff 
-                        - parseInt($('img.img-module').parent().css('paddingLeft'));
-                
-                return p;
-            });
+            img.offset({
+                 left: header.offset().left + w -(t/2+img.width()/2) + t * 0.14
+            })
         }
     };
 

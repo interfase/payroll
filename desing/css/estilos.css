@@ -1165,6 +1165,12 @@ label.control-label.gx-label{
     margin: 0 10px;    
 }
 
+.inicio-cell_header .col-sm-1{
+	padding: 0;
+	width: 1px;
+}
+
+
 @media (min-width: 768px) {
     .inicio-header{
         padding: 10px 0;   
