@@ -1219,3 +1219,12 @@ label.control-label.gx-label{
     }
 }
 /*********************** End Pagina de inicio de modulo **************/
+
+/****************Eliminar el transition bezier del tema ****************/
+div.gx-content-placeholder > div.gx-ct-body.Form-fx, 
+div.gxwebcomponent > div.gxwebcomponent-body.Form-fx, 
+body.Form-fx{
+	trasition: none!important;
+	-webkit-transition:none!important;
+}
+/*********************End**********************************/

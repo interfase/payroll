@@ -318,8 +318,6 @@ function ScrollTo() {
             menu.findActive();
             menu.scrollToActive();
 
-            setPositionImg();
-
             /* -----  Event Handlers */
             $(window).resize(function () {
                 contentWidth(menu);
@@ -471,6 +469,8 @@ function ScrollTo() {
             }
 
             initAll();
+
+            setTimeout(setPositionImg, 60);
         }
     });
 })();
