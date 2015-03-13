@@ -8,6 +8,10 @@ function ScrollTo() {
 -------------------------------------------------------------*/
 
 (function(){
+    var footer=null,      
+        gxPlaceHolder=null,
+        tdPlaceHolder=null;
+
     var menu={
         mainMenu: null,
         sideMenu: null,
@@ -34,7 +38,7 @@ function ScrollTo() {
             menu.checkState();
 
             this.initScroll();
-            this.screenState = $(window).width()>767?'large':'small';
+            this.screenState = $(window).width()>=767?'large':'small';
         },
 
         updateScroll: function(){
@@ -178,7 +182,6 @@ function ScrollTo() {
             $('.tdContentPlaceHolder')
                 .css({"min-width": width, 'width': width })
                 .show();
-
         } else { //pantalla xs
             if(m.screenState == 'large'){ //si estaba en pantalla grande
                 m.screenState = 'small';
@@ -190,34 +193,23 @@ function ScrollTo() {
                     $("#menu-content").css("height", "0");
                 }
             }
-
             //El width se lo doy por css porque en IE no esta pinchando
             $('.tdContentPlaceHolder').css({width: '100%','min-width':0});
         }
-        // document.title=$('.tdContentPlaceHolder').width();
+        placeFooter();
     };
-
-    var footer=null,
-        gxPlaceHolder=null,
-        tdPlaceHolder=null;
 
     //para manejar el alto del contenido
     var contentHeight = function (m) {
-        footer = footer || $('.tdContentPlaceHolder footer');
-        tdPlaceHolder = tdPlaceHolder || $('.tdContentPlaceHolder')
-        gxPlaceHolder = gxPlaceHolder || $(".tdContentPlaceHolder .gx-content-placeholder");
-
         var extraH=/*$('.MainContainer.homePage footer .navbar').height()*/0 + 65;
 
-        if ($(window).width() < 767){
+        if ($(window).width() <= 767){
             tdPlaceHolder.css("height", ($(window).height() - extraH 
                 - $('.mainMenu .brand').height()) + 'px');
         }
         else{
             tdPlaceHolder.css("height", ($(window).height()- extraH) + 'px');
         }
-        
-        placeFooter();
     };
 
     //settear la position del footer en dependencia del contenido
@@ -278,10 +270,14 @@ function ScrollTo() {
         console.log('place footer');
         var f=$('.MainContainer footer')
         if(f.size()){
-            var footer=f.clone();
+            var ft=f.clone();
             f.parents('.row').first().remove();
-            $('.tdContentPlaceHolder').append(footer);
+            $('.tdContentPlaceHolder').append(ft);
         }
+
+        footer = footer || $('.tdContentPlaceHolder footer');
+        tdPlaceHolder = tdPlaceHolder || $('.tdContentPlaceHolder')
+        gxPlaceHolder = gxPlaceHolder || $(".tdContentPlaceHolder .gx-content-placeholder");
 
         setTimeout(function(){
             //Dejar .mainMenu unico
@@ -312,6 +308,7 @@ function ScrollTo() {
                 contentWidth(menu);
                 contentHeight(menu);
                 menu.resize();
+                placeFooter();
             });
 
             $('.brand i').click(function(){
@@ -334,7 +331,6 @@ function ScrollTo() {
 
                         menu.sideMenu.addClass("fh");
                         menu.menuList.removeClass("fh");
-                        $("#menu-content").height("100%");
 
                         $(".mainMenu").addClass("fh");
                     }
@@ -342,6 +338,8 @@ function ScrollTo() {
                 .on('shown.bs.collapse', function(e){
                     if(e.target.id=="menu-content"){
                         menu.sideMenu.css("background-color", "#416392");
+                        $("#menu-content").css('height', "100%");
+
                         menu.scrollToActive();
                         menu.updateScroll();
                     }
@@ -390,7 +388,8 @@ function ScrollTo() {
                     objdesc=objdesc[0].toUpperCase()+objdesc.slice(1);
                     modulo=modulo.trim();
                     modulo=modulo[0].toUpperCase()+modulo.slice(1);
-                    document.title=modulo+' | '+objdesc;
+                    if(modulo!=objdesc)
+                        document.title=modulo+' | '+objdesc;
                 }
             }, 200);
 

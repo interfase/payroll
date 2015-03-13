@@ -102,8 +102,9 @@ footer .container-fluid{
 #wrapper ul.list-inline li a:hover {
 	text-decoration:none;
 }
+
 .navbar-fixed-top, .navbar-fixed-bottom{
-    z-index: 101;
+    z-index: 120;
 }
 
 #page-content-wrapper {
@@ -730,15 +731,15 @@ select.form-control{
 	}
 
 	.menu-content{
-		transition: height .35s linear;
-		-moz-transition: height .35s linear;
-		-webkit-transition: height .35s linear;
-		-o-transition: height .35s linear;
-		-ms-transition: height .35s linear;
+		transition: all .2s linear!important;
+		-moz-transition: all .2s linear!important;
+		-webkit-transition: all .2s linear!important;
+		-o-transition: all .2s linear!important;
+		-ms-transition: all .2s linear!important;
 	}
 
 	.nav-side-menu.fh{
-		z-index: 120;
+		z-index: 102;
 	}
 
 	.nav-side-menu .brand i{
@@ -776,6 +777,7 @@ select.form-control{
 
 	.tdContentPlaceHolder{
 		left: 0px!important;
+		top: 0;
 	}
 
 	.mainMenu:not(.empty) + .tdContentPlaceHolder{
@@ -783,7 +785,7 @@ select.form-control{
 	}
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
 	.menuPage header{
 		left: 223px;
 	}
@@ -844,6 +846,7 @@ select.form-control{
 		height: 100%!important;
 	}
 }
+/*End menu lateral*/
 
 /*		MENU PRINCIPAL */
 header.navbar{
@@ -982,6 +985,7 @@ div.seccion span {
 		margin-left: -15px;
 		border: none;
 		width: 100%;
+		z-index: 200;
 	}
 
 	#navbar-main a:hover, 
@@ -1028,7 +1032,7 @@ div.seccion span {
 		background-color: #ECEDEF;
 	}
 }
-
+/*End menu principal*/
 
 /* ESTILOS PARA LA HOME MASTERPAGE */
 .MainContainer.homePage{
@@ -1046,7 +1050,7 @@ div.seccion span {
 		margin-top: -15px;
 	}
 }
-
+/*End*/
 
 /*para cuando sea necesario dale un tamaño fijo a una celda*/
 .form-height{
@@ -1088,6 +1092,7 @@ div.seccion span {
 label.control-label.gx-label{
     height: 100%;
 }
+
 /*********************** Start Pagina de inicio de modulo *************/
 .inicio-cell_header{
     background-image: url(../imgs/header.jpg);
