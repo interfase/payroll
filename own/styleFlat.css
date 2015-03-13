@@ -206,7 +206,7 @@ body, html{
     display: none !important;
 }
 /*Para alinear los nombres de los campos*/
-.Label
+.alignleft .Label
 {
 	float: left;
 	margin-left: 10px;
@@ -222,7 +222,7 @@ body, html{
 width:100px!important;
 }
 @media (min-width: 320px) and (max-width: 480px) {
-.Label
+.alignleft .Label
 {
 	float: none;
 }
