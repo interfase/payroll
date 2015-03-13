@@ -255,6 +255,26 @@ function ScrollTo() {
         }
     }
 
+    //Posición icono de las páginas inicio de los módulos
+    var setPositionImg = function () {
+        $alt = $('.inicio-header').parent();
+        if ($alt) {
+            var h = $alt.innerHeight();
+            $('img.img-module').parent().height(h);
+
+            $('img.img-module').css('top', function () {
+                var height = parseInt($(window).width()) > 992 ? h : 100;
+                return parseInt(height / 2) - parseInt($('img.img-module').height() / 2);
+            });
+
+            $('img.img-module').css('left', function () {
+                var diff = $(window).width() > 992 ? 10 : 0;
+                var w = $('img.img-module').parent().innerWidth();
+                return parseInt(w / 2) - parseInt($('img.img-module').width() / 2) - diff;
+            });
+        }
+    };
+
     var initAll = function () {
         //Cambiar el footer de posicion
         console.log('place footer');
@@ -293,12 +313,15 @@ function ScrollTo() {
             menu.findActive();
             menu.scrollToActive();
 
+            setPositionImg();
+
             /* -----  Event Handlers */
             $(window).resize(function () {
                 contentWidth(menu);
                 contentHeight(menu);
                 menu.resize();
                 placeFooter();
+                setPositionImg();
             });
 
             $('.brand i').click(function () {
@@ -332,12 +355,12 @@ function ScrollTo() {
 
                         menu.scrollToActive();
                         menu.updateScroll();
-                    });
+                    }
+                });
 
             //Ajustar los tooltips
             setTooltips();
-        },
-                20);
+        }, 20);
     }
 
 
@@ -443,33 +466,6 @@ function ScrollTo() {
             }
 
             initAll();
-
-            //Posición icono de las páginas inicio de los módulos
-
-            var setPositionImg = function () {
-                $alt = $('.inicio-header').parent();
-                if ($alt) {
-                    var h = $alt.innerHeight();
-                    $('img.img-module').parent().height(h);
-
-                    $('img.img-module').css('top', function () {
-                        var height = parseInt($(window).width()) > 992 ? h : 100;
-                        return parseInt(height / 2) - parseInt($('img.img-module').height() / 2);
-                    });
-
-                    $('img.img-module').css('left', function () {
-                        var diff = $(window).width() > 992 ? 10 : 0;
-                        var w = $('img.img-module').parent().innerWidth();
-                        return parseInt(w / 2) - parseInt($('img.img-module').width() / 2) - diff;
-                    });
-                }
-            };
-            $(window).resize(function () {
-                setPositionImg();
-            });
-            setTimeout(function () {
-                setPositionImg();
-            }, 100);
         }
     });
 })();
