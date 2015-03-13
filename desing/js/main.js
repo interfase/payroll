@@ -258,7 +258,7 @@ function ScrollTo() {
     //Posición icono de las páginas inicio de los módulos
     var setPositionImg = function () {
         $alt = $('.inicio-header').parent();
-        if ($alt) {
+        if ($alt.size()) {
             var header=$('.inicio-cell_header'),
                 img=$('img.img-module'),
                 w=header.outerWidth(),
