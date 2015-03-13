@@ -471,7 +471,9 @@ function ScrollTo() {
                     $('img.img-module').css('left', function () {
                         var diff = $(window).width() > 992 ? 10 : 0;
                         var w = $('img.img-module').parent().innerWidth();
-                        return parseInt(w / 2) - parseInt($('img.img-module').width() / 2) - diff;
+                        var p = parseInt(w / 2) - parseInt($('img.img-module').width() / 2) - diff - parseInt($('img.img-module').parent().css('paddingLeft'));
+                        
+                        return p;
                     });
                 }
             };
