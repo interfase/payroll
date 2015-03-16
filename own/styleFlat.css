@@ -185,7 +185,7 @@ label{
 
 /** Medias **/
 @media(min-width){
-    
+
 }
 
 .mainMenu{
@@ -208,21 +208,22 @@ body, html{
 /*Para alinear los nombres de los campos*/
 .alignleft .Label
 {
-	float: left;
-	margin-left: 10px;
-	text-align: left;
+    float: left;
+    margin-left: 10px;
+    text-align: left;
 }
- 
+
 .gx-attribute .Attributewidth
 {
-	width:150px!important;
+    width:150px!important;
 }
 .input-group .Attributewidthp
 {
-width:100px!important;
+    width:100px!important;
 }
 @media (min-width: 320px) and (max-width: 480px) {
-.alignleft .Label
-{
-	float: none;
+    .alignleft .Label
+    {
+        float: none;
+    }
 }
