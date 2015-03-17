@@ -95,6 +95,7 @@ footer .container-fluid{
         display: none;
     }
 }
+/*end footer*/
 
 #wrapper {
     padding-left:250px;
@@ -478,17 +479,14 @@ div.tooltip .tooltip-inner{
     display: none!important; 
 }
 
-/*Fix para los grid en IE*/
+/*GRIDS*/
 .Grid .gx-row-selected, .Grid .gx-row-selected td {
     background-color: #e8f2fc !important;
 }
 
-.Grid tr:hover, .Grid tr:hover td{
+.Grid tbody tr:hover, 
+.Grid tbody tr:hover:not(.GridFooter) td{
     background-color: #e8f2fc !important;
-}
-
-.Grid{
-    border-spacing: 0!important;
 }
 
 .GridTitle {
@@ -497,23 +495,125 @@ div.tooltip .tooltip-inner{
     padding-top: 9px !important;
 }
 
-/*ACCIONES DE LOS GRIDS*/
+.GridFooter, .Grid tfoot tr:hover{
+    background-color: transparent!important;
+}
 
+.GridFooter .gx-grid-paging-bar span{
+    background-color: #fff!important;
+}
+
+table.Grid{
+    border-collapse: separate;
+    border-spacing: 0px 5px!important;
+    background-color: transparent!important;
+    margin-top: 0px!important;
+    border: none;
+}
+
+table.Grid tbody tr{
+    outline: solid #DFDFDF 1px;
+}
+
+table.Grid tbody td {
+    background-color: #fff;
+}
+
+.TablePrincipal.transparent{
+    background-color: transparent!important;
+    border-width: 0;
+    border-radius: 0;
+}
+.TablePrincipal.border-top{
+    border-top: 2px solid #E6E6E6;
+}
+/*END GRIDS*/
+
+/*grid PAGER*/
+.PagingButtonsFirst,
+.PagingButtonsPrevious,
+.PagingButtonsNext,
+.PagingButtonsLast{
+    background-image: none;
+    font-family: FontAwesome;
+    color: #196396;
+    font-size: 20px;
+}
+
+.PagingButtonsFirst:not(.gx-grid-paging-disabled):hover,
+.PagingButtonsPrevious:not(.gx-grid-paging-disabled):hover,
+.PagingButtonsNext:not(.gx-grid-paging-disabled):hover,
+.PagingButtonsLast:not(.gx-grid-paging-disabled):hover{
+    color: #fff;
+    background-color: #196396!important;
+}
+
+.gx-grid-paging-disabled{
+    color: #AFAFAF;
+}
+.PagingButtonsFirst:before,
+.PagingButtonsPrevious:before,
+.PagingButtonsNext:before,
+.PagingButtonsLast:before{
+    top: 9px;
+    right: 6px;
+    position: relative;
+}
+
+.PagingButtonsFirst:before{
+    content: "\f100";
+}
+.PagingButtonsPrevious:before{
+    content: "\f104";
+}
+.PagingButtonsNext:before{
+    content: "\f105";
+}
+.PagingButtonsLast:before{
+    content: "\f101";
+}
+/*END grids PAGER*/
+
+
+/*ACCIONES DE LOS GRIDS*/
 .TableActions, .TableInsert{
     margin-bottom: 5px!important;
     height: 40px!important;
+    border-spacing: 0;
+}
+
+.TableInsert, .TableInsert td, .TableInsert input{
+    padding-right: 0;
+    margin-right: 0;
+}
+
+.TableActions, .TableActions td{
+    padding-left: 0;
 }
 
 .TableActions .ActionGroup, .TableInsert .ActionGroup{
     margin-bottom: 0!important;
 }
 
+.TableActions .dropdown-toggle{
+    font-weight: bold;
+    color: #6d6e70;
+}
+
+
 .ActionGroup .btn {
     margin-bottom: 2px;
 }
 
-.Grid{
-    margin-top: 0px!important;
+.btn .caret {
+    margin-left: 4px!important;
+}
+
+.ButtonInsertGrid {
+    background: url(../imgs/plus.png) no-repeat no-repeat right #fff;
+    padding-right: 28px!important;
+    background-size: 22px;
+    border: 1px solid #196396!important;
 }
 
 /*para que los importar archivo de varible blob tenga un tamaño fijo*/
@@ -699,6 +799,26 @@ select.form-control{
     width: 14px;
     background-size: 14px;
     height: 14px;
+
+     transform: rotate(0deg);
+    -webkit-transform: rotate(0deg); /* Safari and Chrome */
+    -ms-transform: rotate(0deg); /* IE 9 */
+    -moz-transform: rotate(0deg); /* Firefox */
+    -o-transform: rotate(0deg); /* Opera */
+
+    transition: transform .2s linear!important;
+    -moz-transition: transform .2s linear!important;
+    -webkit-transition: transform .2s linear!important;
+    -o-transition: transform .2s linear!important;
+    -ms-transition: transform .2s linear!important;
+}
+
+#menu-content .parent:not(.collapsed) .arrow{
+     transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg); /* Safari and Chrome */
+    -ms-transform: rotate(-180deg); /* IE 9 */
+    -moz-transform: rotate(-180deg); /* Firefox */
+    -o-transform: rotate(-180deg); /* Opera */
 }
 
 .sub-menu.collapse.in{
@@ -1224,3 +1344,7 @@ body.Form-fx{
 	-webkit-transition:none!important;
 }
 /*********************End**********************************/
+
+div.calendar{ /*Hacer que el calendar quede por arriba del header*/
+    z-index: 130!important; 
+}

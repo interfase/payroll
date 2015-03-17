@@ -379,9 +379,13 @@ function ScrollTo() {
                         }
                     });
 
+            jQuery(".sub-menu").on('shown.bs.collapse hidden.bs.collapse', function(ev){
+                menu.updateScroll();
+            });
             //Ajustar los tooltips
-            setTooltips();
         }, 20);
+
+        setTimeout(setTooltips, 500);
     }
 
 
@@ -398,6 +402,17 @@ function ScrollTo() {
             //Scroll en los Grids Largos
             $('#GRIDLARGEID').children('div').addClass('GridLarge');
 
+            $('#GridContainerDiv,#Grid1ContainerDiv').each(function(){
+                var $this=$(this),
+                    tp=$this.parents('.TablePrincipal');
+
+                    tp.addClass('transparent');
+
+                    if($('#FILTERSIMPLE,#FILTEREXTRA').size()){
+                        tp.addClass('border-top');
+                    }
+            });
+            
 
             setTimeout(function () {
                 //setear titulo de la pagina para estandarizar todos los objetos
