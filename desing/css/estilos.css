@@ -20,6 +20,11 @@ body {
 
 }
 
+.inicioModulo .tdContentPlaceHolder{
+    background-color: #ffffff;
+
+}
+
 .contentColumn{
     width: 1%;
 }
@@ -1417,4 +1422,13 @@ body.Form-fx{
 
 div.calendar{ /*Hacer que el calendar quede por arriba del header*/
     z-index: 130!important; 
+}
+
+a.link{
+	color: #428bca;
+	text-decoration: none;
+}
+
+a.link:hover, a.link:focus {
+	color: #2a6496;
 }
