@@ -38,6 +38,8 @@ function ScrollTo() {
 
             this.initScroll();
             this.screenState = $(window).width() >= 767 ? 'large' : 'small';
+
+            $('.navbar-left').prepend($('.toggle-btn').remove().clone());
         },
         updateScroll: function () {
             if (this.menuList && this.menuList.size())
@@ -360,8 +362,14 @@ function ScrollTo() {
                             menu.updateScroll();
                         }
                     })
+                    .on('hide.bs.collapse', function(e){
+                        if (e.target.id == "menu-content") {
+                            jQuery('#navbar-main.in').collapse('hide');
+                        }
+                    })
                     .on('show.bs.collapse', function (e) {
                         if (e.target.id == "menu-content") {
+                            jQuery('#navbar-main.in').collapse('hide');
 
                             menu.sideMenu.addClass("fh");
                             menu.menuList.removeClass("fh");
