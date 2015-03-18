@@ -410,7 +410,7 @@ function ScrollTo() {
             //Scroll en los Grids Largos
             $('#GRIDLARGEID').children('div').addClass('GridLarge');
 
-            $('#GridContainerDiv,#Grid1ContainerDiv').each(function(){
+            $('#GridContainerDiv,#Grid1ContainerDiv, [id$="level1itemContainerDiv"]').each(function(){
                 var $this=$(this),
                     tp=$this.parents('.TablePrincipal');
 
