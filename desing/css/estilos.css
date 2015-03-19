@@ -1424,11 +1424,12 @@ div.calendar{ /*Hacer que el calendar quede por arriba del header*/
     z-index: 130!important; 
 }
 
-a.link{
+.link a{
 	color: #428bca;
-	text-decoration: none;
+	text-decoration: underline;
 }
 
-a.link:hover, a.link:focus {
+.link a:hover, .link a:focus {
 	color: #2a6496;
+	text-decoration: none;
 }
