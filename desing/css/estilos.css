@@ -484,7 +484,6 @@ table.Grid tbody td {
     border: 1px solid #196396!important;
 }
 
-
 .tbMoreFiltersRight a {
     color: #196396;
 }
@@ -512,7 +511,14 @@ table.Grid tbody td {
 
 .Attribute_Recuadro{
     margin-top: 0!important;
+    width: 100%;
 }
+
+.TableActions .dropdown .dropdown-menu{
+    overflow-y: auto;
+    height: 10px;
+}
+
 /*end*/
 
 /*para que los importar archivo de varible blob tenga un tamaño fijo*/

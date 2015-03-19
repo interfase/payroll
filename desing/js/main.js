@@ -300,6 +300,24 @@ function ScrollTo() {
         }
     };
 
+    //Para cambiar el tamano del dropdown de mas acciones de los webpanels
+    window.resizeDropdown = function(dropdown){
+        var gxPHTop = gxPlaceHolder.offset().top;
+        dropdown.find('.dropdown-menu').each(function(){
+            var $this=$(this),
+                parent = $this.parents('.dropdown').first();
+                height1 = 400,
+                height2 = 12;
+
+            $this.find('li').each(function(){
+                height2+=$(this).height();
+            });
+
+            $this.css('height', Math.min(height1, height2) + 'px');
+            $this.offset({left:parent.offset().left});
+        });
+    }
+
     var initAll = function () {
         //Cambiar el footer de posicion
         console.log('place footer');
@@ -312,7 +330,7 @@ function ScrollTo() {
 
         footer = footer || $('.tdContentPlaceHolder footer');
         tdPlaceHolder = tdPlaceHolder || $('.tdContentPlaceHolder')
-        gxPlaceHolder = gxPlaceHolder || $(".tdContentPlaceHolder .gx-content-placeholder");
+        gxPlaceHolder = gxPlaceHolder || $('.tdContentPlaceHolder .gx-content-placeholder');
 
         setTimeout(function () {
             //Dejar .mainMenu unico
@@ -331,7 +349,7 @@ function ScrollTo() {
 
             placeFooter();
             setInterval(function () {
-                placeFooter();
+                placeFooter();                
             }, 100);
 
 
@@ -390,6 +408,8 @@ function ScrollTo() {
             jQuery(".sub-menu").on('shown.bs.collapse hidden.bs.collapse', function(ev){
                 menu.updateScroll();
             });
+
+            jQuery(".TableActions .dropdown.open .dropdown-menu");
             //Ajustar los tooltips
         }, 20);
 
@@ -410,15 +430,22 @@ function ScrollTo() {
             //Scroll en los Grids Largos
             $('#GRIDLARGEID').children('div').addClass('GridLarge');
 
-            $('#GridContainerDiv,#Grid1ContainerDiv, [id$="level1itemContainerDiv"]').each(function(){
+            //Eliminar el borde y fondo al table principal
+            $('#GridContainerDiv,#Grid1ContainerDiv, [id$="level1itemContainerDiv"], [id$="level2itemContainerDiv"]').each(function(){
                 var $this=$(this),
-                    tp=$this.parents('.TablePrincipal');
+                    tp=$this.parents('.TablePrincipal'),
+                    count=0;
+                tp.find('.row:not(:has(.Grid))').each(function(){
+                    if($(this).find('.Attribute:not(#EMPID):not(#HLDID)').size())
+                        count++;
+                });
 
+                if(count==0)
                     tp.addClass('transparent');
 
-                    if($('#FILTERSIMPLE,#FILTEREXTRA').size()){
-                        tp.addClass('border-top');
-                    }
+                if($('#FILTERSIMPLE,#FILTEREXTRA').size()){
+                    tp.addClass('border-top');
+                }
             });
             
 
@@ -509,7 +536,12 @@ function ScrollTo() {
 
             }
 
+
             initAll();
+
+            jQuery('.TableActions .dropdown').on('shown.bs.dropdown',function(){
+                resizeDropdown($(this));
+            });
 
             setTimeout(setPositionImg, 60);
         }
