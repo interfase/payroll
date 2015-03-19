@@ -188,6 +188,7 @@ function ScrollTo() {
             //El width se lo doy por css porque en IE no esta pinchando
             $('.tdContentPlaceHolder').css({width: '100%', 'min-width': 0});
         }
+        $('.menuPage header').width($('.tdContentPlaceHolder').width());
         placeFooter();
     };
 
@@ -436,7 +437,7 @@ function ScrollTo() {
                     tp=$this.parents('.TablePrincipal'),
                     count=0;
                 tp.find('.row:not(:has(.Grid))').each(function(){
-                    if($(this).find('.Attribute:not(#EMPID):not(#HLDID)').size())
+                    if($(this).find('.ReadonlyAttribute:not(#span_vEMPID):not(#span_vHLDID),.Attribute:not(#EMPID):not(#HLDID)').size())
                         count++;
                 });
 

@@ -400,6 +400,14 @@ table.Grid tbody td {
 .TablePrincipal.border-top{
     border-top: 2px solid #D5D5D5;
 }
+
+.Grid div.checkbox{
+    min-width: 40px;
+}
+
+.GridLargeId{
+    overflow-x: auto!important;
+}
 /*END GRIDS*/
 
 /*grid PAGER*/
@@ -782,7 +790,7 @@ input[type="radio"], input[type="checkbox"]{
     .brand {
         text-align: center!important;
         height: 50px!important;
-        padding-left: 20px !important;
+        padding-left: 0px !important;
     }
 
     .brand a{
@@ -828,14 +836,6 @@ input[type="radio"], input[type="checkbox"]{
 }
 
 @media (min-width: 768px) {
-    .menuPage header{
-        left: 223px;
-    }
-
-    .menuCollapsed header{
-        left: 49px;
-    }
-
     .menuPage header > .row{
         margin-left: 0px;
     }
@@ -898,6 +898,14 @@ header.navbar{
     -ms-user-select: none;
     user-select: none;
     cursor: default;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.menuPage header.navbar{
+    left: 3px;
+    top: -65px;
 }
 
 header.navbar li span.divider{
@@ -1102,10 +1110,14 @@ a:hover #icon-apps, a:hover #icon-user{
 }
 
 @media (max-width: 767px) {
+    .menuPage header.navbar{
+        top: -115px;
+    }
+
     header.navbar,
     .navbar-left{
         height: 65px!important;
-        margin-left: 0;
+        margin-left: 0!important;
         text-align: left;
     }
 
@@ -1116,6 +1128,10 @@ a:hover #icon-apps, a:hover #icon-user{
     header.navbar, 
     .MainContainer:not(.homePage) .navbar-left{
         text-align: center;
+    }
+
+    .homePage header.navbar .navbar-left{
+        margin-left: 15px!important;
     }
 
     .nav.navbar-nav{
