@@ -429,9 +429,11 @@
         if(!supported && !$.getCookie('browserSupportClosed')){
             $('body').prepend(
                 '<div id="browserAlert" class="alert alert-dismissible" role="alert">' +
-                '<span class="close fa fa-times" data-dismiss="alert" aria-label="Cerrar"></span>'+
-                '<strong><span class="fa fa-exclamation-circle"</span></strong>'+
-                 'Mensaje de navegador con incompatibilidades aqui</div>');
+                '<div class="close fa fa-times" data-dismiss="alert" aria-label="Cerrar"></div>'+
+                '<div class="browserAlert-text"><span class="fa fa-exclamation-circle"></span>'+
+                 'Esta usando un navegador no compatible o es posible que su '+
+                 'navegador esté en el modo de Vista de compatibilidad. Algunas funcionalidades no funcionarán correctamente '+
+                 'o puede que se vea afectada la apariencia del sistema</div></div>');
             
             jQuery('#browserAlert').on('closed.bs.alert', function(){
                 $.setCookie('browserSupportClosed', true);

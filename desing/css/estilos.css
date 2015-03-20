@@ -412,7 +412,7 @@ table.Grid tbody td {
     min-width: 40px;
 }
 
-.GridLargeId{
+.GridLargeId, .GridLarge{
     overflow-x: auto!important;
 }
 /*END GRIDS*/
@@ -1449,6 +1449,11 @@ body.Form-fx{
 
 div.calendar{ /*Hacer que el calendar quede por arriba del header*/
     z-index: 130!important; 
+    border: 1px solid #ababab;
+}
+
+select[style*='visibility: hidden']{
+    visibility: visible!important;
 }
 
 .link a{
@@ -1461,7 +1466,7 @@ div.calendar{ /*Hacer que el calendar quede por arriba del header*/
 	text-decoration: none;
 }
 
-
+/*Alert que se muestra cuando hay incompatibilidades con el navegador*/
 #browserAlert{
     background-color: #d04437;
     padding: 20px 20px;
@@ -1482,11 +1487,17 @@ div.calendar{ /*Hacer que el calendar quede por arriba del header*/
     font-size: 18px;
 }
 
-#browserAlert span.close{
+#browserAlert div.close{
     color: #fff;
     opacity: .7;
 }
 
-#browserAlert span.close:hover{
+#browserAlert div.close:hover{
     opacity: 1;
+    text-shadow: none;
 }
+
+.browserAlert-text{
+    width: 95%;
+}
+/*End browser alert*/
