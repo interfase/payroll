@@ -3,6 +3,13 @@ body {
     overflow: hidden;
 }
 
+html.ie7 body,
+html.ie8 body,
+html.ie9 body
+{
+    opacity:1!important;
+}
+
 #MAINFORM,
 #MAINFORM > .Section,
 .MainContainer,
@@ -589,7 +596,7 @@ input[type="radio"], input[type="checkbox"]{
     background-color: #416392;
     display: block;
     line-height: 35px;
-    height: 65px;
+    height: 67px;
     padding-left: 10px;
     border-bottom: 1px solid #6285b7;
 }
@@ -836,6 +843,14 @@ input[type="radio"], input[type="checkbox"]{
 }
 
 @media (min-width: 768px) {
+    .menuPage header.navbar{
+        left: 223px;
+    }
+
+    .menuCollapsed header.navbar{
+        left: 49px;
+    }
+
     .menuPage header > .row{
         margin-left: 0px;
     }
@@ -898,15 +913,9 @@ header.navbar{
     -ms-user-select: none;
     user-select: none;
     cursor: default;
-    position: absolute;
-    left: 0;
-    top: 0;
+    position: fixed;
 }
 
-.menuPage header.navbar{
-    left: 3px;
-    top: -65px;
-}
 
 header.navbar li span.divider{
     width: 1px;
@@ -1110,10 +1119,6 @@ a:hover #icon-apps, a:hover #icon-user{
 }
 
 @media (max-width: 767px) {
-    .menuPage header.navbar{
-        top: -115px;
-    }
-
     header.navbar,
     .navbar-left{
         height: 65px!important;
@@ -1454,4 +1459,34 @@ div.calendar{ /*Hacer que el calendar quede por arriba del header*/
 .link a:hover, .link a:focus {
 	color: #2a6496;
 	text-decoration: none;
+}
+
+
+#browserAlert{
+    background-color: #d04437;
+    padding: 20px 20px;
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1000;
+    margin: 0;
+    border-radius: 0;
+    font-size: 16px;
+    font-family: Roboto-Regular;
+}
+
+#browserAlert span{
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+#browserAlert span.close{
+    color: #fff;
+    opacity: .7;
+}
+
+#browserAlert span.close:hover{
+    opacity: 1;
 }

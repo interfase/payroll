@@ -1,16 +1,13 @@
-function ScrollTo() {
-    var div = $('#vLOGMENSAJES');
-    div.scrollTop(div.scrollTop() + div.innerHeight());
-}
+(function ($) {
+    window.ScrollTo = function() {
+        var div = $('#vLOGMENSAJES');
+        div.scrollTop(div.scrollTop() + div.innerHeight());
+    }
 
-/*-------------------------------------------------------------
- --        ****             MENU           ****               --
- -------------------------------------------------------------*/
-
-(function () {
     var footer = null,
             gxPlaceHolder = null,
             tdPlaceHolder = null;
+
 
     var menu = {
         mainMenu: null,
@@ -188,7 +185,7 @@ function ScrollTo() {
             //El width se lo doy por css porque en IE no esta pinchando
             $('.tdContentPlaceHolder').css({width: '100%', 'min-width': 0});
         }
-        $('.menuPage header').width($('.tdContentPlaceHolder').width());
+
         placeFooter();
     };
 
@@ -302,7 +299,7 @@ function ScrollTo() {
     };
 
     //Para cambiar el tamano del dropdown de mas acciones de los webpanels
-    window.resizeDropdown = function(dropdown){
+    var resizeDropdown = function(dropdown){
         var gxPHTop = gxPlaceHolder.offset().top;
         dropdown.find('.dropdown-menu').each(function(){
             var $this=$(this),
@@ -417,6 +414,31 @@ function ScrollTo() {
         setTimeout(setTooltips, 500);
     }
 
+    //testear la compatibilidad del browser con payroll
+    var checkBrowserSupport = function(){
+        //testear con modernizr primero
+        var supported = true;
+        for (var feature in MyModernizr) {
+            if (typeof MyModernizr[feature] === "boolean" && MyModernizr[feature] == false) {
+                supported = false;
+                break;
+            }
+        }
+
+        //mostrar mensaje de error en caso de palo
+        if(!supported && !$.getCookie('browserSupportClosed')){
+            $('body').prepend(
+                '<div id="browserAlert" class="alert alert-dismissible" role="alert">' +
+                '<span class="close fa fa-times" data-dismiss="alert" aria-label="Cerrar"></span>'+
+                '<strong><span class="fa fa-exclamation-circle"</span></strong>'+
+                 'Mensaje de navegador con incompatibilidades aqui</div>');
+            
+            jQuery('#browserAlert').on('closed.bs.alert', function(){
+                $.setCookie('browserSupportClosed', true);
+                console.log('browserSupportClosed');
+            });
+        }
+    }
 
     $(document).ready(function () {
         //patch para un doble ready de genexus con los prompts, 
@@ -424,6 +446,8 @@ function ScrollTo() {
         console.log(window.alreadyLoaded ? "Already loaded" : "Not loaded yet");
         if (!window.alreadyLoaded) {
             window.alreadyLoaded = true;
+
+            checkBrowserSupport();
 
             // Cambio de Container por ContainerFluid
             $('div.Container').attr('class', 'container-fluid FormContainer');
@@ -547,4 +571,4 @@ function ScrollTo() {
             setTimeout(setPositionImg, 60);
         }
     });
-})();
+})(jQuery);
