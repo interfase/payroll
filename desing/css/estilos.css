@@ -536,7 +536,7 @@ table.Grid tbody td {
 
 .TableActions .dropdown .dropdown-menu{
     overflow-y: auto;
-    height: 10px;
+    /*height: 10px;*/
 }
 
 /*end*/
@@ -1501,3 +1501,7 @@ select[style*='visibility: hidden']{
     width: 95%;
 }
 /*End browser alert*/
+
+.TableActions .dropdown-menu{
+    max-height: 400px;
+}

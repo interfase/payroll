@@ -1,12 +1,12 @@
 (function ($) {
-    window.ScrollTo = function() {
+    window.ScrollTo = function () {
         var div = $('#vLOGMENSAJES');
         div.scrollTop(div.scrollTop() + div.innerHeight());
     }
 
     var footer = null,
-            gxPlaceHolder = null,
-            tdPlaceHolder = null;
+        gxPlaceHolder = null,
+        tdPlaceHolder = null;
 
 
     var menu = {
@@ -49,8 +49,8 @@
         findActive: function () {
             if (this.sideMenu) {
                 var baseUrl = window.location.pathname.split('/'),
-                        obj = baseUrl[baseUrl.length - 1],
-                        search = window.location.search;
+                    obj = baseUrl[baseUrl.length - 1],
+                    search = window.location.search;
 
                 if (search != "") {
                     obj += search;
@@ -92,12 +92,12 @@
         resize: function () {
             if (this.sideMenu) {
                 var h1 = $('body').height() - (this.sideMenu ? this.sideMenu.offset().top - 2 : 0),
-                        h2 = $('.tdContentPlaceHolder footer').height();
+                    h2 = $('.tdContentPlaceHolder footer').height();
 
                 this.sideMenu.css('height', h1 + 'px');
                 this.menuList.css('height',
-                        h1 - this.brandHeight + 'px'
-                        );
+                    h1 - this.brandHeight + 'px'
+                );
 
                 this.updateScroll();
             }
@@ -112,7 +112,7 @@
         },
         checkState: function () {
             if ($.getCookie('menuCollapsed') === 'true'
-                    && this.sideMenu && this.sideMenu.size()) {
+                && this.sideMenu && this.sideMenu.size()) {
                 this.mainMenu.addClass('collapsed');
                 $('.ContentContainer').addClass('menuCollapsed');
             }
@@ -124,13 +124,13 @@
         deleteEmptyParents: function () {
             if (this.levels < 3) {
                 this.menuList
-                        .find('#menu-content ul')
-                        .each(function () {
-                            if ($(this).children().size() == 0) {
-                                $(this).prev().remove();
-                                $(this).remove();
-                            }
-                        });
+                    .find('#menu-content ul')
+                    .each(function () {
+                        if ($(this).children().size() == 0) {
+                            $(this).prev().remove();
+                            $(this).remove();
+                        }
+                    });
                 this.levels++;
                 this.deleteEmptyParents();
             }
@@ -169,8 +169,8 @@
             //El width se lo doy por css porque en IE no esta pinchando
             var width = $(window).width() - (m.mainMenu ? m.mainMenu.width() : 0) + 'px';
             $('.tdContentPlaceHolder')
-                    .css({"min-width": width, 'width': width})
-                    .show();
+                .css({"min-width": width, 'width': width})
+                .show();
         } else { //pantalla xs
             if (m.screenState == 'large') { //si estaba en pantalla grande
                 m.screenState = 'small';
@@ -195,7 +195,7 @@
 
         if ($(window).width() <= 767) {
             tdPlaceHolder.css("height", ($(window).height() - extraH
-                    - $('.mainMenu .brand').height()) + 'px');
+                - $('.mainMenu .brand').height()) + 'px');
         }
         else {
             tdPlaceHolder.css("height", ($(window).height() - extraH) + 'px');
@@ -216,42 +216,42 @@
     var setTooltips = function () {
         if (jQuery.fn.tooltip) {
             $('.nav-side-menu li')
-                    .each(function () {
-                        var text = null,
-                                $this = jQuery(this);
+                .each(function () {
+                    var text = null,
+                        $this = jQuery(this);
 
-                        if ($this.hasClass('parent')) {
-                            text = $this.text();
-                        }
-                        else {
-                            text = $this.find("a").first().text();
-                        }
+                    if ($this.hasClass('parent')) {
+                        text = $this.text();
+                    }
+                    else {
+                        text = $this.find("a").first().text();
+                    }
 
-                        $this.tooltip({
-                            title: text,
-                            placement: 'right',
-                            container: 'body',
-                            trigger: 'manual'
-                        });
-                    })
-                    .mouseenter(function () {
-                        var a = null,
-                                $this = jQuery(this);
-
-                        if ($this.hasClass('parent')) {
-                            a = $this[0];
-                        }
-                        else {
-                            a = $this.find("a").first()[0];
-                        }
-
-                        if (a.offsetWidth < a.scrollWidth) {
-                            $this.tooltip('show');
-                        }
-                    })
-                    .mouseleave(function () {
-                        jQuery(this).tooltip('hide');
+                    $this.tooltip({
+                        title: text,
+                        placement: 'right',
+                        container: 'body',
+                        trigger: 'manual'
                     });
+                })
+                .mouseenter(function () {
+                    var a = null,
+                        $this = jQuery(this);
+
+                    if ($this.hasClass('parent')) {
+                        a = $this[0];
+                    }
+                    else {
+                        a = $this.find("a").first()[0];
+                    }
+
+                    if (a.offsetWidth < a.scrollWidth) {
+                        $this.tooltip('show');
+                    }
+                })
+                .mouseleave(function () {
+                    jQuery(this).tooltip('hide');
+                });
         }
     }
 
@@ -260,12 +260,12 @@
         $alt = $('.inicio-header').parent();
         if ($alt.size()) {
             var header = $('.inicio-cell_header'),
-                    img = $('img.img-module'),
-                    w = header.outerWidth(),
-                    t = w * 0.14;
+                img = $('img.img-module'),
+                w = header.outerWidth(),
+                t = w * 0.14;
 
             var h = t,
-                    windowW = $(window).width();
+                windowW = $(window).width();
             if (windowW < 480)
                 h *= 0.5;
             else if (windowW < 768)
@@ -297,25 +297,6 @@
             })
         }
     };
-
-    //Para cambiar el tamano del dropdown de mas acciones de los webpanels
-    var resizeDropdown = function(dropdown){
-        var gxPHTop = gxPlaceHolder.offset().top;
-        dropdown.find('.dropdown-menu').each(function(){
-            var $this=$(this),
-                parent = $this.parents('.dropdown').first();
-                height1 = 400,
-                height2 = 12;
-
-            $this.find('li').each(function(){
-                height2+=$(this).height();
-            });
-
-            $this.css('height', Math.min(height1, height2) + 'px');
-            $this.offset({left:parent.offset().left});
-        });
-    }
-
     var initAll = function () {
         //Cambiar el footer de posicion
         console.log('place footer');
@@ -347,7 +328,7 @@
 
             placeFooter();
             setInterval(function () {
-                placeFooter();                
+                placeFooter();
             }, 100);
 
 
@@ -368,46 +349,45 @@
             });
 
             jQuery("#menu-content")
-                    .on('hidden.bs.collapse', function (e) {
-                        if (e.target.id == "menu-content") {
-                            menu.sideMenu.removeClass("fh");
-                            menu.menuList.addClass("fh");
+                .on('hidden.bs.collapse', function (e) {
+                    if (e.target.id == "menu-content") {
+                        menu.sideMenu.removeClass("fh");
+                        menu.menuList.addClass("fh");
 
-                            $(".mainMenu").removeClass("fh");
+                        $(".mainMenu").removeClass("fh");
 
-                            menu.updateScroll();
-                        }
-                    })
-                    .on('hide.bs.collapse', function(e){
-                        if (e.target.id == "menu-content") {
-                            jQuery('#navbar-main.in').collapse('hide');
-                        }
-                    })
-                    .on('show.bs.collapse', function (e) {
-                        if (e.target.id == "menu-content") {
-                            jQuery('#navbar-main.in').collapse('hide');
+                        menu.updateScroll();
+                    }
+                })
+                .on('hide.bs.collapse', function (e) {
+                    if (e.target.id == "menu-content") {
+                        jQuery('#navbar-main.in').collapse('hide');
+                    }
+                })
+                .on('show.bs.collapse', function (e) {
+                    if (e.target.id == "menu-content") {
+                        jQuery('#navbar-main.in').collapse('hide');
 
-                            menu.sideMenu.addClass("fh");
-                            menu.menuList.removeClass("fh");
+                        menu.sideMenu.addClass("fh");
+                        menu.menuList.removeClass("fh");
 
-                            $(".mainMenu").addClass("fh");
-                        }
-                    })
-                    .on('shown.bs.collapse', function (e) {
-                        if (e.target.id == "menu-content") {
-                            menu.sideMenu.css("background-color", "#416392");
-                            $("#menu-content").css('height', "100%");
+                        $(".mainMenu").addClass("fh");
+                    }
+                })
+                .on('shown.bs.collapse', function (e) {
+                    if (e.target.id == "menu-content") {
+                        menu.sideMenu.css("background-color", "#416392");
+                        $("#menu-content").css('height', "100%");
 
-                            menu.scrollToActive();
-                            menu.updateScroll();
-                        }
-                    });
+                        menu.scrollToActive();
+                        menu.updateScroll();
+                    }
+                });
 
-            jQuery(".sub-menu").on('shown.bs.collapse hidden.bs.collapse', function(ev){
+            jQuery(".sub-menu").on('shown.bs.collapse hidden.bs.collapse', function (ev) {
                 menu.updateScroll();
             });
 
-            jQuery(".TableActions .dropdown.open .dropdown-menu");
             //Ajustar los tooltips
         }, 20);
 
@@ -415,7 +395,7 @@
     }
 
     //testear la compatibilidad del browser con payroll
-    var checkBrowserSupport = function(){
+    var checkBrowserSupport = function () {
         //testear con modernizr primero
         var supported = true;
         for (var feature in MyModernizr) {
@@ -426,16 +406,16 @@
         }
 
         //mostrar mensaje de error en caso de palo
-        if(!supported && !$.getCookie('browserSupportClosed')){
+        if (!supported && !$.getCookie('browserSupportClosed')) {
             $('body').prepend(
                 '<div id="browserAlert" class="alert alert-dismissible" role="alert">' +
-                '<div class="close fa fa-times" data-dismiss="alert" aria-label="Cerrar"></div>'+
-                '<div class="browserAlert-text"><span class="fa fa-exclamation-circle"></span>'+
-                 'Esta usando un navegador no compatible o es posible que su '+
-                 'navegador esté en el modo de Vista de compatibilidad. Algunas funcionalidades no funcionarán correctamente '+
-                 'o puede que se vea afectada la apariencia del sistema</div></div>');
-            
-            jQuery('#browserAlert').on('closed.bs.alert', function(){
+                    '<div class="close fa fa-times" data-dismiss="alert" aria-label="Cerrar"></div>' +
+                    '<div class="browserAlert-text"><span class="fa fa-exclamation-circle"></span>' +
+                    'Esta usando un navegador no compatible o es posible que su ' +
+                    'navegador esté en el modo de Vista de compatibilidad. Algunas opciones no funcionarán correctamente ' +
+                    'o puede que se vea afectada la apariencia del sistema</div></div>');
+
+            jQuery('#browserAlert').on('closed.bs.alert', function () {
                 $.setCookie('browserSupportClosed', true);
                 console.log('browserSupportClosed');
             });
@@ -458,23 +438,23 @@
             $('#GRIDLARGEID').children('div').addClass('GridLarge');
 
             //Eliminar el borde y fondo al table principal
-            $('#GridContainerDiv,#Grid1ContainerDiv, [id$="level1itemContainerDiv"], [id$="level2itemContainerDiv"]').each(function(){
-                var $this=$(this),
-                    tp=$this.parents('.TablePrincipal'),
-                    count=0;
-                tp.find('.row:not(:has(.Grid))').each(function(){
-                    if($(this).find('.ReadonlyAttribute:not(#span_vEMPID):not(#span_vHLDID),.Attribute:not(#EMPID):not(#HLDID)').size())
+            $('#GridContainerDiv,#Grid1ContainerDiv, [id$="level1itemContainerDiv"], [id$="level2itemContainerDiv"]').each(function () {
+                var $this = $(this),
+                    tp = $this.parents('.TablePrincipal'),
+                    count = 0;
+                tp.find('.row:not(:has(.Grid))').each(function () {
+                    if ($(this).find('.ReadonlyAttribute:not(#span_vEMPID):not(#span_vHLDID),.Attribute:not(#EMPID):not(#HLDID)').size())
                         count++;
                 });
 
-                if(count==0)
+                if (count == 0)
                     tp.addClass('transparent');
 
-                if($('#FILTERSIMPLE,#FILTEREXTRA').size()){
+                if ($('#FILTERSIMPLE,#FILTEREXTRA').size()) {
                     tp.addClass('border-top');
                 }
             });
-            
+
 
             setTimeout(function () {
                 //setear titulo de la pagina para estandarizar todos los objetos
@@ -499,16 +479,13 @@
             var setWidthOfPopup = function () {
                 var popup = gx.popup.currentPopup;
                 if (popup.frameDocument) {
-                    // popup.frameWindow.gx.popup.ext.show=gx.popup.ext.show;
-                    // popup.frameWindow.gx.popup.ext.close=gx.popup.ext.close;
-
                     var table = $(popup.frameDocument).find('#MAINFORM');
                     table.css("display", "inline-block");
                     table = table.size() ? table : $(popup.frameDocument).find('body');
 
                     var width = table.outerWidth() + 30,
-                            height = table.outerHeight() + 80,
-                            id = '#' + popup.id;
+                        height = table.outerHeight() + 80,
+                        id = '#' + popup.id;
 
                     gx.popup.interval = setInterval(function () {
                         table = $(popup.frameDocument).find('#MAINFORM');
@@ -519,9 +496,9 @@
                         if (width != gx.popup.width) {
                             table.css("display", "inline-block");
                             $(id + "_b").append("<style id='s1'>.fw1{width:" + (width + 10) + "px!important;}"
-                                    + ".fw2{width:" + width + "px!important;}"
-                                    + ".fh1{height:" + height + "px!important;}"
-                                    + ".fh2{height:" + (height + 25) + "px!important;}</style>");
+                                + ".fw2{width:" + width + "px!important;}"
+                                + ".fh1{height:" + height + "px!important;}"
+                                + ".fh2{height:" + (height + 25) + "px!important;}</style>");
 
                             $(id + "_b").addClass("fw1").addClass("fh2");
                             $(id + "_t").addClass("fw2");
@@ -530,7 +507,6 @@
                             gx.popup.width = width;
                         }
                     }, 1);
-
 
 
                     $(id + "_b").css({
@@ -563,12 +539,7 @@
 
             }
 
-
             initAll();
-
-            jQuery('.TableActions .dropdown').on('shown.bs.dropdown',function(){
-                resizeDropdown($(this));
-            });
 
             setTimeout(setPositionImg, 60);
         }
