@@ -488,6 +488,13 @@ table.Grid tbody td {
     color: #6d6e70;
 }
 
+.TableActions div.dropdown{
+    display: inline-block;
+}
+
+.TableActions .dropdown-menu{
+    max-height: 400px;
+}
 
 .ActionGroup .btn {
     margin-bottom: 2px;
@@ -1502,6 +1509,3 @@ select[style*='visibility: hidden']{
 }
 /*End browser alert*/
 
-.TableActions .dropdown-menu{
-    max-height: 400px;
-}
