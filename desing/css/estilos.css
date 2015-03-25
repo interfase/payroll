@@ -1314,12 +1314,19 @@ a:hover #icon-apps, a:hover #icon-user{
     margin-bottom: 2px;
 }
 
-.gx-label.control-label {
+label.control-label.gx-label{
+    height: 100%;
     font-weight: bold;
 }
 
-label.control-label.gx-label{
-    height: 100%;
+@media (min-width: 768px){
+    .LargeLabel .gx-attribute {
+        width: 60%;
+    }
+
+    .LargeLabel .gx-label{
+        width: 40%;
+    }
 }
 
 /*********************** Start Pagina de inicio de modulo *************/
@@ -1508,4 +1515,6 @@ select[style*='visibility: hidden']{
     width: 95%;
 }
 /*End browser alert*/
+
+
 
