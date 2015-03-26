@@ -47,11 +47,6 @@ label{
     background-color: #8DBAD8;
 }
 
-.BtnCancel:hover{
-    background-color: #196396;
-    border: 0px;
-}
-
 .ButtonActionsGrid:hover{
     background-color: #fff;    
     border-color: #ccc;

@@ -27,6 +27,12 @@ html.ie9 body
 
 }
 
+@media (max-width: 767px) { 
+    .MainContainer > .row{
+        margin-left: -16px;
+    }
+}
+
 .inicioModulo .tdContentPlaceHolder{
     background-color: #ffffff;
 
@@ -125,8 +131,6 @@ footer .container-fluid{
     margin-top:106px;
 }
 
-
-
 .alert-danger {
     border-color:transparent !important;
 }
@@ -165,10 +169,8 @@ footer .container-fluid{
     background:#c2d4e1;
     border-radius:5px;
 }
-.btn-primary, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
-    background-color: #00629a;
-    border:none;
-}
+
+
 .index #apps li {
     transform:scale(1.2,1.2);
 }
@@ -470,8 +472,12 @@ table.Grid tbody td {
     border-spacing: 0;
 }
 
-.TableInsert, .TableInsert td, .TableInsert input{
+.TableInsert, .TableInsert td{
     padding-right: 0;
+    margin-right: 0;
+}
+
+.TableInsert input{
     margin-right: 0;
 }
 
@@ -505,10 +511,16 @@ table.Grid tbody td {
 }
 
 .ButtonInsertGrid {
-    background: url(../imgs/plus.png) no-repeat no-repeat right #fff;
-    padding-right: 28px!important;
-    background-size: 22px;
     border: 1px solid #196396!important;
+    padding-right: 12px;
+}
+
+@media (min-width: 768px) {
+    .ButtonInsertGrid {
+        background: url(../imgs/plus.png) no-repeat no-repeat right #fff;
+        padding-right: 28px!important;
+        background-size: 22px;
+    }
 }
 
 .tbMoreFiltersRight a {
@@ -603,7 +615,7 @@ input[type="radio"], input[type="checkbox"]{
     background-color: #416392;
     display: block;
     line-height: 35px;
-    height: 67px;
+    height: 66px;
     padding-left: 10px;
     border-bottom: 1px solid #6285b7;
 }
@@ -657,7 +669,7 @@ input[type="radio"], input[type="checkbox"]{
 }
 
 #menu-content a, #menu-content li{
-    font-family: Roboto-Medium;
+    font-family: Roboto-Regular;
 }
 
 #menu-content li a {
@@ -722,8 +734,9 @@ input[type="radio"], input[type="checkbox"]{
     padding-left: 60px!important;
 }
 
-#menu-content .active{
-    font-weight: bold;
+#menu-content .active,#menu-content .active a{
+    /*font-weight: bold;*/
+    font-family: Roboto-Bold!important;
 }
 
 #menu-content .arrow{
@@ -953,17 +966,17 @@ header .navbar-nav > li > .dropdown-menu{
 }
 
 #icon-apps, #icon-user {
-    height:22px;
-    width:22px;
-    background-size: 20px;
+    height: 24px;
+    width: 24px;
+    background-size: 24px;
     background-position: center;
     background-repeat: no-repeat;
-    display:inline-block;
+    display: inline-block;
     vertical-align: middle;
-    position:relative;
-    top:-2px;
+    position: relative;
+    top: -2px;
     opacity: .8;
-}
+    }
 
 #icon-apps{
     background-image: url(../imgs/icon-apps.png);
@@ -1516,5 +1529,44 @@ select[style*='visibility: hidden']{
 }
 /*End browser alert*/
 
+/*Botones de acciones del sistema*/
+.btn-primary, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    background-color: #00629a!important;
+    color: #fff!important;
+}
 
+.btn{
+    font-weight: normal!important;
+}
 
+.ActionGroup .BtnEnter:hover {
+    background-color: #3276b1!important;
+}
+
+.Button{
+    background-color: #fff;
+    color: #3276b1!important;
+    border: 1px solid #3276b1;
+}
+
+.ActionGroup .btn-default{
+    background-color: #fff;
+    color: #3276b1;
+    border: 1px solid #3276b1;
+}
+
+.ActionGroup .BtnCancel, 
+.ActionGroup .BtnDelete{
+    background-color: #fff;
+    color: #3276b1!important;
+    border: 1px solid #3276b1;
+}
+
+.ActionGroup .btn-default:hover,
+.Button:hover,
+.ActionGroup .BtnDelete:hover{
+    background-color: #ebebeb;
+    border: 1px solid #3276b1;
+}
+
+/*End botones acciones*/

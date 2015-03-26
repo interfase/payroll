@@ -262,16 +262,17 @@
             var header = $('.inicio-cell_header'),
                 img = $('img.img-module'),
                 w = header.outerWidth(),
-                t = w * 0.14;
+                t = w * 0.13;
 
             var h = t,
                 windowW = $(window).width();
+            console.log(windowW);
             if (windowW < 480)
-                h *= 0.5;
+                h *= 0.6;
             else if (windowW < 768)
-                h *= 0.6
-            else if (windowW < 992)
                 h *= 0.4
+            else if (windowW < 992)
+                h *= 0.6
             else
                 h *= 0.3
 
@@ -293,7 +294,7 @@
 
 
             img.offset({
-                left: header.offset().left + w - (t / 2 + img.width() / 2) + t * 0.14
+                left: header.offset().left + w - (t / 2 + img.width() / 2) + t * 0.14 - 10
             })
         }
     };
@@ -430,6 +431,18 @@
             window.alreadyLoaded = true;
 
             checkBrowserSupport();
+
+            //para cuando de un error mover la vista al error viewer
+            gx.fn.originalSetEV=gx.fn.setErrorViewer;
+            gx.fn.setErrorViewer=function(b){
+                gx.fn.originalSetEV(b);
+                if(b['MAIN']&&b['MAIN'].length){
+                    var ev=$('#gxErrorViewer');
+                    if(ev.size()){
+                        $('.tdContentPlaceHolder').scrollTop(ev.position().top);
+                    }
+                }
+            };
 
             // Cambio de Container por ContainerFluid
             $('div.Container').attr('class', 'container-fluid FormContainer');
