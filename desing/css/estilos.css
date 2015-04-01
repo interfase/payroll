@@ -777,6 +777,7 @@ input[type="radio"], input[type="checkbox"]{
     .contentColumn{
         width: 100%!important;
         margin-top: 50px;
+        margin-right: -1px;
     }
     .mainMenu{
         left: 0;
@@ -1126,10 +1127,6 @@ a:hover #icon-apps, a:hover #icon-user{
 .navbar-inverse .navbar-inner {
     filter: none;
     background-image: none;
-}
-
-#logo-payroll{
-    margin-bottom:20px;
 }
 
 @media (max-width: 967px) { 

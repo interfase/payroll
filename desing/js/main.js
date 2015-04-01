@@ -50,14 +50,19 @@
             if (this.sideMenu) {
                 var baseUrl = window.location.pathname.split('/'),
                     obj = baseUrl[baseUrl.length - 1],
-                    search = window.location.search;
+                    search = window.location.search,
+                    obj1=obj;
 
                 if (search != "") {
-                    obj += search;
+                    obj1 += search;
                 }
 
                 //buscar el elemento activo del menu
-                this.activeItem = $('.nav-side-menu a[href="' + obj + '"]');
+                this.activeItem = $('.nav-side-menu a[href="' + obj1 + '"]');
+                
+                if(this.activeItem.size() == 0)
+                    this.activeItem = $('.nav-side-menu a[href="' + obj + '"]');
+
 
                 if (this.activeItem.size() == 0) { //si el elemnto de la url no se encuentra 
                     //en el menu se busca el ultimo activo
@@ -167,7 +172,7 @@
             }
 
             //El width se lo doy por css porque en IE no esta pinchando
-            var width = $(window).width() - (m.mainMenu ? m.mainMenu.width() : 0) + 'px';
+            var width = $(window).width() - (m.mainMenu ? m.mainMenu.width() : 0) + 1 + 'px';
             $('.tdContentPlaceHolder')
                 .css({"min-width": width, 'width': width})
                 .show();
@@ -433,13 +438,31 @@
             checkBrowserSupport();
 
             //para cuando de un error mover la vista al error viewer
-            gx.fn.originalSetEV=gx.fn.setErrorViewer;
-            gx.fn.setErrorViewer=function(b){
+            gx.fn.originalSetEV = gx.fn.setErrorViewer;
+            gx.fn.setErrorViewer = function (b) {
                 gx.fn.originalSetEV(b);
-                if(b['MAIN']&&b['MAIN'].length){
-                    var ev=$('#gxErrorViewer');
-                    if(ev.size()){
-                        $('.tdContentPlaceHolder').scrollTop(ev.position().top);
+                if (b['MAIN'] && b['MAIN'].length) {
+                    var scrollEv = false,
+                        minTop = 1e10000;
+                    for (var i = 0; i < b['MAIN'].length; i++) {
+                        var att=null;
+                        if (b['MAIN'][i].type && b['MAIN'][i].att && (att=$('#' + b['MAIN'][i].att)).size()) {
+                            var top = att.offset().top;
+                            minTop = Math.min(minTop, top);
+                        }
+                        else {
+                            scrollEv = true;
+                            break;
+                        }
+                    }
+                    if (scrollEv) {
+                        var ev = $('#gxErrorViewer');
+                        if (ev.size()) {
+                            $('.tdContentPlaceHolder').scrollTop(ev.position().top);
+                        }
+                    }
+                    else {
+                        $('.tdContentPlaceHolder').scrollTop($('.gx-content-placeholder').offset().top-minTop);
                     }
                 }
             };
@@ -451,12 +474,13 @@
             $('#GRIDLARGEID').children('div').addClass('GridLarge');
 
             //Eliminar el borde y fondo al table principal
-            $('#GridContainerDiv,#Grid1ContainerDiv, [id$="level1itemContainerDiv"], [id$="level2itemContainerDiv"]').each(function () {
+            $('#GridContainerDiv,#Grid1ContainerDiv,#Grid2ContainerDiv, [id$="level1itemContainerDiv"], [id$="level2itemContainerDiv"]').each(function () {
                 var $this = $(this),
                     tp = $this.parents('.TablePrincipal'),
                     count = 0;
                 tp.find('.row:not(:has(.Grid))').each(function () {
-                    if ($(this).find('.ReadonlyAttribute:not(#span_vEMPID):not(#span_vHLDID),.Attribute:not(#EMPID):not(#HLDID)').size())
+                    if ($(this).find('.ReadonlyAttribute:not(#span_vEMPID):not(#span_vHLDID),'+
+                                     '.Attribute:not(#EMPID):not(#HLDID):not(#vEMPID):not(#vHLDID)').size())
                         count++;
                 });
 

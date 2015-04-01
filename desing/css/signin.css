@@ -77,6 +77,13 @@
 	}
 }
 
+
+#signin-title {
+    text-align: center;
+    padding: 15px 0 15px 0;
+    font-size: 16px;
+    color: #1B598F;
+}
 /*#login-form option[value="0"]{
     display: none;
 }
@@ -90,3 +97,15 @@
 #login-form select[gxoldvalue="0"]{
     color: #999;
 }*/
+
+.checkbox input[type="checkbox"]{
+    margin: 4px 4px 0px -5px;
+}
+
+.checkbox label{
+    color: #000;
+}
+
+#logo-payroll{
+    margin-bottom:20px;
+}
