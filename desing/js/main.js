@@ -548,7 +548,7 @@
 
                     $(id + "_b").css({
                         left: $('body').width() / 2 - width / 2 - 9,
-                        top: $('body').height() / 2 - height / 2 - 28
+                        top: $('body').height() / 2 - height / 2
                     });
 
                     $(id + "_c").addClass("fh1");
