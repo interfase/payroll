@@ -548,6 +548,13 @@ table.Grid tbody td {
     background-position: 12px 0px;
 }
 
+#FILTERADVANCED, #FILTEREXTRA, #FILTERSIMPLE{
+    padding-left: 0px;  
+    padding-right: 0px;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
 .Attribute_Recuadro{
     margin-top: 0!important;
     width: 100%;
@@ -1128,6 +1135,7 @@ a:hover #icon-apps, a:hover #icon-user{
     filter: none;
     background-image: none;
 }
+
 
 @media (max-width: 967px) { 
     #navbar-2 h1{
