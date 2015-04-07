@@ -479,8 +479,11 @@
                     tp = $this.parents('.TablePrincipal'),
                     count = 0;
                 tp.find('.row:not(:has(.Grid))').each(function () {
-                    if ($(this).find('.ReadonlyAttribute:not(#span_vEMPID):not(#span_vHLDID),'+
-                                     '.Attribute:not(#EMPID):not(#HLDID):not(#vEMPID):not(#vHLDID)').size())
+                    if ($(this).find('.ReadonlyAttribute:not(#span_vEMPID):not(#span_vHLDID)'+
+                                      ':not(#span_EMPID):not(#span_EMPID1):not(#span_HLDID):not(#span_HLDID1)'+
+                                      ':not(#span_vHLDID1):not(#span_vEMPID1),'+
+                                     '.Attribute:not(#EMPID):not(#HLDID):not(#vEMPID):not(#vHLDID):not(#vEMPID1):not(#vHLDID1)'+
+                                     ':not(#EMPID1):not(#HLDID1)').size())
                         count++;
                 });
 

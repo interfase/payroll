@@ -565,6 +565,10 @@ table.Grid tbody td {
     /*height: 10px;*/
 }
 
+#span_vHTMLACTIONSSELECT .dropdown{
+    margin-right: 5px;
+}
+
 /*end*/
 
 /*para que los importar archivo de varible blob tenga un tamaño fijo*/
