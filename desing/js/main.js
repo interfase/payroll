@@ -500,18 +500,18 @@
                 //setear titulo de la pagina para estandarizar todos los objetos
                 //Esto es temporal, una vez eliminado el Form.Caption="..." de los
                 //WP del sistema quitar esta seccion
-                if (window.objdesc && window.modulo) {
-                    var splited = objdesc.split('|');
-                    if (splited.length == 1) {
-                        splited = objdesc.split(' l ');
-                    }
-                    objdesc = splited[splited.length - 1].trim();
-                    objdesc = objdesc[0].toUpperCase() + objdesc.slice(1);
-                    modulo = modulo.trim();
-                    modulo = modulo[0].toUpperCase() + modulo.slice(1);
-                    if (modulo != objdesc)
-                        document.title = modulo + ' | ' + objdesc;
-                }
+                // if (window.objdesc && window.modulo) {
+                //     var splited = objdesc.split('|');
+                //     if (splited.length == 1) {
+                //         splited = objdesc.split(' l ');
+                //     }
+                //     objdesc = splited[splited.length - 1].trim();
+                //     objdesc = objdesc[0].toUpperCase() + objdesc.slice(1);
+                //     modulo = modulo.trim();
+                //     modulo = modulo[0].toUpperCase() + modulo.slice(1);
+                //     if (modulo != objdesc)
+                //         document.title = modulo + ' | ' + objdesc;
+                // }
             }, 200);
 
 
