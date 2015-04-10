@@ -515,6 +515,11 @@ table.Grid tbody td {
     padding-right: 12px;
 }
 
+.ButtonActionsGrid {
+  padding-bottom: 6px!important;
+  padding-top: 6px!important;
+}
+
 @media (min-width: 768px) {
     .ButtonInsertGrid {
         background: url(../imgs/plus.png) no-repeat no-repeat right #fff;

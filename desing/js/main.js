@@ -519,12 +519,12 @@
             var setWidthOfPopup = function () {
                 var popup = gx.popup.currentPopup;
                 if (popup.frameDocument) {
-                    var table = $(popup.frameDocument).find('#MAINFORM');
+                    var table = $(popup.frameDocument).find('#MAINFORM,.MAINFORM').first();
                     table.css("display", "inline-block");
                     table = table.size() ? table : $(popup.frameDocument).find('body');
 
                     var width = table.outerWidth() + 30,
-                        height = table.outerHeight() + 80,
+                        height = table.outerHeight() + 30,
                         id = '#' + popup.id;
 
                     gx.popup.interval = setInterval(function () {
@@ -532,7 +532,7 @@
                         table = table.size() ? table : $(popup.frameDocument).find('body');
 
                         width = table.outerWidth() + 30;
-                        height = table.outerHeight() + 80;
+                        height = table.outerHeight() + 30;
                         if (width != gx.popup.width) {
                             table.css("display", "inline-block");
                             $(id + "_b").append("<style id='s1'>.fw1{width:" + (width + 10) + "px!important;}"
