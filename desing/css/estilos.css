@@ -334,7 +334,7 @@ footer .container-fluid{
 
 /*popup*/
 .PopupBorder, .PopupHeader{
-    max-width: 900px;
+    max-width: 1000px;
     min-width: initial!important;
 }
 
@@ -399,6 +399,10 @@ table.Grid tbody tr{
 
 table.Grid tbody td {
     background-color: #fff;
+}
+
+.TablePrincipal:not(.transparent){
+    padding-left: 20px!important;
 }
 
 .TablePrincipal.transparent{
@@ -520,6 +524,8 @@ table.Grid tbody td {
   padding-top: 6px!important;
 }
 
+
+
 @media (min-width: 768px) {
     .ButtonInsertGrid {
         background: url(../imgs/plus.png) no-repeat no-repeat right #fff;
@@ -572,6 +578,14 @@ table.Grid tbody td {
 
 #span_vHTMLACTIONSSELECT .dropdown{
     margin-right: 5px;
+}
+
+.ExcelButtons .ActionGroup{
+    margin-left: 6px;
+}
+
+div#TOTCNT_CONTAINER {
+    margin-top: 15px;
 }
 
 /*end*/
@@ -1344,15 +1358,16 @@ a:hover #icon-apps, a:hover #icon-user{
 label.control-label.gx-label{
     height: 100%;
     font-weight: bold;
+    text-align: left!important;
 }
 
 @media (min-width: 768px){
     .LargeLabel .gx-attribute {
-        width: 60%;
+        width: 40%;
     }
 
     .LargeLabel .gx-label{
-        width: 40%;
+        width: 60%;
     }
 }
 
@@ -1584,3 +1599,7 @@ select[style*='visibility: hidden']{
 }
 
 /*End botones acciones*/
+
+.tab-pane{
+    padding-left: 15px;
+}

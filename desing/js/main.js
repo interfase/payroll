@@ -481,7 +481,7 @@
                 tp.find('.row:not(:has(.Grid))').each(function () {
                     if ($(this).find('.ReadonlyAttribute:not(#span_vEMPID):not(#span_vHLDID)'+
                                       ':not(#span_EMPID):not(#span_EMPID1):not(#span_HLDID):not(#span_HLDID1)'+
-                                      ':not(#span_vHLDID1):not(#span_vEMPID1),'+
+                                      ':not(#span_vHLDID1):not(#span_vEMPID1):not(#span_vTOTCNT),'+
                                      '.Attribute:not(#EMPID):not(#HLDID):not(#vEMPID):not(#vHLDID):not(#vEMPID1):not(#vHLDID1)'+
                                      ':not(#EMPID1):not(#HLDID1)').size())
                         count++;
@@ -490,7 +490,7 @@
                 if (count == 0)
                     tp.addClass('transparent');
 
-                if ($('#FILTERSIMPLE,#FILTEREXTRA').size()) {
+                if ($('#FILTERSIMPLE,#FILTEREXTRA,.ExcelButtons').size()) {
                     tp.addClass('border-top');
                 }
             });
@@ -548,10 +548,13 @@
                         }
                     }, 1);
 
+                    var left=$('body').width() / 2 - width / 2 - 9,
+                        top= $('body').height() / 2 - height / 2;
+                    top=top>0?top:0;
 
                     $(id + "_b").css({
-                        left: $('body').width() / 2 - width / 2 - 9,
-                        top: $('body').height() / 2 - height / 2
+                        left: left,
+                        top: top
                     });
 
                     $(id + "_c").addClass("fh1");
