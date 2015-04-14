@@ -314,16 +314,16 @@
         }
 
         //Cambiar el page de position
-        f=$('#pageTitle');
+        f=$('.pageTitle');
         if(f.size()){
-            var ft=f.clone();
+            var ft=f.first().clone();
             f.remove();
             $('.tdContentPlaceHolder').prepend(ft);
             var title=$.getCookie('PageTitle');
 
             if(title){
                 title = unescape(title).replace(/\+/g, ' ');
-                ft.text(title);
+                ft.html("<div>" + title + "</div>");
             }
         }
 
