@@ -304,13 +304,21 @@
         }
     };
     var initAll = function () {
-        //Cambiar el footer de posicion
+        //Cambiar el footer de position
         console.log('place footer');
         var f = $('.MainContainer footer')
         if (f.size()) {
             var ft = f.clone();
             f.parents('.row').first().remove();
             $('.tdContentPlaceHolder').append(ft);
+        }
+
+        //Cambiar el page de position
+        f=$('#pageTitle');
+        if(f.size()){
+            var ft=f.clone();
+            $('.tdContentPlaceHolder').prepend(ft);
+            f.remove();
         }
 
         footer = footer || $('.tdContentPlaceHolder footer');
@@ -470,14 +478,15 @@
             // Cambio de Container por ContainerFluid
             $('div.Container').attr('class', 'container-fluid FormContainer');
 
-            //Scroll en los Grids Largos
-            $('#GRIDLARGEID').children('div').addClass('GridLarge');
-
             //Eliminar el borde y fondo al table principal
             $('#GridContainerDiv,#Grid1ContainerDiv,#Grid2ContainerDiv, [id$="level1itemContainerDiv"], [id$="level2itemContainerDiv"]').each(function () {
                 var $this = $(this),
                     tp = $this.parents('.TablePrincipal'),
                     count = 0;
+
+                //Scroll en los Grids Largos
+                $this.addClass('GridLarge');
+
                 tp.find('.row:not(:has(.Grid))').each(function () {
                     if ($(this).find('.ReadonlyAttribute:not(#span_vEMPID):not(#span_vHLDID)'+
                                       ':not(#span_EMPID):not(#span_EMPID1):not(#span_HLDID):not(#span_HLDID1)'+

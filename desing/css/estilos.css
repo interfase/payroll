@@ -17,6 +17,10 @@ html.ie9 body
     height: 100%;
 }
 
+.FormContainer{
+    padding-top: 15px!important;
+}
+
 .ContentContainer{
     margin-top: 65px!important;
 }
@@ -36,6 +40,14 @@ html.ie9 body
 .inicioModulo .tdContentPlaceHolder{
     background-color: #ffffff;
 
+}
+
+#pageTitle{
+      margin-top: 25px;
+      margin-left: 38px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #196396;
 }
 
 .contentColumn{
@@ -420,6 +432,12 @@ table.Grid tbody td {
 
 .GridLargeId, .GridLarge{
     overflow-x: auto!important;
+}
+
+.Grid thead th, .Grid tbody td{
+    padding-right: 15px;
+    padding-left: 15px;
+
 }
 /*END GRIDS*/
 
@@ -1602,4 +1620,12 @@ select[style*='visibility: hidden']{
 
 .tab-pane{
     padding-left: 15px;
+}
+
+.GroupTitle{
+  font-size: 15px!important;
+  font-weight: bold!important;
+  color: #00629a!important;
+  padding-top: 20px!important;
+  border-bottom: 1px solid #EFEFEF;
 }
