@@ -317,8 +317,14 @@
         f=$('#pageTitle');
         if(f.size()){
             var ft=f.clone();
-            $('.tdContentPlaceHolder').prepend(ft);
             f.remove();
+            $('.tdContentPlaceHolder').prepend(ft);
+            var title=$.getCookie('PageTitle');
+
+            if(title){
+                title = unescape(title).replace(/\+/g, ' ');
+                ft.text(title);
+            }
         }
 
         footer = footer || $('.tdContentPlaceHolder footer');

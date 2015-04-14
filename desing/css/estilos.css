@@ -15,10 +15,11 @@ html.ie9 body
 .MainContainer,
 .ContentContainer{
     height: 100%;
+    background-color: #ecedef;
 }
 
 .FormContainer{
-    padding-top: 15px!important;
+    padding-top: 10px!important;
 }
 
 .ContentContainer{
@@ -43,7 +44,7 @@ html.ie9 body
 }
 
 #pageTitle{
-      margin-top: 25px;
+      margin-top: 15px;
       margin-left: 38px;
       font-size: 18px;
       font-weight: bold;
