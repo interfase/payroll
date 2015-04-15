@@ -1630,3 +1630,19 @@ select[style*='visibility: hidden']{
   padding-top: 20px!important;
   border-bottom: 1px solid #EFEFEF;
 }
+
+/*filtros de los ww*/
+.Filters > .row:first-child > div[class*="col"]:nth-child(2) {
+  padding-left: 0;
+  margin-left: 0;
+  padding-top: 4px;
+}
+
+.Filters > .row:first-child > div:first-child {
+  width: auto;
+  padding-right: 6px;
+}
+
+#FILTERSIMPLE td{
+    padding: 0;
+}
