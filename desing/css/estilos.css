@@ -374,7 +374,15 @@ div.tooltip .tooltip-inner{
     display: none!important; 
 }
 
+.BlobContentAttribute, .ReadonlyBlobContentAttribute{
+    height: auto;
+}
+
 /*GRIDS*/
+.Grid{
+    overflow-x: auto;
+}
+
 .Grid .gx-row-selected, .Grid .gx-row-selected td {
     background-color: #e8f2fc !important;
 }
