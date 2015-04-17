@@ -1618,7 +1618,50 @@ select[style*='visibility: hidden']{
 /*End botones acciones*/
 
 /*Tabs*/
+.Tab .nav-tabs{
+    padding-bottom: 0!important;
+    padding-left: 10px!important;
+}
+
+.Tab .nav-tabs li{
+    margin-bottom: 0!important;
+    border-radius: 0!important;
+}
+
+.Tab .nav-tabs li.active{
+    font-weight: bold!important;
+}
+
+.Tab .nav-tabs li a
+{
+    background-color: transparent!important;
+    border: none!important;
+    font-size: 16px!important;
+    border-radius: 0!important;
+    padding-left: 10px!important;
+    padding-right: 10px!important;
+    padding-bottom: 16px!important;
+    color: #84ADC0!important;
+}
+
+.Tab .nav-tabs li a:hover {
+    color: #98C3D7!important;
+}
+
+.Tab .nav-tabs li.active a,
+.Tab .nav-tabs li.active a:focus{
+    color: #196396!important;
+    border-bottom: 8px solid #196396!important;
+    padding-bottom: 8px!important;
+}
+
+.Tab .nav-tabs li.active a:hover{
+    color: #4885AF!important;
+}
+
+
 .tab-pane{
+    border: none!important;
     padding-left: 15px;
 }
 
