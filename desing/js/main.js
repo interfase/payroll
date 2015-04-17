@@ -408,7 +408,19 @@
                 menu.updateScroll();
             });
 
-            //Ajustar los tooltips
+            gx.fx.obs.addObserver("grid.onafterrender", this, function (a) {
+                    UpdateTdGridAlign();
+
+                    //Pegar el lupon al input
+                    $('.Grid img[id^=PROMPT]').each(function(){
+                        var td = $(this).parents('td').first();
+                        td.css({width:'1%', padding: '0px 15px 0px 0px'});
+                        td.prev().css({width:'1%', padding: '0px 0px 0px 15px'});
+                    })
+                    console.log('rendered');
+                });
+             UpdateTdGridAlign();
+
         }, 20);
 
         setTimeout(setTooltips, 500);
@@ -440,6 +452,30 @@
                 console.log('browserSupportClosed');
             });
         }
+    }
+
+    var UpdateTdGridAlign = function(){
+        $('.Grid').each(function(){
+            var grid=$(this),
+                id=grid.attr('id').slice(0, -3);
+
+            var gridContainer = gx.pO[id];
+            $(gridContainer.grid.columns).each(function(){
+                //Si el elemento tiene picture numerica
+                if(this.gxControl.vStruct 
+                    && this.gxControl.vStruct.pic
+                    && (this.gxControl.vStruct.pic.indexOf('Z') != -1 
+                        || this.gxControl.vStruct.pic.indexOf('9') != -1)) {
+                        var align = 'center';
+                        if(this.gxControl.vStruct.pic.indexOf('.') != -1){
+                            align = 'right';
+                        }
+                        grid.find('td[colindex="'+this.index+'"],'+
+                                  'th[colindex="'+this.index+'"],'+
+                                  'td[colindex="'+this.index+'"] *').css('text-align', align)
+                }
+            })
+        })
     }
 
     $(document).ready(function () {
@@ -509,26 +545,6 @@
                     tp.addClass('border-top');
                 }
             });
-
-
-            setTimeout(function () {
-                //setear titulo de la pagina para estandarizar todos los objetos
-                //Esto es temporal, una vez eliminado el Form.Caption="..." de los
-                //WP del sistema quitar esta seccion
-                // if (window.objdesc && window.modulo) {
-                //     var splited = objdesc.split('|');
-                //     if (splited.length == 1) {
-                //         splited = objdesc.split(' l ');
-                //     }
-                //     objdesc = splited[splited.length - 1].trim();
-                //     objdesc = objdesc[0].toUpperCase() + objdesc.slice(1);
-                //     modulo = modulo.trim();
-                //     modulo = modulo[0].toUpperCase() + modulo.slice(1);
-                //     if (modulo != objdesc)
-                //         document.title = modulo + ' | ' + objdesc;
-                // }
-            }, 200);
-
 
             /*Ajustar los prompts a la tabla que tienen dentro*/
             var setWidthOfPopup = function () {
