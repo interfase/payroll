@@ -408,18 +408,8 @@
                 menu.updateScroll();
             });
 
-            gx.fx.obs.addObserver("grid.onafterrender", this, function (a) {
-                    UpdateTdGridAlign();
-
-                    //Pegar el lupon al input
-                    $('.Grid img[id^=PROMPT]').each(function(){
-                        var td = $(this).parents('td').first();
-                        td.css({width:'1%', padding: '0px 15px 0px 0px'});
-                        td.prev().css({width:'1%', padding: '0px 0px 0px 15px'});
-                    })
-                    console.log('rendered');
-                });
-             UpdateTdGridAlign();
+            UpdateTdGridAlign();
+            
 
         }, 20);
 
@@ -455,27 +445,57 @@
     }
 
     var UpdateTdGridAlign = function(){
-        $('.Grid').each(function(){
-            var grid=$(this),
-                id=grid.attr('id').slice(0, -3);
+        var updateNumericAlign = function(){
+            $('.Grid').each(function(){
+                var grid=$(this),
+                    id=grid.attr('id').slice(0, -3);
 
-            var gridContainer = gx.pO[id];
-            $(gridContainer.grid.columns).each(function(){
-                //Si el elemento tiene picture numerica
-                if(this.gxControl.vStruct 
-                    && this.gxControl.vStruct.pic
-                    && (this.gxControl.vStruct.pic.indexOf('Z') != -1 
-                        || this.gxControl.vStruct.pic.indexOf('9') != -1)) {
-                        var align = 'center';
-                        if(this.gxControl.vStruct.pic.indexOf('.') != -1){
-                            align = 'right';
-                        }
-                        grid.find('td[colindex="'+this.index+'"],'+
-                                  'th[colindex="'+this.index+'"],'+
-                                  'td[colindex="'+this.index+'"] *').css('text-align', align)
+                var gridContainer = gx.pO[id];
+                $(gridContainer.grid.columns).each(function(){
+                    //Si el elemento tiene picture numerica
+                    if(this.gxControl.vStruct 
+                        && this.gxControl.vStruct.pic
+                        && (this.gxControl.vStruct.pic.indexOf('Z') != -1 
+                            || this.gxControl.vStruct.pic.indexOf('9') != -1)) {
+                            var align = 'center';
+                            if(this.gxControl.vStruct.pic.indexOf('.') != -1){
+                                align = 'right';
+                            }
+                            grid.find('td[colindex="'+this.index+'"],'+
+                                      'th[colindex="'+this.index+'"],'+
+                                      'td[colindex="'+this.index+'"] *').css('text-align', align)
+                    }
+                })
+            })
+        };
+
+        var updatePromptButtonAlign = function(){
+            //Pegar el lupon al input
+            $('.Grid img[id^=PROMPT]').each(function(){
+                var td = $(this).parents('td').first(),
+                    prevTd = td.prev();
+                td.css({width:'1%', padding: '0px 15px 0px 0px'});
+                prevTd.css({width:'1%', padding: '0px 0px 0px 15px'});
+                prevTd.find('input').css({width:'100%'});
+                
+                if(prevTd.find('.ReadonlyAttribute').size()){
+                    $(this).hide();
                 }
             })
-        })
+
+            $('.Grid img[id^=deleteGrid]').each(function(){
+                $(this).parents('td').first().css({width:'1%'});
+            })
+        };
+
+        gx.fx.obs.addObserver("grid.onafterrender", this, function (a) {
+            updateNumericAlign();
+            updatePromptButtonAlign();
+            console.log('Grid rendered');
+        });
+        
+         updateNumericAlign();
+         updatePromptButtonAlign();
     }
 
     $(document).ready(function () {
