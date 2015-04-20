@@ -1630,3 +1630,14 @@ select[style*='visibility: hidden']{
   padding-top: 20px!important;
   border-bottom: 1px solid #EFEFEF;
 }
+
+.form-margin1 .GroupTitle + div{
+    border-top: 2px solid #D5D5D5;    
+    margin-bottom: 40px; 
+    padding-top: 20px;
+}
+
+.form-margin1 .GroupTitle{
+    padding-top: 0px !important;
+    margin-bottom: 0px;
+}
