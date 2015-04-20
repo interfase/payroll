@@ -1673,6 +1673,9 @@ select[style*='visibility: hidden']{
     color: #4885AF!important;
 }
 
+.Tab .tab-content{
+    border-radius: 4px
+}
 
 .tab-pane{
     border: none!important;
