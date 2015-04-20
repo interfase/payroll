@@ -51,7 +51,7 @@
                 var baseUrl = window.location.pathname.split('/'),
                     obj = baseUrl[baseUrl.length - 1],
                     search = window.location.search,
-                    obj1=obj;
+                    obj1 = obj;
 
                 if (search != "") {
                     obj1 += search;
@@ -59,8 +59,8 @@
 
                 //buscar el elemento activo del menu
                 this.activeItem = $('.nav-side-menu a[href="' + obj1 + '"]');
-                
-                if(this.activeItem.size() == 0)
+
+                if (this.activeItem.size() == 0)
                     this.activeItem = $('.nav-side-menu a[href="' + obj + '"]');
 
 
@@ -314,14 +314,14 @@
         }
 
         //Cambiar el page de position
-        f=$('.pageTitle');
-        if(f.size()){
-            var ft=f.first().clone();
+        f = $('.pageTitle');
+        if (f.size()) {
+            var ft = f.first().clone();
             f.remove();
             $('.tdContentPlaceHolder').prepend(ft);
-            var title=$.getCookie('PageTitle');
+            var title = $.getCookie('PageTitle');
 
-            if(title){
+            if (title) {
                 title = unescape(title).replace(/\+/g, ' ');
                 ft.html("<div>" + title + "</div>");
             }
@@ -408,7 +408,9 @@
                 menu.updateScroll();
             });
 
-            //Ajustar los tooltips
+            UpdateGridElementsAlignment();
+
+
         }, 20);
 
         setTimeout(setTooltips, 500);
@@ -442,6 +444,79 @@
         }
     }
 
+    var UpdateGridElementsAlignment = function () {
+
+        var updateNumericAlign = function (grid) {
+            var gridElement = $(grid.container).find('.Grid').first(),
+                hasNumeric = false;
+
+            $(grid.columns).each(function (i, c) {
+                //Si el elemento tiene picture numerica
+                if (c.gxControl.vStruct
+                    && c.gxControl.vStruct.pic
+                    && (c.gxControl.vStruct.pic.indexOf('Z') != -1
+                    || c.gxControl.vStruct.pic.indexOf('9') != -1)) {
+                    var align = 'center';
+
+                    //si es coma flotante
+                    if (c.gxControl.vStruct.pic.indexOf('.') != -1) {
+                        align = 'right';
+                    }
+                    gridElement.find('td[colindex="' + c.index + '"],' +
+                        'th[colindex="' + c.index + '"],' +
+                        'td[colindex="' + c.index + '"] *').css('text-align', align)
+
+                    hasNumeric = true;
+                }
+            })
+
+            if (hasNumeric) {
+                console.log('Updated numeric alignment');
+            }
+        };
+
+        var updatePromptButtonAlign = function (grid) {
+            var hasPrompt = false,
+                hasDelete = false;
+            //Pegar el lupon al input
+            $(grid.container).find('.Grid td img[id^=PROMPT]').each(function () {
+                var currentTd = $(this).parents('td').first(),
+                    prevTd = currentTd.prev();
+                currentTd.css({width: '1%', 'padding-left': '0'});
+                prevTd.css({width: '1%', 'padding-right': '0'});
+                prevTd.find('input').css({width: '100%'});
+
+                if (prevTd.find('.ReadonlyAttribute').size()) {
+                    $(this).hide();
+                }
+                hasPrompt = true;
+            });
+
+            $('.Grid img[id^=deleteGrid]').each(function () {
+                $(this).parents('td').first().css({width: '1%'});
+                hasDelete = true;
+            })
+
+            if (hasPrompt) {
+                console.log('Updated prompt button alignment');
+            }
+
+            if (hasDelete) {
+                console.log('Updated delete button alignment');
+            }
+        };
+
+        gx.fx.obs.addObserver("grid.onafterrender", this, function (grid) {
+            updateNumericAlign(grid);
+            updatePromptButtonAlign(grid);
+            console.log('Grid rendered');
+        });
+
+        $(gx.pO.Grids).each(function () {
+//            updatePromptButtonAlign(this.grid);
+        })
+    }
+
     $(document).ready(function () {
         //patch para un doble ready de genexus con los prompts, 
         //no idea por que hace esto el monstruo del icono rojo
@@ -459,8 +534,8 @@
                     var scrollEv = false,
                         minTop = 1e10000;
                     for (var i = 0; i < b['MAIN'].length; i++) {
-                        var att=null;
-                        if (b['MAIN'][i].type && b['MAIN'][i].att && (att=$('#' + b['MAIN'][i].att)).size()) {
+                        var att = null;
+                        if (b['MAIN'][i].type && b['MAIN'][i].att && (att = $('#' + b['MAIN'][i].att)).size()) {
                             var top = att.offset().top;
                             minTop = Math.min(minTop, top);
                         }
@@ -476,7 +551,7 @@
                         }
                     }
                     else {
-                        $('.tdContentPlaceHolder').scrollTop($('.gx-content-placeholder').offset().top-minTop);
+                        $('.tdContentPlaceHolder').scrollTop($('.gx-content-placeholder').offset().top - minTop);
                     }
                 }
             };
@@ -494,11 +569,11 @@
                 $this.addClass('GridLarge');
 
                 tp.find('.row:not(:has(.Grid))').each(function () {
-                    if ($(this).find('.ReadonlyAttribute:not(#span_vEMPID):not(#span_vHLDID)'+
-                                      ':not(#span_EMPID):not(#span_EMPID1):not(#span_HLDID):not(#span_HLDID1)'+
-                                      ':not(#span_vHLDID1):not(#span_vEMPID1):not(#span_vTOTCNT),'+
-                                     '.Attribute:not(#EMPID):not(#HLDID):not(#vEMPID):not(#vHLDID):not(#vEMPID1):not(#vHLDID1)'+
-                                     ':not(#EMPID1):not(#HLDID1)').size())
+                    if ($(this).find('.ReadonlyAttribute:not(#span_vEMPID):not(#span_vHLDID)' +
+                        ':not(#span_EMPID):not(#span_EMPID1):not(#span_HLDID):not(#span_HLDID1)' +
+                        ':not(#span_vHLDID1):not(#span_vEMPID1):not(#span_vTOTCNT),' +
+                        '.Attribute:not(#EMPID):not(#HLDID):not(#vEMPID):not(#vHLDID):not(#vEMPID1):not(#vHLDID1)' +
+                        ':not(#EMPID1):not(#HLDID1)').size())
                         count++;
                 });
 
@@ -509,26 +584,6 @@
                     tp.addClass('border-top');
                 }
             });
-
-
-            setTimeout(function () {
-                //setear titulo de la pagina para estandarizar todos los objetos
-                //Esto es temporal, una vez eliminado el Form.Caption="..." de los
-                //WP del sistema quitar esta seccion
-                // if (window.objdesc && window.modulo) {
-                //     var splited = objdesc.split('|');
-                //     if (splited.length == 1) {
-                //         splited = objdesc.split(' l ');
-                //     }
-                //     objdesc = splited[splited.length - 1].trim();
-                //     objdesc = objdesc[0].toUpperCase() + objdesc.slice(1);
-                //     modulo = modulo.trim();
-                //     modulo = modulo[0].toUpperCase() + modulo.slice(1);
-                //     if (modulo != objdesc)
-                //         document.title = modulo + ' | ' + objdesc;
-                // }
-            }, 200);
-
 
             /*Ajustar los prompts a la tabla que tienen dentro*/
             var setWidthOfPopup = function () {
@@ -563,9 +618,9 @@
                         }
                     }, 1);
 
-                    var left=$('body').width() / 2 - width / 2 - 9,
-                        top= $('body').height() / 2 - height / 2;
-                    top=top>0?top:0;
+                    var left = $('body').width() / 2 - width / 2 - 9,
+                        top = $('body').height() / 2 - height / 2;
+                    top = top > 0 ? top : 0;
 
                     $(id + "_b").css({
                         left: left,

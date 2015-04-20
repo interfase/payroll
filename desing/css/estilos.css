@@ -19,7 +19,7 @@ html.ie9 body
 }
 
 .FormContainer{
-    padding-top: 10px!important;
+    padding-top: 5px!important;
 }
 
 .ContentContainer{
@@ -45,10 +45,16 @@ html.ie9 body
 
 .pageTitle div{
     margin-top: 10px;
-    margin-left: 38px;
+    margin-left: 34px;
     font-size: 18px;
     font-weight: bold;
     color: #196396;
+}
+
+@media (max-width: 767px){
+    .pageTitle div{
+        margin-left: 18px;
+    }
 }
 
 .contentColumn{
@@ -374,7 +380,15 @@ div.tooltip .tooltip-inner{
     display: none!important; 
 }
 
+.BlobContentAttribute, .ReadonlyBlobContentAttribute{
+    height: auto;
+}
+
 /*GRIDS*/
+.Grid{
+    overflow-x: auto;
+}
+
 .Grid .gx-row-selected, .Grid .gx-row-selected td {
     background-color: #e8f2fc !important;
 }
@@ -399,15 +413,15 @@ div.tooltip .tooltip-inner{
 }
 
 table.Grid{
-    border-collapse: separate;
-    border-spacing: 0px 5px!important;
+    /*border-collapse: separate;*/
+    /*border-spacing: 0px 5px!important;*/
     background-color: transparent!important;
     margin-top: 0px!important;
     border: none;
 }
 
 table.Grid tbody tr{
-    outline: solid #C9C9C9 1px;
+    /*outline: solid #C9C9C9 1px;*/
 }
 
 table.Grid tbody td {
@@ -607,6 +621,20 @@ div#TOTCNT_CONTAINER {
     margin-top: 15px;
 }
 
+.Filters > .row:first-child > div[class*="col"]:nth-child(2) {
+  padding-left: 0;
+  margin-left: 0;
+  padding-top: 4px;
+}
+
+.Filters > .row:first-child > div:first-child {
+  width: auto;
+  padding-right: 6px;
+}
+
+#FILTERSIMPLE td{
+    padding: 0;
+}
 /*end*/
 
 /*para que los importar archivo de varible blob tenga un tamaño fijo*/
@@ -1374,22 +1402,6 @@ a:hover #icon-apps, a:hover #icon-user{
     margin-bottom: 2px;
 }
 
-label.control-label.gx-label{
-    height: 100%;
-    font-weight: bold;
-    text-align: left!important;
-}
-
-@media (min-width: 768px){
-    .LargeLabel .gx-attribute {
-        width: 40%;
-    }
-
-    .LargeLabel .gx-label{
-        width: 60%;
-    }
-}
-
 /*********************** Start Pagina de inicio de modulo *************/
 .inicio-cell_header{
     background-image: url(../imgs/header.jpg);
@@ -1619,7 +1631,54 @@ select[style*='visibility: hidden']{
 
 /*End botones acciones*/
 
+/*Tabs*/
+.Tab .nav-tabs{
+    padding-bottom: 0!important;
+    padding-left: 10px!important;
+}
+
+.Tab .nav-tabs li{
+    margin-bottom: 0!important;
+    border-radius: 0!important;
+}
+
+.Tab .nav-tabs li.active{
+    font-weight: bold!important;
+}
+
+.Tab .nav-tabs li a
+{
+    background-color: transparent!important;
+    border: none!important;
+    font-size: 16px!important;
+    border-radius: 0!important;
+    padding-left: 10px!important;
+    padding-right: 10px!important;
+    padding-bottom: 16px!important;
+    color: #84ADC0!important;
+}
+
+.Tab .nav-tabs li a:hover {
+    color: #98C3D7!important;
+}
+
+.Tab .nav-tabs li.active a,
+.Tab .nav-tabs li.active a:focus{
+    color: #196396!important;
+    border-bottom: 8px solid #196396!important;
+    padding-bottom: 8px!important;
+}
+
+.Tab .nav-tabs li.active a:hover{
+    color: #4885AF!important;
+}
+
+.Tab .tab-content{
+    border-radius: 4px
+}
+
 .tab-pane{
+    border: none!important;
     padding-left: 15px;
 }
 
@@ -1631,6 +1690,109 @@ select[style*='visibility: hidden']{
   border-bottom: 1px solid #EFEFEF;
 }
 
+/*End tabs*/
+
+/*Attributos*/
+.control-label.gx-label{
+    height: 100%;
+    font-weight: bold;
+    text-align: left!important;
+}
+
+@media (min-width: 768px){
+    .LargeLabel .gx-attribute {
+        width: 40%;
+    }
+
+    .LargeLabel .gx-label{
+        width: 60%;
+    }
+}
+
+div.gx-attribute, div.gx-attribute span, div.gx-attribute input{
+    text-align: left!important;
+}
+
+.input-group{
+    border-spacing: 0;
+}
+/*End Attributos*/
+
+/*Datepicker*/
+div.calendar{
+    padding: 5px; 
+    border-radius: 4px;
+}
+
+div.calendar table{
+    border: none;
+}
+div.calendar tbody td.day.selected{
+    background-color: #00629a;
+    border-radius: 4px;
+}
+
+div.calendar thead tr:first-child .calendarbutton{
+    padding-bottom: 0;
+}
+
+div.calendar thead tr:first-child td:last-child,
+div.calendar thead tr:first-child td:first-child{
+    cursor: pointer;
+    /*font-family: Helvetica,Arial,sans-serif;*/
+    font-size: 33px;
+    color: #196396;
+    text-align: center;
+    line-height: 36px;
+    opacity: .6;
+}
+div.calendar thead tr:first-child td:last-child:hover,
+div.calendar thead tr:first-child td:first-child:hover{
+    opacity: 1;
+}
+div.calendar thead tr:first-child td:first-child{
+    font-size: 24px!important;
+}
+
+div.calendar thead .calendartitle{
+    font-size: 16px!important;
+}
+
+div.calendar .headrow{
+    line-height: 14px;
+}
+
+div.calendar .headrow .calendarbutton{
+    padding-top: 0;
+    font-size: 16px;
+}
+
+div.calendar .headrow .calendarbutton.calendar-nav{
+    font-size: 25px;
+}
+/*end*/
+
+.PopupHeader{
+    position: relative!important;
+    top: 0!important;
+    height: auto!important;
+    z-index: 1003;
+}
+
+.PopupTitle{
+    position: relative!important;
+    display: block!important;
+    overflow: visible!important;
+    white-space: normal!important;
+    padding-right: 30px!important;
+    /*text-overflow: ellipsis!important;*/
+}
+
+.PopupContent{
+    position: relative!important;
+    top: 0!important;
+}
+
 .form-margin1 .GroupTitle + div{
     border-top: 2px solid #D5D5D5;    
     margin-bottom: 40px; 
@@ -1640,4 +1802,5 @@ select[style*='visibility: hidden']{
 .form-margin1 .GroupTitle{
     padding-top: 0px !important;
     margin-bottom: 0px;
+  border-bottom: none;
 }
