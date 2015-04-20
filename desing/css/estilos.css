@@ -1708,6 +1708,10 @@ select[style*='visibility: hidden']{
 div.gx-attribute, div.gx-attribute span, div.gx-attribute input{
     text-align: left!important;
 }
+
+.input-group{
+    border-spacing: 0;
+}
 /*End Attributos*/
 
 /*Datepicker*/
@@ -1763,3 +1767,24 @@ div.calendar .headrow .calendarbutton.calendar-nav{
     font-size: 25px;
 }
 /*end*/
+
+.PopupHeader{
+    position: relative!important;
+    top: 0!important;
+    height: auto!important;
+    z-index: 1003;
+}
+
+.PopupTitle{
+    position: relative!important;
+    display: block!important;
+    overflow: visible!important;
+    white-space: normal!important;
+    padding-right: 30px!important;
+    /*text-overflow: ellipsis!important;*/
+}
+
+.PopupContent{
+    position: relative!important;
+    top: 0!important;
+}
