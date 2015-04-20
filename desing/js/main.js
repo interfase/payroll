@@ -513,7 +513,7 @@
         });
 
         $(gx.pO.Grids).each(function () {
-//            updatePromptButtonAlign(this.grid);
+            updatePromptButtonAlign(this.grid);
         })
     }
 
