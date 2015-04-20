@@ -621,6 +621,20 @@ div#TOTCNT_CONTAINER {
     margin-top: 15px;
 }
 
+.Filters > .row:first-child > div[class*="col"]:nth-child(2) {
+  padding-left: 0;
+  margin-left: 0;
+  padding-top: 4px;
+}
+
+.Filters > .row:first-child > div:first-child {
+  width: auto;
+  padding-right: 6px;
+}
+
+#FILTERSIMPLE td{
+    padding: 0;
+}
 /*end*/
 
 /*para que los importar archivo de varible blob tenga un tamaño fijo*/
@@ -1696,18 +1710,56 @@ div.gx-attribute, div.gx-attribute span, div.gx-attribute input{
 }
 /*End Attributos*/
 
-/*filtros de los ww*/
-.Filters > .row:first-child > div[class*="col"]:nth-child(2) {
-  padding-left: 0;
-  margin-left: 0;
-  padding-top: 4px;
+/*Datepicker*/
+div.calendar{
+    padding: 5px; 
+    border-radius: 4px;
 }
 
-.Filters > .row:first-child > div:first-child {
-  width: auto;
-  padding-right: 6px;
+div.calendar table{
+    border: none;
+}
+div.calendar tbody td.day.selected{
+    background-color: #00629a;
+    border-radius: 4px;
 }
 
-#FILTERSIMPLE td{
-    padding: 0;
+div.calendar thead tr:first-child .calendarbutton{
+    padding-bottom: 0;
 }
+
+div.calendar thead tr:first-child td:last-child,
+div.calendar thead tr:first-child td:first-child{
+    cursor: pointer;
+    /*font-family: Helvetica,Arial,sans-serif;*/
+    font-size: 33px;
+    color: #196396;
+    text-align: center;
+    line-height: 36px;
+    opacity: .6;
+}
+div.calendar thead tr:first-child td:last-child:hover,
+div.calendar thead tr:first-child td:first-child:hover{
+    opacity: 1;
+}
+div.calendar thead tr:first-child td:first-child{
+    font-size: 24px!important;
+}
+
+div.calendar thead .calendartitle{
+    font-size: 16px!important;
+}
+
+div.calendar .headrow{
+    line-height: 14px;
+}
+
+div.calendar .headrow .calendarbutton{
+    padding-top: 0;
+    font-size: 16px;
+}
+
+div.calendar .headrow .calendarbutton.calendar-nav{
+    font-size: 25px;
+}
+/*end*/
