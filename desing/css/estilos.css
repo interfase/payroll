@@ -717,6 +717,10 @@ table.Grid tbody td {
     background-color: #fff;
 }
 
+.TablePrincipal{
+    padding-right: 0;
+}
+
 .TablePrincipal:not(.transparent){
     padding-left: 20px!important;
 }
@@ -892,7 +896,6 @@ table.Grid tbody td {
 
 .TableActions .dropdown .dropdown-menu{
     overflow-y: auto;
-    /*height: 10px;*/
 }
 
 #span_vHTMLACTIONSSELECT .dropdown{
@@ -920,6 +923,10 @@ div#TOTCNT_CONTAINER {
 
 #FILTERSIMPLE td{
     padding: 0;
+}
+
+.ActionGroup{
+    margin-left: 5px;
 }
 /*end*/
 
@@ -1560,16 +1567,6 @@ body.Form-fx{
     text-align: left!important;
 }
 
-@media (min-width: 768px){
-    .LargeLabel .gx-attribute {
-        width: 40%;
-    }
-
-    .LargeLabel .gx-label{
-        width: 60%;
-    }
-}
-
 div.gx-attribute, div.gx-attribute span, div.gx-attribute input{
     text-align: left!important;
 }
@@ -1601,6 +1598,10 @@ input[type="radio"], input[type="checkbox"]{
 .link a:hover, .link a:focus {
     color: #2a6496;
     text-decoration: none;
+}
+
+.Table2C label + div{
+    width: 58.33333333%!important;
 }
 /*End Attributos*/
 
@@ -1670,19 +1671,27 @@ select[style*='visibility: hidden']{
   font-weight: bold!important;
   color: #00629a!important;
   padding-top: 20px!important;
-  border-bottom: 1px solid #EFEFEF;
+  border-bottom: none;
 }
 
 .form-margin1 .GroupTitle + div{
-    border-top: 2px solid #D5D5D5;    
-    margin-bottom: 40px; 
-    padding-top: 20px;
+    border-top: 2px solid #D5D5D5;
+    margin-bottom: 10px;
+    padding-top: 10px;
 }
 
 .form-margin1 .GroupTitle{
     padding-top: 0px !important;
     margin-bottom: 0px;
-  border-bottom: none;
+    border-bottom: none;
+}
+
+.form-margin1 .gx-label,
+.form-margin1 .form-control-static
+{
+    line-height: normal;
+    padding-top: 0;
+    min-height: initial;
 }
 /*End*/
 
@@ -1745,4 +1754,22 @@ select[style*='visibility: hidden']{
 }
 .form-margin{
     margin-top: 10px;
+}
+
+
+
+
+@media (max-width: 768px){
+    .Image.pull-right{
+        float: none!important;
+    }
+}
+@media (min-width: 768px){
+    .LargeLabel .gx-attribute {
+        width: 50%;
+    }
+
+    .LargeLabel .gx-label{
+        width: 50%;
+    }
 }

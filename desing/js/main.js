@@ -514,6 +514,7 @@
 
         $(gx.pO.Grids).each(function () {
             updatePromptButtonAlign(this.grid);
+            updatePromptButtonAlign(this.grid);
         })
     }
 
@@ -559,6 +560,16 @@
             // Cambio de Container por ContainerFluid
             $('div.Container').attr('class', 'container-fluid FormContainer');
 
+            var attributes=[
+                '#span_vEMPID','#span_vHLDID','#span_EMPID','#span_EMPID1','#span_HLDID','#span_HLDID1',
+                '#span_vHLDID1','#span_vEMPID1','#span_vTOTCNT','#EMPID','#HLDID','#vEMPID','#vEMPID',
+                '#vHLDID','#vEMPID1','#vHLDID1','#EMPID1','#HLDID1', '#vFILTROUSUARIOSLDAP', '#vFILTROUSUARIOSGUARDADOS'
+            ];
+
+            var selector=''
+            $(attributes).each(function(index, item){
+                selector += ':not('+item+')';
+            })
             //Eliminar el borde y fondo al table principal
             $('#GridContainerDiv,#Grid1ContainerDiv,#Grid2ContainerDiv, [id$="level1itemContainerDiv"], [id$="level2itemContainerDiv"]').each(function () {
                 var $this = $(this),
@@ -569,11 +580,7 @@
                 $this.addClass('GridLarge');
 
                 tp.find('.row:not(:has(.Grid))').each(function () {
-                    if ($(this).find('.ReadonlyAttribute:not(#span_vEMPID):not(#span_vHLDID)' +
-                        ':not(#span_EMPID):not(#span_EMPID1):not(#span_HLDID):not(#span_HLDID1)' +
-                        ':not(#span_vHLDID1):not(#span_vEMPID1):not(#span_vTOTCNT),' +
-                        '.Attribute:not(#EMPID):not(#HLDID):not(#vEMPID):not(#vHLDID):not(#vEMPID1):not(#vHLDID1)' +
-                        ':not(#EMPID1):not(#HLDID1)').size())
+                    if ($(this).find('.ReadonlyAttribute' + selector + ',.Attribute' + selector).size())
                         count++;
                 });
 
