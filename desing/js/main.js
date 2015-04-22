@@ -563,7 +563,7 @@
             var attributes=[
                 '#span_vEMPID','#span_vHLDID','#span_EMPID','#span_EMPID1','#span_HLDID','#span_HLDID1',
                 '#span_vHLDID1','#span_vEMPID1','#span_vTOTCNT','#EMPID','#HLDID','#vEMPID','#vEMPID',
-                '#vHLDID','#vEMPID1','#vHLDID1','#EMPID1','#HLDID1', '#vFILTROUSUARIOSLDAP', '#vFILTROUSUARIOSGUARDADOS'
+                '#vHLDID','#vEMPID1','#vHLDID1','#EMPID1','#HLDID1'
             ];
 
             var selector=''

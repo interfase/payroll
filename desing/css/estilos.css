@@ -718,20 +718,39 @@ table.Grid tbody td {
 }
 
 .TablePrincipal{
-    padding-right: 0;
+    padding-right: 10px;
+}
+
+.TablePrincipal.border-top.transparent,
+.TablePrincipal.border-top{
+    margin-top: 20px;
+    padding-left: 5px!important;
+}
+
+.TablePrincipal.border-top:not(.transparent) > .row{
+    padding-left: 10px;
+}
+
+.TablePrincipal.border-top:before{
+    content: ' ';
+    display: block;
+    position: relative;
+    width: auto;
+    margin-left: -10px;
+    right: -5px;
+    border-top: 2px solid #D5D5D5;
+    margin-top: -28px;
+    margin-bottom: 20px;
 }
 
 .TablePrincipal:not(.transparent){
-    padding-left: 20px!important;
+    padding-left: 20px;
 }
 
 .TablePrincipal.transparent{
     background-color: transparent!important;
     border-width: 0;
     border-radius: 0;
-}
-.TablePrincipal.border-top{
-    border-top: 2px solid #D5D5D5;
 }
 
 .Grid div.checkbox{
@@ -1561,7 +1580,7 @@ body.Form-fx{
 /*End tabs*/
 
 /*Attributos*/
-.control-label.gx-label{
+.gx-label{
     height: 100%;
     font-weight: bold;
     text-align: left!important;

@@ -3,15 +3,16 @@
 }
 
 table.Grid{
-    border-collapse: separate;
-    border-spacing: 0px 5px!important;
+    /*border-collapse: separate;*/
+    /*border-spacing: 0px 5px!important;*/
     background-color: transparent!important;
     margin-top: 0px!important;
     border: none;
 }
 
 table.Grid tbody tr{
-    outline: solid #C9C9C9 1px;
+    /*outline: solid #C9C9C9 1px;*/
+    cursor: pointer;
 }
 
 table.Grid tbody tr:hover{
@@ -20,6 +21,10 @@ table.Grid tbody tr:hover{
 
 table.Grid tbody tr.gx-row-selected{
     background-color: #e8f2fc !important; 
+}
+
+table.Grid .ReadonlyAttribute a{
+    color: #a1a1a1;
 }
 
 .BtnEnter, .BtnDelete{
