@@ -1609,6 +1609,9 @@ select.form-control{
 input[type="radio"], input[type="checkbox"]{
     margin-top: 0;
 }
+div.checkbox {
+    padding-top: 11px!important;
+}
 .link a{
     color: #428bca;
     text-decoration: underline;
@@ -1621,6 +1624,26 @@ input[type="radio"], input[type="checkbox"]{
 
 .Table2C label + div{
     width: 58.33333333%!important;
+}
+
+.Image.pull-right {
+    margin-right: 10px;
+}
+
+@media (max-width: 768px){
+    .Image.pull-right{
+        float: none!important;
+        margin-right: 0
+    }
+}
+@media (min-width: 768px){
+    .LargeLabel .gx-attribute {
+        width: 50%;
+    }
+
+    .LargeLabel .gx-label{
+        width: 50%;
+    }
 }
 /*End Attributos*/
 
@@ -1775,20 +1798,10 @@ select[style*='visibility: hidden']{
     margin-top: 10px;
 }
 
-
-
-
-@media (max-width: 768px){
-    .Image.pull-right{
-        float: none!important;
-    }
+img[src$="calendar.png"]{
+    width: 16px;
 }
-@media (min-width: 768px){
-    .LargeLabel .gx-attribute {
-        width: 50%;
-    }
 
-    .LargeLabel .gx-label{
-        width: 50%;
-    }
+img[src$="prompt.png"]{
+    width: 20px;
 }
