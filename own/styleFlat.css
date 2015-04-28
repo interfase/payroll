@@ -9,32 +9,19 @@ label{
 .Grid{
     border-spacing: 0;
 }
-
-.Grid tr:hover{
-    background-color: #CAE1EE !important;   
-}
-
-.Grid .gx-row-selected{
-    background-color: #CAE1EE !important; 
-}
-
-.Grid .checkbox{
-    margin-left: 20px;
-    margin-right: -20px;
-}
 /**Css para los grid origianl**/
 .WorkWith tr:hover{
-    background-color: #CAE1EE !important;   
+    background-color: #CAE1EE !important;
 }
 
 .WorkWith .gx-row-selected{
-    background-color: #CAE1EE !important; 
+    background-color: #CAE1EE !important;
 }
 /*Buttons*/
 .btnSearch:hover, .btnSearchRight:hover{
     background-color: #196396;
     color: #fff;
-    border: none;    
+    border: none;
 }
 
 .BtnEnter, .BtnCancel, .Button{
@@ -48,7 +35,7 @@ label{
 }
 
 .ButtonActionsGrid:hover{
-    background-color: #fff;    
+    background-color: #fff;
     border-color: #ccc;
 }
 
@@ -57,13 +44,6 @@ label{
     color: #196396;
     border-color: #ccc;
 }
-
-/**Css para la barra User Action**/
-/****************************************/
-.TableUserActions{
-    /*margin-bottom: 20px;*/        
-}
-
 
 /**Css para la barra Footer**/
 /****************************************/
@@ -79,32 +59,17 @@ label{
 
 /**Css para los Tab**/
 /****************************************/
-.nav-tabs > li > a:hover{    
+.nav-tabs > li > a:hover{
     background-color: #196396;
     color: #fff;
 }
 
 .tab-pane{
     /*background-color: #EDF6F9;*/
-    border: 1px solid #8DBAD8;  
+    border: 1px solid #8DBAD8;
     border-radius: 4px;
     padding-bottom: 20px;
     padding-top: 20px;
-}
-
-/**Css para IdAttribute**/
-/****************************************/
-.IdAttribute{
-    float: left;
-}
-.IdAttribute + a img{
-    padding: 2px 12px 2px 12px;
-    border: 1px solid rgb(204, 204, 204);
-    border-left: 0px;
-    border-radius: 0px 4px 4px 0px;
-}
-.IdAttribute + a img:hover{
-    background-color: rgb(235, 235, 235);
 }
 
 /**Css para Tabla de 2 Columnas**/
@@ -163,7 +128,7 @@ label{
 }
 
 .FooterContainer{
-    position: fixed;    
+    position: fixed;
     bottom: 0px;
 }
 
@@ -172,7 +137,7 @@ label{
 }
 
 .TablePage .PagingButtonsFirst, .TablePage .PagingButtonsPrevious,
-.TablePage .PagingButtonsNext, .TablePage .PagingButtonsLast{    
+.TablePage .PagingButtonsNext, .TablePage .PagingButtonsLast{
     padding-left: 33px !important;
     padding-bottom: 33px !important;
 }
@@ -183,18 +148,7 @@ label{
 
 }
 
-.mainMenu{
-    /*position: absolute;*/
-    width: 290px;    
-}
 
-body, html{
-    height: 100%;
-}
-
-.ContentContainer{
-    height: 100vh;
-}
 
 /*Css para formato de los pickers en los grid.*/
 .dp_container + p{

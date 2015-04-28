@@ -1,3 +1,7 @@
+body, html{
+    height: 100%;
+}
+
 body {
     background: #f0f8fa;
     overflow: hidden;
@@ -24,6 +28,7 @@ html.ie9 body
 
 .ContentContainer{
     margin-top: 65px!important;
+    height: 100vh;
 }
 
 .tdContentPlaceHolder{
@@ -656,6 +661,10 @@ div.tooltip .tooltip-inner{
     top: 0!important;
 }
 
+img[src$="prompt.png"]{
+    width: 20px;
+}
+
 /*Attributos que no se pueden ocultar*/
 .attrOcultar{
     height: 0;
@@ -676,6 +685,7 @@ div.tooltip .tooltip-inner{
 /*GRIDS*/
 .Grid{
     overflow-x: auto;
+    border-spacing: 0;
 }
 
 .Grid .gx-row-selected, .Grid .gx-row-selected td {
@@ -702,15 +712,9 @@ div.tooltip .tooltip-inner{
 }
 
 table.Grid{
-    /*border-collapse: separate;*/
-    /*border-spacing: 0px 5px!important;*/
     background-color: transparent!important;
     margin-top: 0px!important;
     border: none;
-}
-
-table.Grid tbody tr{
-    /*outline: solid #C9C9C9 1px;*/
 }
 
 table.Grid tbody td {
@@ -766,7 +770,11 @@ table.Grid tbody td {
     padding-left: 15px;
 
 }
-/*END GRIDS*/
+
+.Grid .checkbox{
+    margin-left: 20px;
+    margin-right: -20px;
+}/*END GRIDS*/
 
 /*grid PAGER*/
 .PagingButtonsFirst,
@@ -1705,6 +1713,22 @@ div.calendar .headrow .calendarbutton.calendar-nav{
 select[style*='visibility: hidden']{
     visibility: visible!important;
 }
+
+.dp_container .input-group-btn .btn-default{
+    padding: 0;
+}
+
+.dp_container .input-group-btn .btn-default img{
+    cursor: pointer;
+    padding: 5px 12px;
+    height: 30px;
+    width: 46px;
+    margin-top: -1px;
+}
+
+.dp_container .ErrorMessages{
+    margin-left: 50px;
+}
 /*end*/
 
 /*Fieldsets y groups de genexus*/
@@ -1798,10 +1822,69 @@ select[style*='visibility: hidden']{
     margin-top: 10px;
 }
 
-img[src$="calendar.png"]{
-    width: 16px;
+
+/**Css para IdAttribute**/
+/****************************************/
+.IdAttribute{
+    float: left;
 }
 
-img[src$="prompt.png"]{
-    width: 20px;
+.IdAttribute + a img {
+    padding: 2px 7px 2px 6px;
+    border: 1px solid rgb(204, 204, 204);
+    border-left: 0px;
+    border-radius: 0px 4px 4px 0px;
+    width: 38px!important;
 }
+
+.IdAttribute + a img:hover{
+    background-color: rgb(235, 235, 235);
+}
+
+/*F3100 styles*/
+@media(min-width: 768px){
+    .F3100 .col-sm-9  > .Attribute {
+        width: 80%!important;
+    }
+
+    .F3100 .col-sm-6 > .gx-attribute  > .Attribute {
+        width: 85%!important;
+    }
+
+    .F3100 .col-sm-9 .col-sm-3 > .gx-attribute  > .Attribute {
+        width: 85%!important;
+    }
+
+    .F3100 #TABLE3 .row .col-sm-9  > .Attribute {
+        width: 30%!important;
+    }
+
+    .F3100 #TABLE4 .row  .col-sm-9  > .Attribute {
+        width: 53%!important;
+    }
+
+    .F3100 #TABLE4 .row .col-sm-3 .col-sm-9 > .Attribute {
+        width: 100%!important;
+    }
+
+    .F3100 #TABLE4 .col-sm-9  .dp_container  .input-group {
+        width: 53%!important;
+    }
+
+    .F3100 #TABLE6 .col-sm-9  .dp_container  .input-group {
+        width: 53%!important;
+    }
+
+    .F3100 .col-sm-9 > .dp_container > .input-group {
+        width: 80%!important;
+    }
+
+    .F3100 .col-sm-9 > .dp_container > .input-group > .Attribute {
+        width: 100%!important;
+    }
+
+    .F3100 .col-sm-9 > .dp_container > .input-group > .input-group-btn{
+        width: 1%!important;
+    }
+}
+/*End F3100*/

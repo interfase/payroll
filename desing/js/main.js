@@ -558,7 +558,7 @@
             };
 
             // Cambio de Container por ContainerFluid
-            $('div.Container').attr('class', 'container-fluid FormContainer');
+            $('div.Container').removeClass('Container').addClass('container-fluid FormContainer');
 
             var attributes=[
                 '#span_vEMPID','#span_vHLDID','#span_EMPID','#span_EMPID1','#span_HLDID','#span_HLDID1',
