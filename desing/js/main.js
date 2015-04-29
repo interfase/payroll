@@ -408,8 +408,7 @@
                 menu.updateScroll();
             });
 
-            UpdateGridElementsAlignment();
-
+            SetGridObservers();
 
         }, 20);
 
@@ -444,8 +443,21 @@
         }
     }
 
-    var UpdateGridElementsAlignment = function () {
+    //Setea un conjunto de observers para los grids que
+    //mofifican el comportamiento de estos
+    var SetGridObservers = function () {
 
+        //Desabilita el line activate
+        var DisableLineActivate = function(grid){
+            var gridElement = $(grid.container).find('.Grid').first();
+
+            //Se hace solo para el elemento con id MAIM
+            gridElement.find('[id^="vMAIN_"]').click(function(ev){
+                    grid.ownerGrid.isLoading = true;
+            });
+        };
+
+        //Cambia la alineacion de los atributos numericos de los grids
         var updateNumericAlign = function (grid) {
             var gridElement = $(grid.container).find('.Grid').first(),
                 hasNumeric = false;
@@ -475,6 +487,7 @@
             }
         };
 
+        //Ajusta el boton de los prompts dentro de los grids
         var updatePromptButtonAlign = function (grid) {
             var hasPrompt = false,
                 hasDelete = false;
@@ -506,14 +519,17 @@
             }
         };
 
+        //Setea los observers
         gx.fx.obs.addObserver("grid.onafterrender", this, function (grid) {
             updateNumericAlign(grid);
             updatePromptButtonAlign(grid);
+            DisableLineActivate(grid);
             console.log('Grid rendered');
         });
 
+        //Ejecuta los procedimientos al cargar la pagina
         $(gx.pO.Grids).each(function () {
-            updatePromptButtonAlign(this.grid);
+            updateNumericAlign(this.grid);
             updatePromptButtonAlign(this.grid);
         })
     }

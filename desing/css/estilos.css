@@ -1886,5 +1886,24 @@ select[style*='visibility: hidden']{
     .F3100 .col-sm-9 > .dp_container > .input-group > .input-group-btn{
         width: 1%!important;
     }
+
+    .F3100 #TABLE21 {
+        padding-top: 3%;
+    }
 }
+
 /*End F3100*/
+input[id^="vMAIN_"] {
+    padding: 8px 15px;
+    width: 47px!important;
+    height: 32px!important;
+}
+
+input[id^="vMAIN_"]:focus{
+    border: none;
+    outline: none;
+}
+
+.ImageColumn{
+    text-align: center!important;
+}
