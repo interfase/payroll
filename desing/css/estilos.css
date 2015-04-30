@@ -1588,10 +1588,12 @@ body.Form-fx{
 /*End tabs*/
 
 /*Attributos*/
-.gx-label{
+.gx-label, .Label{
     height: 100%;
     font-weight: bold;
     text-align: left!important;
+    padding-right: 3px;
+    color: #6d6e70;
 }
 
 div.gx-attribute, div.gx-attribute span, div.gx-attribute input{
@@ -1645,13 +1647,14 @@ div.checkbox {
     }
 }
 @media (min-width: 768px){
-    .LargeLabel .gx-attribute {
-        width: 50%;
-    }
-
+    .LargeLabel .gx-attribute,
     .LargeLabel .gx-label{
         width: 50%;
     }
+}
+
+.form-horizontal .form-control-static {
+    padding-top: 9px;
 }
 /*End Attributos*/
 
@@ -1891,8 +1894,9 @@ select[style*='visibility: hidden']{
         padding-top: 3%;
     }
 }
-
 /*End F3100*/
+
+/*Boton con estrellita en la gestion de roles*/
 input[id^="vMAIN_"] {
     padding: 8px 15px;
     width: 47px!important;
@@ -1907,3 +1911,4 @@ input[id^="vMAIN_"]:focus{
 .ImageColumn{
     text-align: center!important;
 }
+/*End Boton con estrellita en la gestion de roles*/
