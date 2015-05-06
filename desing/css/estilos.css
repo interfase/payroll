@@ -1645,11 +1645,37 @@ div.checkbox {
         float: none!important;
         margin-right: 0
     }
+
+    .input-group input{
+        width:100%!important;
+    }
 }
 @media (min-width: 768px){
     .LargeLabel .gx-attribute,
     .LargeLabel .gx-label{
         width: 50%;
+    }
+
+
+    .Table.field2c .gx-form-group .gx-label {
+      width: 65%!important;
+    }
+
+    .Table.field2c .gx-form-group .gx-attribute {
+      width: 35%!important;
+    }
+
+    .Table.field2c .gx-form-group .gx-attribute > input {
+      width: 100%!important;
+    }
+
+    .Table.field2c .gx-form-group .gx-attribute .input-group,
+    .Table.field2c .gx-form-group .gx-attribute .input-group input{
+        width: 100%!important;
+    }
+
+    .Table.field2c .gx-form-group .gx-attribute .input-group .input-group-btn{
+        width: 1%!important;
     }
 }
 
@@ -1912,3 +1938,116 @@ input[id^="vMAIN_"]:focus{
     text-align: center!important;
 }
 /*End Boton con estrellita en la gestion de roles*/
+
+
+@media (min-width: 768px) {
+    .col-sm-5 > [id$=CONTAINER] label + .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-xs-5 > [id$=CONTAINER] label + .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-sm-5 > [id$=CONTAINER] label + .gx-attribute > select,
+    .col-xs-5 > [id$=CONTAINER] label + .gx-attribute > select{
+      width: 100%!important;
+    }
+
+    .col-sm-5 > .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-xs-5 > .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-sm-5 > .gx-attribute > select,
+    .col-xs-5 > .gx-attribute > select{
+      width: 100%!important;
+    }
+
+    .col-sm-5 > [id$=CONTAINER] .gx-attribute .input-group,
+    .col-xs-5 > [id$=CONTAINER] .gx-attribute .input-group
+    {
+        width: 100%!important;
+    }
+
+    .col-sm-6 > [id$=CONTAINER] label + .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-xs-6 > [id$=CONTAINER] label + .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-sm-6 > [id$=CONTAINER] label + .gx-attribute > select,
+    .col-xs-6 > [id$=CONTAINER] label + .gx-attribute > select{
+      width: 90%!important;
+    }
+
+    .col-sm-6 > .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-xs-6 > .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-sm-6 > .gx-attribute > select,
+    .col-xs-6 > .gx-attribute > select{
+      width: 92.5%!important;
+    }
+
+    .col-sm-6 > [id$=CONTAINER] .gx-attribute .input-group,
+    .col-xs-6 > [id$=CONTAINER] .gx-attribute .input-group
+    {
+        width: 90%!important;
+    }
+
+    .col-sm-8 > [id$=CONTAINER] label + .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-xs-8 > [id$=CONTAINER] label + .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-sm-8 > [id$=CONTAINER] label + .gx-attribute > select,
+    .col-xs-8 > [id$=CONTAINER] label + .gx-attribute > select{
+      width: 50%!important;
+    }
+
+    .col-sm-8 > .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-xs-8 > .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-sm-8 > .gx-attribute > select,
+    .col-xs-8 > .gx-attribute > select{
+      width: 52.5%!important;
+    }
+
+    .col-sm-8 > [id$=CONTAINER] .gx-attribute .input-group,
+    .col-xs-8 > [id$=CONTAINER] .gx-attribute .input-group
+    {
+        width: 50%!important;
+    }
+
+    .col-sm-9 > [id$=CONTAINER] label + .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-xs-9 > [id$=CONTAINER] label + .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-sm-9 > [id$=CONTAINER] label + .gx-attribute > select,
+    .col-xs-9 > [id$=CONTAINER] label + .gx-attribute > select{
+      width: 50%!important;
+    }
+
+    .col-sm-9 > .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-xs-9 > .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-sm-9 > .gx-attribute > select,
+    .col-xs-9 > .gx-attribute > select{
+      width: 52.5%!important;
+    }
+
+    .col-sm-9 > [id$=CONTAINER] .gx-attribute .input-group,
+    .col-xs-9 > [id$=CONTAINER] .gx-attribute .input-group
+    {
+        width: 50%!important;
+    }
+
+    .col-sm-12 > [id$=CONTAINER] label + .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-xs-12 > [id$=CONTAINER] label + .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-sm-12 > [id$=CONTAINER] label + .gx-attribute > select,
+    .col-xs-12 > [id$=CONTAINER] label + .gx-attribute > select{
+      width: 30%!important;
+    }
+
+    .col-sm-12 > .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-xs-12 > .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .col-sm-12 > .gx-attribute > select,
+    .col-xs-12 > .gx-attribute > select{
+      width: 32.5%!important;
+    }
+
+    .col-sm-12 > [id$=CONTAINER] .gx-attribute .input-group,
+    .col-xs-12 > [id$=CONTAINER] .gx-attribute .input-group
+    {
+        width: 30%!important;
+    }
+
+    [id$=CONTAINER] .gx-attribute .input-group input,
+    [id$=CONTAINER] .gx-attribute .input-group input{
+        width: 100%!important;
+    }
+
+    [id$=CONTAINER] .gx-attribute .input-group .input-group-btn, 
+    [id$=CONTAINER] .gx-attribute .input-group .input-group-btn {
+        width: 1%!important;
+    }
+}
