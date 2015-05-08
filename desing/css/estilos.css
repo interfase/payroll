@@ -2051,3 +2051,14 @@ input[id^="vMAIN_"]:focus{
         width: 1%!important;
     }
 }
+
+
+/* estilos para el doble tabla del ldap*/
+.LdapTable{
+    width: 100%;
+}
+
+.LdapTable td:last-child{
+    width: 1%;
+}
+/* end*/
