@@ -2055,6 +2055,17 @@ input[id^="vMAIN_"]:focus{
     }
 }
 
+
+/* estilos para el doble tabla del ldap*/
+.LdapTable{
+    width: 100%;
+}
+
+.LdapTable td:last-child{
+    width: 1%;
+}
+/* end*/}
+
 input[type="radio"]{
     margin-top: 4px;
 }
