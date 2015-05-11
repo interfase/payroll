@@ -2065,7 +2065,7 @@ input[id^="vMAIN_"]:focus{
 .LdapTable td:last-child{
     width: 1%;
 }
-/* end*/}
+/* end*/
 
 input[type="radio"]{
     margin-top: 4px;
