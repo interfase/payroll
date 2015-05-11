@@ -2070,3 +2070,7 @@ input[id^="vMAIN_"]:focus{
 input[type="radio"]{
     margin-top: 4px;
 }
+
+.radio-inline{
+    width: auto!important;
+}
