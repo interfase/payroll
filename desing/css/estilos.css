@@ -1363,11 +1363,15 @@ div#TOTCNT_CONTAINER {
     margin: 0 10px 15px 10px;    
 }
 
-.inicio-content p{
+.inicio-content p,.inicio-content ul>li{
     font-family: Roboto-Medium;
     font-size: 14pt;
     color: #727075;
     margin: 0 10px;    
+}
+
+.inicio-content ul>li{
+    font-size: 12pt!important;
 }
 
 .inicio-cell_header .col-sm-1{
@@ -1612,6 +1616,19 @@ div.checkbox {
 
 .Image.pull-right {
     margin-right: 10px;
+}
+
+
+input[type="radio"]{
+    margin-top: 4px;
+}
+
+.radio-inline{
+    width: auto!important;
+}
+
+.hidden-label{
+    visibility: hidden!important;
 }
 
 @media (max-width: 768px){
@@ -2066,11 +2083,3 @@ input[id^="vMAIN_"]:focus{
     width: 1%;
 }
 /* end*/
-
-input[type="radio"]{
-    margin-top: 4px;
-}
-
-.radio-inline{
-    width: auto!important;
-}
