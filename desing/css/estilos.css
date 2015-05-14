@@ -1628,7 +1628,9 @@ input[type="radio"]{
 }
 
 .hidden-label{
-    visibility: hidden!important;
+    visibility: hidden!important; 
+    height: 0px!important; 
+    display: block;
 }
 
 @media (max-width: 768px){
