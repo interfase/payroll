@@ -1,4 +1,4 @@
-﻿//add thenme boostrap
+//add thenme boostrap
 $(document).ready(function(){
 	/*cambiar selector de los botones*/
 	$("input[type = 'button']").addClass('btn btn-default');

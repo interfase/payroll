@@ -1,1 +1,2 @@
-﻿//add thenme boostrap
+var a = 1;
+$('html').addClass('no-js');

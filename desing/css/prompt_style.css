@@ -1,0 +1,106 @@
+#Object_UPLFILE{
+    height: 60px !important;
+}
+
+table.Grid{
+    /*border-collapse: separate;*/
+    /*border-spacing: 0px 5px!important;*/
+    background-color: transparent!important;
+    margin-top: 0px!important;
+    border: none;
+}
+
+table.Grid tbody tr{
+    /*outline: solid #C9C9C9 1px;*/
+    cursor: pointer;
+}
+
+table.Grid tbody tr:hover{
+    background-color: #e8f2fc !important; 
+}
+
+table.Grid tbody tr.gx-row-selected{
+    background-color: #e8f2fc !important; 
+}
+
+table.Grid .ReadonlyAttribute a{
+    color: #a1a1a1;
+}
+
+.BtnEnter, .BtnDelete{
+    border: 1px solid #3276b1;
+    padding: 6px 12px;
+    border-radius: 4px;
+    line-height: 20px;
+    font-family: Roboto-Regular;
+    font-weight: normal;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.BtnEnter{
+    background-color: #00629a!important;
+    color: #fff;
+}
+
+.BtnDelete{
+    background-color: #fff;
+    color: #3276b1!important;
+}
+
+.BtnEnter:hover, .BtnEnter:focus{
+    background-color: #3276b1!important;
+    border: 1px solid #3276b1;
+}
+
+.BtnDelete:hover, .BtnDelete:focus{
+    background-color: #ebebeb;
+    border: 1px solid #3276b1;
+}
+
+.AttributeFilter{
+    text-align: left!important;
+}
+
+.PagingButtonsFirst,
+.PagingButtonsPrevious,
+.PagingButtonsNext,
+.PagingButtonsLast{
+    background-image: none;
+    font-family: FontAwesome;
+    color: #196396;
+    font-size: 20px;
+}
+
+.PagingButtonsFirst:not(.gx-grid-paging-disabled):hover,
+.PagingButtonsPrevious:not(.gx-grid-paging-disabled):hover,
+.PagingButtonsNext:not(.gx-grid-paging-disabled):hover,
+.PagingButtonsLast:not(.gx-grid-paging-disabled):hover{
+    color: #fff;
+    background-color: #196396!important;
+}
+
+.gx-grid-paging-disabled{
+    color: #AFAFAF;
+}
+.PagingButtonsFirst:before,
+.PagingButtonsPrevious:before,
+.PagingButtonsNext:before,
+.PagingButtonsLast:before{
+    top: 9px;
+    right: 6px;
+    position: relative;
+}
+
+.PagingButtonsFirst:before{
+    content: "\f100";
+}
+.PagingButtonsPrevious:before{
+    content: "\f104";
+}
+.PagingButtonsNext:before{
+    content: "\f105";
+}
+.PagingButtonsLast:before{
+    content: "\f101";
+}

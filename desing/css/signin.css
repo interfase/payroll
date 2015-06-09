@@ -1,14 +1,14 @@
 .form-horizontal .form-group {
-  margin-right: 0px;
-  margin-left: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
 } 
 
 .form-group {
-  margin-bottom: 15px !important;;
+    margin-bottom: 15px !important;;
 }
 
 .input-group .form-control {
-  width: 100%;
+    width: 100%;
 }
 
 .form-horizontal .control-label, .form-horizontal .radio, .form-horizontal .checkbox, .form-horizontal .radio-inline, .form-horizontal .checkbox-inline{
@@ -16,4 +16,96 @@
   display: block;
   min-height: 20px;
   margin-bottom: 10px;
+}
+
+.gx-attribute{
+    margin-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+    .form-inline .gx-attribute {
+        display: inline-block;
+        margin-bottom: 0;
+        vertical-align: middle;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .form-horizontal .gx-attribute:before,
+    .form-horizontal .gx-attribute:after{
+        display: table;
+        content: " ";
+    }
+    .form-horizontal .gx-attribute:after{
+        clear: both;
+    }
+}
+
+#login-form{
+	width: 400px;
+	margin: 0 auto;
+	margin-top: 40px;
+}
+
+#logo-login {
+	height:48px;
+	position: relative;
+	top: 7px;
+	left: 7px;
+}
+
+#login-form .col-sm-6 {
+	/*padding:0 15px 0 8px;*/
+}
+
+#login-form .radio, .checkbox {
+	margin-top:0px;
+}
+
+@media(max-width: 768px){
+	#login-form{
+		width: 80%;
+	}
+}
+
+@media(max-width: 460px){
+	#login-form{
+		width: 100%;
+	}
+	#logo-login{
+		width: 180px;
+	}
+}
+
+
+#signin-title {
+    text-align: center;
+    padding: 15px 0 15px 0;
+    font-size: 16px;
+    color: #1B598F;
+}
+/*#login-form option[value="0"]{
+    display: none;
+}
+
+#login-form select option{
+    color: #000;
+}
+
+#login-form select:not([gxoldvalue]), 
+#login-form select[gxvalid="0"],
+#login-form select[gxoldvalue="0"]{
+    color: #999;
+}*/
+
+.checkbox input[type="checkbox"]{
+    margin: 4px 4px 0px -5px;
+}
+
+.checkbox label{
+    color: #000;
+}
+
+#logo-payroll{
+    margin-bottom:20px;
 }
