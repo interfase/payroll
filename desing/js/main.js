@@ -519,11 +519,24 @@
             }
         };
 
+        var setDeletePrompts = function(){
+            $('input[type="button"][value="Eliminar"]').each(function(){
+                $(this).attr('JSEVENT','confirm("Confirma la ejecución?")');
+            });
+            $('a[role="menuitem"]').each(function(){
+                if($(this).text()==="Eliminar"){
+                    $(this).attr('JSEVENT','confirm("Confirma la ejecución?")');
+                }
+            });
+        };
         //Setea los observers
         gx.fx.obs.addObserver("grid.onafterrender", this, function (grid) {
             updateNumericAlign(grid);
             updatePromptButtonAlign(grid);
             DisableLineActivate(grid);
+            
+            setDeletePrompts();
+            
             console.log('Grid rendered');
         });
 
@@ -531,8 +544,10 @@
         $(gx.pO.Grids).each(function () {
             updateNumericAlign(this.grid);
             updatePromptButtonAlign(this.grid);
-        })
-    }
+        });
+        
+        setDeletePrompts();
+    };
 
     $(document).ready(function () {
         //patch para un doble ready de genexus con los prompts, 
