@@ -698,7 +698,7 @@
 				var $this=$(this);
 				if ($this.attr('value') == 0) {
 					$this.css("color", "#999FA5");
-					if ($this.attr('selected', true))
+					if ($this.attr('selected')==true)
 						$this.parent().css("color", "#999FA5");
 					else
 						$this.parent().css("color", "#444");
@@ -710,7 +710,7 @@
 				var $this=$(this);
 				if ($this.val() == 0) {
 					$this.css("color", "#999FA5");
-					if ($this.attr('selected', true))
+					if ($this.attr('selected') == true)
 						$this.parent().css("color", "#999FA5");
 					else
 						$this.parent().css("color", "#444");
