@@ -1983,6 +1983,26 @@ input[id^="vMAIN_"]:focus{
     {
         width: 90%!important;
     }
+	
+	.MainContainer:not(.homePage) .col-sm-7 > [id$=CONTAINER] label + .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .MainContainer:not(.homePage) .col-xs-7 > [id$=CONTAINER] label + .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .MainContainer:not(.homePage) .col-sm-7 > [id$=CONTAINER] label + .gx-attribute > select,
+    .MainContainer:not(.homePage) .col-xs-7 > [id$=CONTAINER] label + .gx-attribute > select{
+      width: 90%!important;
+    }
+
+    .MainContainer:not(.homePage) .col-sm-7 > .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .MainContainer:not(.homePage) .col-xs-7 > .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
+    .MainContainer:not(.homePage) .col-sm-7 > .gx-attribute > select,
+    .MainContainer:not(.homePage) .col-xs-7 > .gx-attribute > select{
+      width: 92.5%!important;
+    }
+
+    .MainContainer:not(.homePage) .col-sm-7 > [id$=CONTAINER] .gx-attribute .input-group,
+    .MainContainer:not(.homePage) .col-xs-7 > [id$=CONTAINER] .gx-attribute .input-group
+    {
+        width: 90%!important;
+    }
 
     .MainContainer:not(.homePage) .col-sm-8 > [id$=CONTAINER] label + .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
     .MainContainer:not(.homePage) .col-xs-8 > [id$=CONTAINER] label + .gx-attribute > input:not([type="radio"]):not([type="checkbox"]),
